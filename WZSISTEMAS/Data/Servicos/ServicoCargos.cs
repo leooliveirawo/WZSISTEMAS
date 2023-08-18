@@ -37,6 +37,13 @@ namespace WZSISTEMAS.Data.Servicos
             await dbContext.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<Cargo>> ListarAsync()
+        {
+            return await dbContext.Cargos
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         public async Task<Cargo?> ObterPorIdAsync(long id)
         {
             return await dbContext.Cargos
