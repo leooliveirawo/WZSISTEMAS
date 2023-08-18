@@ -7,6 +7,14 @@
             return textBox.Text.ObterStringNula();
         }
 
+        public static DateTime? ObterDateTimeSoDataNulo(this DateTimePicker dateTimePicker, bool condicional)
+        {
+            if (condicional)
+                return default;
+
+            return dateTimePicker.Value.Date;
+        }
+
         public static DateTime? ObterDateTimeNulo(this DateTimePicker dateTimePicker, bool uTC, bool condicional)
         {
             if (condicional)
