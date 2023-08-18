@@ -2,7 +2,6 @@
 
 using Microsoft.EntityFrameworkCore;
 
-using System.Collections;
 using WZSISTEMAS.Data.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Data.Servicos
@@ -40,7 +39,6 @@ namespace WZSISTEMAS.Data.Servicos
             return await dbContext.Clientes
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.CPF_CNPJ == cPF_CNPJ);
-
         }
 
         public async Task EditarAsync(Cliente cadastro)
