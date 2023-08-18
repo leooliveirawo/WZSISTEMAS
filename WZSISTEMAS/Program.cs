@@ -25,6 +25,9 @@ namespace WZSISTEMAS
             servicos.AddTransient<IServicoCargos, ServicoCargos>();
             servicos.AddTransient<IServicoCargosConsultas, ServicoCargos>();
 
+            servicos.AddTransient<IServicoFuncionarios, ServicoFuncionarios>();
+            servicos.AddTransient<IServicoFuncionariosConsultas, ServicoFuncionarios>();
+
             return servicos.BuildServiceProvider();
         }
 
