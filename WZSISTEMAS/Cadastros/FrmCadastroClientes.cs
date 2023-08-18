@@ -106,13 +106,13 @@ namespace WZSISTEMAS.Cadastros
         {
             cadastro.Id = id;
 
-            cadastro.Tipo = (Cliente.Tipos)cbbxTipo.SelectedIndex;
+            cadastro.Tipo = (Cliente.ClienteTipos)cbbxTipo.SelectedIndex;
 
             cadastro.NomeCompleto_RazaoSocial = txtNomeCompleto_RazaoSocial.Text;
             cadastro.CPF_CNPJ = txtCPF_CNPJ.Text;
             cadastro.RG_InscricaoEstadual = txtRG_InscricaoEstadual.ObterStringNula();
 
-            cadastro.DataNascimento = dtpDataNascimento.ObterDateTimeNulo(true, chbxNaoInformarDataNascimento.Checked);
+            cadastro.DataNascimento = dtpDataNascimento.ObterDateTimeSoDataNulo(chbxNaoInformarDataNascimento.Checked);
 
             cadastro.Logradouro = txtLogradouro.Text;
             cadastro.LogradourNumero = txtLogradouroNumero.ObterStringNula();
@@ -145,7 +145,7 @@ namespace WZSISTEMAS.Cadastros
                 chbxNaoInformarDataNascimento.Enabled = true;
                 chbxNaoInformarDataNascimento.Checked = false;
 
-                dtpDataNascimento.Value = cadastro.DataNascimento.Value.ToLocalTime();
+                dtpDataNascimento.Value = cadastro.DataNascimento.Value;
             }
             else
             {
