@@ -1,3 +1,5 @@
+﻿using AutoMapper;
+
 ﻿using Microsoft.EntityFrameworkCore;
 
 using WZSISTEMAS.Data.Servicos.Interfaces;
@@ -8,9 +10,16 @@ namespace WZSISTEMAS.Data.Servicos
     {
         private readonly WZSISTEMASDbContext dbContext;
 
+        private readonly IMapper mapper;
+
         public ServicoCargos(WZSISTEMASDbContext dbContext)
         {
             this.dbContext = dbContext;
+
+            mapper = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Cargo, Cargo>();
+            }).CreateMapper();
         }
 
         public async Task CriarAsync(Cargo cadastro)
@@ -21,6 +30,16 @@ namespace WZSISTEMAS.Data.Servicos
 
         public async Task EditarAsync(Cargo cadastro)
         {
+            var cadastroEncontrado = await dbContext.Cargos
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == cadastro.Id);
+
+            if (cadastroEncontrado is null)
+                throw new InvalidOperationException("O cadastro não foi encontrado");
+
+            mapper.Map(cadastro, cadastroEncontrado);
+
+
             dbContext.Update(cadastro);
             await dbContext.SaveChangesAsync();
         }
