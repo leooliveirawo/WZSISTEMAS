@@ -20,7 +20,7 @@ namespace WZSISTEMAS.Consultas
             {
                 string tipo;
 
-                if (cadastro.Tipo == Cliente.Tipos.PessoaFisica)
+                if (cadastro.Tipo == Cliente.ClienteTipos.PessoaFisica)
                     tipo = "Pessoa fisica (PF)";
                 else
                     tipo = "Pessoa juridica (PJ)";
