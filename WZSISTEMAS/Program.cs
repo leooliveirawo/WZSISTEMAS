@@ -48,6 +48,11 @@ namespace WZSISTEMAS
 
             Application.Run(
                 new FrmCadastroCargos(ServiceProvider.GetRequiredService<IServicoCargos>()));
+
+            Application.Run(
+                new FrmCadastroFuncionarios(
+                    ServiceProvider.GetRequiredService<IServicoFuncionarios>(),
+                    ServiceProvider.GetRequiredService<IServicoCargos>()));
         }
     }
 }
