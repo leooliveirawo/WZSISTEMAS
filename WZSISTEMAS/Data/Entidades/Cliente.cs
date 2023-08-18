@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WZSISTEMAS.Data.Entidades
+﻿namespace WZSISTEMAS.Data.Entidades
 {
-    public class Cliente
+    public partial class Cliente
     {
-        public enum Tipos
-        {
-            PessoaFisica,
-            PessoaJuridica
-        }
 
         public long Id { get; set; }
-        public Tipos Tipo { get; set; }
+        public ClienteTipos Tipo { get; set; }
         public string NomeCompleto_RazaoSocial { get; set; } = null!;
         public string CPF_CNPJ { get; set; } = null!;
         public string? RG_InscricaoEstadual { get; set; }
