@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 using WZSISTEMAS.Data.Servicos.Interfaces;
 
