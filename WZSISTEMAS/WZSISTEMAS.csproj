@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="FrenteCaixa\FrmFrenteCaixa.resx.old" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="FrenteCaixa\FrmFrenteCaixa.resx.old" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1">
+			<TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1">
+			<TreatAsUsed>true</TreatAsUsed>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Cadastros\FrmCadastroTransportadoras.cs">
+			<SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Consultas\FrmConsultaAvancadaTransportadoras.cs">
+			<SubType>Form</SubType>
+		</Compile>
+		<Compile Update="Controles\ControleICMSST.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControleICMSSN900.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControleICMSSN500.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControleICMSSN102.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControleICMSSN202.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControlePISNT.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControlePISST.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Controles\ControlePISQtde.cs">
+			<SubType>UserControl</SubType>
+		</Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\WZSISTEMAS.Base\WZSISTEMAS.Base.csproj" />
+		<ProjectReference Include="..\WZSISTEMAS.ConfigurarBancoDados\WZSISTEMAS.ConfigurarBancoDados.csproj" />
+		<ProjectReference Include="..\WZSISTEMAS.Dados\WZSISTEMAS.Dados.csproj" />
+		<ProjectReference Include="..\WZSISTEMAS.WinForms\WZSISTEMAS.WinForms.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Cadastros\Interfaces\" />
+		<Folder Include="WinForms\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="WZSISTEMAS.Base.EF.Services.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.Valores" />
+		<Using Include="WZSISTEMAS.Dados.Entidades" />
+		<Using Include="WZSISTEMAS.Dados.Entidades.Helpers" />
+		<Using Include="WZSISTEMAS.Dados.Helpers" />
+		<Using Include="WZSISTEMAS.Dados.Valores" />
+		<Using Include="WZSISTEMAS.Helpers" />
+		<Using Include="WZSISTEMAS.Program">
+			<Static>True</Static>
+		</Using>
+		<Using Include="WZSISTEMAS.Base.Cartoes.Drivers.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.Helpers" />
+		<Using Include="WZSISTEMAS.Dados.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.WinForms.Helpers" />
+	</ItemGroup>
+
+</Project>

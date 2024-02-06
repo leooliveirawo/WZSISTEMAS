@@ -1,0 +1,26 @@
+
+{NOME_EMPRESA}
+{LOGRADOURO}
+{CIDADE} {ESTADO_UF}
+=============================================
+CPF/CNPJ CONSUMIDOR: 
+	{CPF_CNPJ_CONSUMIDOR}
+=============================================
+Nº VENDA: {N_VENDA}
+DATA VENDA: {DATA_VENDA}
+Nº CAIXA: {N_CAIXA}
+OPERADOR: {OPERADOR}
+=============================================
+COD DESC UND VL.UNIT QNTD VL.T
+=============================================
+{COD} {DESC}
+	{UND} {VL.UNIT} {QNTD} {VL.T}
+=============================================
+PAGAMENTOS
+=============================================
+VL.TOTAL (R$): {VL_TOTAL}
+=============================================
+{VL_PAGO_TIPO} (R$): {VL_PAGO}
+=============================================
+VL.TROCO (R$): {VL_TROCO}
+
