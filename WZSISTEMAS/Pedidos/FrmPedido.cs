@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.FrenteCaixa;
-
-namespace WZSISTEMAS.Pedidos;
+﻿namespace WZSISTEMAS.Pedidos;
 
 public partial class FrmPedido : Form
 {
@@ -8,8 +6,6 @@ public partial class FrmPedido : Form
     private readonly IServicoVendas servicoVendas;
     private readonly IServicoPedidos servicoPedidos;
     private readonly IServicoProdutos servicoProdutos;
-
-    private TipoFrenteCaixa tipo;
 
     private Pedido? pedido;
 
@@ -82,8 +78,10 @@ public partial class FrmPedido : Form
     {
         if (pedido is null)
         {
-            using var frm = ExibirFrenteCaixaEmEspera();
+            using var frm = ProvedorServicos.FrmPedidoEmAberto();
 
+            frm.ShowDialog(this);
+            
             if (frm.Concluiu)
             {
                 pedido = frm.Pedido
@@ -272,18 +270,6 @@ public partial class FrmPedido : Form
             this.ExibirMensagemErro(erro);
         }
 
-    }
-
-    private FrmFrenteCaixaEmAberto ExibirFrenteCaixaEmEspera()
-    {
-        using var frm = ProvedorServicos.FrmFrenteCaixaEmAberto();
-
-        frm.DefinirCaixaId(caixaId);
-        frm.DefinirTipo(tipo);
-
-        frm.ShowDialog(this);
-
-        return frm;
     }
 
     private void FrmPedido_KeyPress(object sender, KeyPressEventArgs e)
