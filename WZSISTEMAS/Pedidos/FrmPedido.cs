@@ -81,7 +81,7 @@ public partial class FrmPedido : Form
             using var frm = ProvedorServicos.FrmPedidoEmAberto();
 
             frm.ShowDialog(this);
-            
+
             if (frm.Concluiu)
             {
                 pedido = frm.Pedido
@@ -432,5 +432,11 @@ public partial class FrmPedido : Form
         {
             this.ExibirMensagemErro(erro);
         }
+    }
+
+    private void FrmPedido_Load(object sender, EventArgs e)
+    {
+        lbTerminalNumero.Text = $"Nº do terminal {TerminalId}";
+        lbTotal.Text = $"{0:C2}";
     }
 }

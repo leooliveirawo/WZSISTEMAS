@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            var dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle12 = new DataGridViewCellStyle();
             groupBox4 = new GroupBox();
             panel1 = new Panel();
             dgvPedidoItens = new DataGridView();
@@ -47,6 +47,12 @@
             groupBox1 = new GroupBox();
             panel2 = new Panel();
             dgvPedidos = new DataGridView();
+            clnVendaId = new DataGridViewTextBoxColumn();
+            clnVendaNumero = new DataGridViewTextBoxColumn();
+            clnFuncionario = new DataGridViewTextBoxColumn();
+            clnVendaTotal = new DataGridViewTextBoxColumn();
+            clnVendaVolume = new DataGridViewTextBoxColumn();
+            clnVendaRealizaEm = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox2 = new GroupBox();
             dtpFiltrarPorDataDe = new DateTimePicker();
@@ -56,12 +62,6 @@
             btnFiltrarPorData = new Button();
             btnSelecionar = new Button();
             gbxTerminalNumero = new GroupBox();
-            clnVendaId = new DataGridViewTextBoxColumn();
-            clnVendaNumero = new DataGridViewTextBoxColumn();
-            clnFuncionario = new DataGridViewTextBoxColumn();
-            clnVendaTotal = new DataGridViewTextBoxColumn();
-            clnVendaVolume = new DataGridViewTextBoxColumn();
-            clnVendaRealizaEm = new DataGridViewTextBoxColumn();
             groupBox4.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidoItens).BeginInit();
@@ -85,7 +85,7 @@
             groupBox4.Size = new Size(1090, 352);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Itens da venda";
+            groupBox4.Text = "Ítens do pedido";
             // 
             // panel1
             // 
@@ -106,24 +106,24 @@
             dgvPedidoItens.BackgroundColor = Color.Silver;
             dgvPedidoItens.BorderStyle = BorderStyle.None;
             dgvPedidoItens.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvPedidoItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle7.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvPedidoItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvPedidoItens.ColumnHeadersHeight = 60;
             dgvPedidoItens.Columns.AddRange(new DataGridViewColumn[] { clnVendaItemNumero, clnVendaItemCodBarrasCodRef, clnVendaItemDescricao, clnVendaItemUnd, clnVendaItemPrecoUnitario, clnVendaItemQntd, clnVendaItemTotal });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvPedidoItens.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvPedidoItens.DefaultCellStyle = dataGridViewCellStyle8;
             dgvPedidoItens.Dock = DockStyle.Fill;
             dgvPedidoItens.EnableHeadersVisualStyles = false;
             dgvPedidoItens.GridColor = Color.Silver;
@@ -131,14 +131,14 @@
             dgvPedidoItens.MultiSelect = false;
             dgvPedidoItens.Name = "dgvPedidoItens";
             dgvPedidoItens.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvPedidoItens.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvPedidoItens.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvPedidoItens.RowHeadersVisible = false;
             dgvPedidoItens.RowHeadersWidth = 62;
             dgvPedidoItens.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
@@ -207,7 +207,7 @@
             groupBox1.Size = new Size(1090, 351);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Vendas";
+            groupBox1.Text = "Pedidos";
             // 
             // panel2
             // 
@@ -228,24 +228,24 @@
             dgvPedidos.BackgroundColor = Color.Silver;
             dgvPedidos.BorderStyle = BorderStyle.None;
             dgvPedidos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle4.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle10.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle10.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dgvPedidos.ColumnHeadersHeight = 60;
             dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { clnVendaId, clnVendaNumero, clnFuncionario, clnVendaTotal, clnVendaVolume, clnVendaRealizaEm });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvPedidos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvPedidos.DefaultCellStyle = dataGridViewCellStyle11;
             dgvPedidos.Dock = DockStyle.Fill;
             dgvPedidos.EnableHeadersVisualStyles = false;
             dgvPedidos.GridColor = Color.Silver;
@@ -253,14 +253,14 @@
             dgvPedidos.MultiSelect = false;
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvPedidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Control;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvPedidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dgvPedidos.RowHeadersVisible = false;
             dgvPedidos.RowHeadersWidth = 62;
             dgvPedidos.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
@@ -269,6 +269,49 @@
             dgvPedidos.Size = new Size(1084, 269);
             dgvPedidos.TabIndex = 0;
             dgvPedidos.CellDoubleClick += DgvItens_CellDoubleClick;
+            // 
+            // clnVendaId
+            // 
+            clnVendaId.HeaderText = "Id";
+            clnVendaId.MinimumWidth = 8;
+            clnVendaId.Name = "clnVendaId";
+            clnVendaId.ReadOnly = true;
+            clnVendaId.Visible = false;
+            // 
+            // clnVendaNumero
+            // 
+            clnVendaNumero.HeaderText = "Nº";
+            clnVendaNumero.MinimumWidth = 8;
+            clnVendaNumero.Name = "clnVendaNumero";
+            clnVendaNumero.ReadOnly = true;
+            // 
+            // clnFuncionario
+            // 
+            clnFuncionario.HeaderText = "Funcionário";
+            clnFuncionario.MinimumWidth = 8;
+            clnFuncionario.Name = "clnFuncionario";
+            clnFuncionario.ReadOnly = true;
+            // 
+            // clnVendaTotal
+            // 
+            clnVendaTotal.HeaderText = "Total (R$)";
+            clnVendaTotal.MinimumWidth = 8;
+            clnVendaTotal.Name = "clnVendaTotal";
+            clnVendaTotal.ReadOnly = true;
+            // 
+            // clnVendaVolume
+            // 
+            clnVendaVolume.HeaderText = "Volume";
+            clnVendaVolume.MinimumWidth = 8;
+            clnVendaVolume.Name = "clnVendaVolume";
+            clnVendaVolume.ReadOnly = true;
+            // 
+            // clnVendaRealizaEm
+            // 
+            clnVendaRealizaEm.HeaderText = "Aberta em";
+            clnVendaRealizaEm.MinimumWidth = 8;
+            clnVendaRealizaEm.Name = "clnVendaRealizaEm";
+            clnVendaRealizaEm.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -379,49 +422,6 @@
             gbxTerminalNumero.TabIndex = 6;
             gbxTerminalNumero.TabStop = false;
             gbxTerminalNumero.Text = "Nº do Terminal";
-            // 
-            // clnVendaId
-            // 
-            clnVendaId.HeaderText = "Id";
-            clnVendaId.MinimumWidth = 8;
-            clnVendaId.Name = "clnVendaId";
-            clnVendaId.ReadOnly = true;
-            clnVendaId.Visible = false;
-            // 
-            // clnVendaNumero
-            // 
-            clnVendaNumero.HeaderText = "Nº";
-            clnVendaNumero.MinimumWidth = 8;
-            clnVendaNumero.Name = "clnVendaNumero";
-            clnVendaNumero.ReadOnly = true;
-            // 
-            // clnFuncionario
-            // 
-            clnFuncionario.HeaderText = "Funcionário";
-            clnFuncionario.MinimumWidth = 8;
-            clnFuncionario.Name = "clnFuncionario";
-            clnFuncionario.ReadOnly = true;
-            // 
-            // clnVendaTotal
-            // 
-            clnVendaTotal.HeaderText = "Total (R$)";
-            clnVendaTotal.MinimumWidth = 8;
-            clnVendaTotal.Name = "clnVendaTotal";
-            clnVendaTotal.ReadOnly = true;
-            // 
-            // clnVendaVolume
-            // 
-            clnVendaVolume.HeaderText = "Volume";
-            clnVendaVolume.MinimumWidth = 8;
-            clnVendaVolume.Name = "clnVendaVolume";
-            clnVendaVolume.ReadOnly = true;
-            // 
-            // clnVendaRealizaEm
-            // 
-            clnVendaRealizaEm.HeaderText = "Aberta em";
-            clnVendaRealizaEm.MinimumWidth = 8;
-            clnVendaRealizaEm.Name = "clnVendaRealizaEm";
-            clnVendaRealizaEm.ReadOnly = true;
             // 
             // FrmPedidoEmAberto
             // 

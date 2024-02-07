@@ -103,9 +103,9 @@
             lbTerminalNumero.AutoSize = true;
             lbTerminalNumero.Location = new Point(6, 48);
             lbTerminalNumero.Name = "lbTerminalNumero";
-            lbTerminalNumero.Size = new Size(220, 45);
+            lbTerminalNumero.Size = new Size(263, 45);
             lbTerminalNumero.TabIndex = 1;
-            lbTerminalNumero.Text = "Terminal Nº:";
+            lbTerminalNumero.Text = "Nº do terminal:";
             // 
             // groupBox1
             // 
@@ -567,6 +567,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "Pedido";
             WindowState = FormWindowState.Maximized;
+            Load += FrmPedido_Load;
             KeyPress += FrmPedido_KeyPress;
             KeyUp += FrmPedido_KeyUp;
             gbxNumero.ResumeLayout(false);

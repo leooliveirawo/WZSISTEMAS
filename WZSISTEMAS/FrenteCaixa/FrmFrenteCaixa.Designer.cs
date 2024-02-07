@@ -101,16 +101,16 @@
             gbxNumero.Size = new Size(375, 223);
             gbxNumero.TabIndex = 0;
             gbxNumero.TabStop = false;
-            gbxNumero.Text = "Venda Nº:";
+            gbxNumero.Text = "Nº da venda";
             // 
             // lbTerminalNumero
             // 
             lbTerminalNumero.AutoSize = true;
             lbTerminalNumero.Location = new Point(6, 48);
             lbTerminalNumero.Name = "lbTerminalNumero";
-            lbTerminalNumero.Size = new Size(220, 45);
+            lbTerminalNumero.Size = new Size(253, 45);
             lbTerminalNumero.TabIndex = 1;
-            lbTerminalNumero.Text = "Terminal Nº:";
+            lbTerminalNumero.Text = "Nº do terminal";
             // 
             // groupBox1
             // 

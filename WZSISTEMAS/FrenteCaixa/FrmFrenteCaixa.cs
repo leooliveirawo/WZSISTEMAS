@@ -328,6 +328,7 @@ public partial class FrmFrenteCaixa : Form
 
     private void FrmFrenteCaixa_Load(object sender, EventArgs e)
     {
+        lbTerminalNumero.Text = $"Nº do terminal {TerminalId}";
 
         try
         {
