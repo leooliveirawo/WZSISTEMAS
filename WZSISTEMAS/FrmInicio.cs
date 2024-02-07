@@ -161,6 +161,14 @@ public partial class FrmInicio : FrmBase
         try
         {
             var caixaId = AbrirCaixa();
+
+            if (caixaId.HasValue)
+            {
+                var frm = ProvedorServicos.FrmCaixa();
+
+                frm.DefinirCaixaId(caixaId.Value);
+                frm.ShowDialog(this);
+            }
         }
         catch (Exception erro)
         {
