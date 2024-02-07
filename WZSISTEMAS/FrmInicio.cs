@@ -94,6 +94,16 @@ public partial class FrmInicio : FrmBase
         }
     }
 
+    private void AbrirFrenteCaixa(long caixaId)
+    {
+        using var frmFrenteCaixa = ProvedorServicos.FrmFrenteCaixa();
+
+        frmFrenteCaixa.DefinirCaixaId(caixaId);
+        frmFrenteCaixa.DefinirFuncionarioId(FuncionarioId);
+
+        frmFrenteCaixa.ShowDialog(this);
+    }
+    
     private void AbrirCadastrosClientes_Click(object sender, EventArgs e)
     {
         using var frm = ProvedorServicos.FrmCadastroClientes();
@@ -150,20 +160,14 @@ public partial class FrmInicio : FrmBase
             var caixaId = AbrirCaixa();
 
             if (caixaId.HasValue)
-            {
-                using var frmCaixa = ProvedorServicos.FrmCaixa();
-
-                frmCaixa.DefinirCaixaId(caixaId.Value);
-                frmCaixa.ShowDialog(this);
-            }
+                AbrirFrenteCaixa(caixaId.Value);
         }
         catch (Exception erro)
         {
             this.ExibirMensagemErro(erro);
         }
     }
-
-
+    
     private void TsmiPedidos_Click(object sender, EventArgs e)
     {
         try
@@ -172,12 +176,15 @@ public partial class FrmInicio : FrmBase
 
             if (caixaId.HasValue)
             {
-                using var frmFrenteCaixa = ProvedorServicos.FrmPedido();
+                using var frmPedido = ProvedorServicos.FrmPedido();
 
-                frmFrenteCaixa.DefinirCaixaId(caixaId.Value);
-                frmFrenteCaixa.DefinirFuncionarioId(FuncionarioId);
+                frmPedido.DefinirCaixaId(caixaId.Value);
+                frmPedido.DefinirFuncionarioId(FuncionarioId);
 
-                frmFrenteCaixa.ShowDialog(this);
+                frmPedido.ShowDialog(this);
+
+                if (frmPedido.PedidoConvertidoParaVenda)
+                    AbrirFrenteCaixa(caixaId.Value);
             }
         }
         catch (Exception erro)
