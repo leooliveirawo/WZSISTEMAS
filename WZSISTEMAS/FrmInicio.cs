@@ -94,12 +94,15 @@ public partial class FrmInicio : FrmBase
         }
     }
 
-    private void AbrirFrenteCaixa(long caixaId)
+    private void AbrirFrenteCaixa(long caixaId, Venda? venda = default)
     {
         using var frmFrenteCaixa = ProvedorServicos.FrmFrenteCaixa();
 
         frmFrenteCaixa.DefinirCaixaId(caixaId);
         frmFrenteCaixa.DefinirFuncionarioId(FuncionarioId);
+
+        if (venda is not null)
+            frmFrenteCaixa.DefinirVenda(venda);
 
         frmFrenteCaixa.ShowDialog(this);
     }
@@ -184,7 +187,7 @@ public partial class FrmInicio : FrmBase
                 frmPedido.ShowDialog(this);
 
                 if (frmPedido.PedidoConvertidoParaVenda)
-                    AbrirFrenteCaixa(caixaId.Value);
+                    AbrirFrenteCaixa(caixaId.Value, frmPedido.Venda);
             }
         }
         catch (Exception erro)

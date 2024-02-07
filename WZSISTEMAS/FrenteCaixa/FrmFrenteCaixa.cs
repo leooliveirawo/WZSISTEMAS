@@ -27,6 +27,9 @@ public partial class FrmFrenteCaixa : Form
     public void DefinirCaixaId(long caixaId)
         => this.caixaId = caixaId;
 
+    public void DefinirVenda(Venda venda)
+        => this.venda = venda;
+    
     public void DefinirFuncionarioId(long funcionarioId)
         => this.funcionarioId = funcionarioId;
 
@@ -332,7 +335,8 @@ public partial class FrmFrenteCaixa : Form
 
         try
         {
-            venda = servicoVendas.ObterVendaAbertaPorCaixaId(caixaId);
+            if (venda is null)
+                venda = servicoVendas.ObterVendaAbertaPorCaixaId(caixaId);
 
             if (!naoCarregarVendaEmAberto
                 && venda is not null)
