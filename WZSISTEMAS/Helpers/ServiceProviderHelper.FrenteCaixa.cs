@@ -26,4 +26,6 @@ public static partial class ServiceProviderHelper
     public static FrmFrenteCaixaSelecionarPrecos FrmFrenteCaixaSelecionarPrecos(this IServiceProvider services)
         => services.GetRequiredService<FrmFrenteCaixaSelecionarPrecos>();
 
+    public static FrmFrenteCaixaManutencao FrmFrenteCaixaManutencao(this IServiceProvider services)
+        => services.GetRequiredService<FrmFrenteCaixaManutencao>();
 }

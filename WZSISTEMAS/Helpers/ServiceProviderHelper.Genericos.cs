@@ -16,9 +16,6 @@ public static partial class ServiceProviderHelper
     public static IServicoLogin ServicoLogin(this IServiceProvider services)
         => services.GetRequiredService<IServicoLogin>();
 
-    public static FrmFrenteCaixaManutencao FrmFrenteCaixaManutencao(this IServiceProvider services)
-        => services.GetRequiredService<FrmFrenteCaixaManutencao>();
-
     public static FrmTerminal FrmTerminal(this IServiceProvider services)
         => services.GetRequiredService<FrmTerminal>();
 }
