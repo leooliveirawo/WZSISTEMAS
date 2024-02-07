@@ -161,9 +161,6 @@ public partial class FrmInicio : FrmBase
         try
         {
             var caixaId = AbrirCaixa();
-
-            if (caixaId.HasValue)
-                AbrirFrenteCaixa(caixaId.Value);
         }
         catch (Exception erro)
         {
@@ -201,16 +198,9 @@ public partial class FrmInicio : FrmBase
         try
         {
             var caixaId = AbrirCaixa();
-
+            
             if (caixaId.HasValue)
-            {
-                using var frmFrenteCaixa = ProvedorServicos.FrmFrenteCaixa();
-
-                frmFrenteCaixa.DefinirCaixaId(caixaId.Value);
-                frmFrenteCaixa.DefinirFuncionarioId(FuncionarioId);
-
-                frmFrenteCaixa.ShowDialog(this);
-            }
+                AbrirFrenteCaixa(caixaId.Value);
         }
         catch (Exception erro)
         {
