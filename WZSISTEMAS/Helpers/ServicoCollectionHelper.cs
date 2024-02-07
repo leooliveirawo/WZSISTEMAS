@@ -4,75 +4,83 @@ using WZSISTEMAS.Caixas;
 using WZSISTEMAS.Consultas;
 using WZSISTEMAS.Entradas;
 using WZSISTEMAS.FrenteCaixa;
+using WZSISTEMAS.Pedidos;
 using WZSISTEMAS.Servicos;
 
 namespace WZSISTEMAS.Helpers;
 
 public static class ServicoCollectionHelper
 {
-    public static IServiceProvider Configurar(this IServiceCollection services)
+    public static IServiceProvider Configurar(this IServiceCollection servicos)
     {
-        services.ConfigurarCore();
-        services.ConfigurarDados();
+        servicos.ConfigurarCore();
+        servicos.ConfigurarDados();
 
-        services.AddTransient<IServicoLogin, ServicoLogin>();
+        servicos.AddTransient<IServicoLogin, ServicoLogin>();
 
-        services.AddTransient<FrmEntrada>();
-        services.AddTransient<FrmLogin>();
-        services.AddTransient<FrmInicio>();
-        services.AddTransient<FrmTerminal>();
-        services.AddTransient<FrmClienteConvenio>();
+        servicos.AddTransient<FrmEntrada>();
+        servicos.AddTransient<FrmLogin>();
+        servicos.AddTransient<FrmInicio>();
+        servicos.AddTransient<FrmTerminal>();
+        servicos.AddTransient<FrmClienteConvenio>();
 
-        ConfigurarCadastros(services);
-        ConfigurarConsultas(services);
-        ConfigurarCaixa(services);
-        ConfigurarFrenteCaixa(services);
+        ConfigurarCadastros(servicos);
+        ConfigurarConsultas(servicos);
+        ConfigurarCaixa(servicos);
+        ConfigurarFrenteCaixa(servicos);
+        ConfigurarPedidos(servicos);
 
-        services.AddTransient<FrmFrenteCaixaManutencao>();
+        servicos.AddTransient<FrmFrenteCaixaManutencao>();
 
-        return services.BuildServiceProvider();
+        return servicos.BuildServiceProvider();
 
-        static void ConfigurarCadastros(IServiceCollection services)
+        static void ConfigurarCadastros(IServiceCollection servicos)
         {
-            services.AddTransient<FrmCadastroCargos>();
-            services.AddTransient<FrmCadastroClientes>();
-            services.AddTransient<FrmCadastroEmpresas>();
-            services.AddTransient<FrmCadastroFornecedores>();
-            services.AddTransient<FrmCadastroFuncionarios>();
-            services.AddTransient<FrmCadastroProdutos>();
-            services.AddTransient<FrmCadastroTransportadoras>();
+            servicos.AddTransient<FrmCadastroCargos>();
+            servicos.AddTransient<FrmCadastroClientes>();
+            servicos.AddTransient<FrmCadastroEmpresas>();
+            servicos.AddTransient<FrmCadastroFornecedores>();
+            servicos.AddTransient<FrmCadastroFuncionarios>();
+            servicos.AddTransient<FrmCadastroProdutos>();
+            servicos.AddTransient<FrmCadastroTransportadoras>();
         }
 
-        static void ConfigurarConsultas(IServiceCollection services)
+        static void ConfigurarConsultas(IServiceCollection servicos)
         {
-            services.AddTransient<FrmConsultaAvancadaClientes>();
-            services.AddTransient<FrmConsultaAvancadaEmpresas>();
-            services.AddTransient<FrmConsultaAvancadaFornecedores>();
-            services.AddTransient<FrmConsultaAvancadaFuncionarios>();
-            services.AddTransient<FrmConsultaAvancadaItens>();
-            services.AddTransient<FrmConsultaAvancadaTransportadoras>();
+            servicos.AddTransient<FrmConsultaAvancadaClientes>();
+            servicos.AddTransient<FrmConsultaAvancadaEmpresas>();
+            servicos.AddTransient<FrmConsultaAvancadaFornecedores>();
+            servicos.AddTransient<FrmConsultaAvancadaFuncionarios>();
+            servicos.AddTransient<FrmConsultaAvancadaItens>();
+            servicos.AddTransient<FrmConsultaAvancadaTransportadoras>();
 
-            services.AddTransient<FrmConsultaAvancadaConvenio>();
+            servicos.AddTransient<FrmConsultaAvancadaConvenio>();
         }
 
-        static void ConfigurarCaixa(IServiceCollection services)
+        static void ConfigurarCaixa(IServiceCollection servicos)
         {
-            services.AddTransient<FrmCaixa>();
-            services.AddTransient<FrmCaixaAbertura>();
-            services.AddTransient<FrmCaixaEntrada>();
-            services.AddTransient<FrmCaixaFechamento>();
-            services.AddTransient<FrmCaixaSaida>();
+            servicos.AddTransient<FrmCaixa>();
+            servicos.AddTransient<FrmCaixaAbertura>();
+            servicos.AddTransient<FrmCaixaEntrada>();
+            servicos.AddTransient<FrmCaixaFechamento>();
+            servicos.AddTransient<FrmCaixaSaida>();
         }
 
-        static void ConfigurarFrenteCaixa(IServiceCollection services)
+        static void ConfigurarFrenteCaixa(IServiceCollection servicos)
         {
-            services.AddTransient<FrmFrenteCaixa>();
-            services.AddTransient<FrmFrenteCaixaEmEspera>();
-            services.AddTransient<FrmFrenteCaixaFechamento>();
-            services.AddTransient<FrmFrenteCaixaFechamentoCartao>();
-            services.AddTransient<FrmFrenteCaixaCPF_CNPJNaNota>();
-            services.AddTransient<FrmFrenteCaixaFechamentoConvenio>();
-            services.AddTransient<FrmFrenteCaixaSelecionarPrecos>();
+            servicos.AddTransient<FrmFrenteCaixa>();
+            servicos.AddTransient<FrmFrenteCaixaEmEspera>();
+            servicos.AddTransient<FrmFrenteCaixaFechamento>();
+            servicos.AddTransient<FrmFrenteCaixaFechamentoCartao>();
+            servicos.AddTransient<FrmFrenteCaixaCPF_CNPJNaNota>();
+            servicos.AddTransient<FrmFrenteCaixaFechamentoConvenio>();
+            servicos.AddTransient<FrmFrenteCaixaSelecionarPrecos>();
+        }
+        static void ConfigurarPedidos(IServiceCollection servicos)
+        {
+            servicos.AddTransient<FrmPedido>();
+            servicos.AddTransient<FrmPedidoEmAberto>();
+            servicos.AddTransient<FrmPedidoManutencao>();
         }
     }
 }
