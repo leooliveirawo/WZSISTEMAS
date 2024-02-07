@@ -4,13 +4,9 @@ public partial class FrmFrenteCaixa : Form
 {
     private readonly IServicoCaixas servicoCaixas;
     private readonly IServicoVendas servicoVendas;
-    private readonly IServicoPedidos servicoPedidos;
     private readonly IServicoProdutos servicoProdutos;
 
-    private TipoFrenteCaixa tipo;
-
     private Venda? venda;
-    private Pedido? pedido;
 
     private long caixaId;
     private long funcionarioId;
@@ -19,13 +15,12 @@ public partial class FrmFrenteCaixa : Form
 
     private bool naoCarregarVendaEmAberto;
 
-    public FrmFrenteCaixa(IServicoCaixas servicoCaixas, IServicoVendas servicoVendas, IServicoPedidos servicoPedidos, IServicoProdutos servicoProdutos)
+    public FrmFrenteCaixa(IServicoCaixas servicoCaixas, IServicoVendas servicoVendas, IServicoProdutos servicoProdutos)
     {
         InitializeComponent();
 
         this.servicoCaixas = servicoCaixas ?? throw new ArgumentNullException(nameof(servicoCaixas));
         this.servicoVendas = servicoVendas ?? throw new ArgumentNullException(nameof(servicoVendas));
-        this.servicoPedidos = servicoPedidos  ?? throw new ArgumentNullException(nameof(servicoPedidos));
         this.servicoProdutos = servicoProdutos ?? throw new ArgumentNullException(nameof(servicoProdutos));
     }
 
@@ -34,78 +29,6 @@ public partial class FrmFrenteCaixa : Form
 
     public void DefinirFuncionarioId(long funcionarioId)
         => this.funcionarioId = funcionarioId;
-
-    private void DefinirTipoVenda()
-    {
-        gbxItens.Text = "Itens da venda (F8)";
-
-        lbF3Texto.Show();
-        lbF3.Show();
-
-        lbF5Texto.Text = "Fechar venda";
-        lbESCTexto.Text = "Cancelar venda";
-        lbF7Texto.Text = "Vendas em espera";
-        lbF6Texto.Text = "Colocar em espera";
-        tsmiFrenteCaixaManutencao.Text = "Manutenção de vendas";
-        tsmiItensEmAberto.Text = "Vendas em espera";
-
-        gbxCPF_CNPJ_NaNota.Show();
-
-        try
-        {
-            venda = servicoVendas.ObterVendaAbertaPorCaixaId(caixaId);
-
-            if (!naoCarregarVendaEmAberto
-                && venda is not null)
-                CarregarVenda();
-            else
-            {
-                gbxNumero.Text = "Nº da venda";
-                lbTotal.Text = $"{0:C2}";
-            }
-        }
-        catch (Exception erro)
-        {
-            this.ExibirMensagemErro(erro);
-        }
-        finally
-        {
-            txtCodBarrasCodRef.Selecionar();
-        }
-    }
-
-    private void DefinirTipoPedido()
-    {
-        gbxNumero.Text = "Nº do pedido";
-        gbxItens.Text = "Itens do pedido (F8)";
-        lbF3Texto.Hide();
-        lbF3.Hide();
-
-        lbF5Texto.Text = "Converter para venda";
-        lbESCTexto.Text = "Cancelar pedido";
-        lbF7Texto.Text = "Pedidos em aberto";
-        lbF6Texto.Text = "Novo pedido";
-        tsmiFrenteCaixaManutencao.Text = "Manutenção de pedidos";
-        tsmiItensEmAberto.Text = "Pedidos em aberto";
-
-        gbxCPF_CNPJ_NaNota.Hide();
-    }
-
-    public void DefinirTipo(TipoFrenteCaixa tipo)
-    {
-        this.tipo = tipo;
-        venda = default;
-        pedido = default;
-
-        lbTerminalNumero.Text = $"Nº do Terminal: {TerminalId}";
-
-        lbTotal.Text = $"{0:C2}";
-
-        if (tipo == TipoFrenteCaixa.Venda)
-            DefinirTipoVenda();
-        else if (tipo == TipoFrenteCaixa.Pedido)
-            DefinirTipoPedido();
-    }
 
     private void RedefinirCamposConsulta()
     {
@@ -150,31 +73,290 @@ public partial class FrmFrenteCaixa : Form
             ? servicoProdutos.ObterPorCodigoReferencia(txtCodBarrasCodRef.Text)
             : servicoProdutos.ObterPorIdOuCodigoBarras(txtCodBarrasCodRef.Text);
 
-    private FrmFrenteCaixaEmAberto ExibirFrenteCaixaEmEspera()
+    private FrmFrenteCaixaEmEspera ExibirFrenteCaixaEmEspera()
     {
         using var frm = ProvedorServicos.FrmFrenteCaixaEmAberto();
 
         frm.DefinirCaixaId(caixaId);
-        frm.DefinirTipo(tipo);
 
         frm.ShowDialog(this);
 
         return frm;
     }
 
+    private void AbrirVendasEspera()
+    {
+        if (venda is null)
+        {
+            using var frm = ExibirFrenteCaixaEmEspera();
+
+            if (frm.Concluiu)
+            {
+                venda = frm.Venda
+                        ?? throw new InvalidOperationException("Um erro interno ocorreu no sistema");
+
+                CarregarVenda();
+            }
+        }
+    }
+
+    private void RecalcularVendaTotal()
+        => lbTotal.Text = $"{venda?.ValorTotal:C2}";
+
+    private void RedefinirTelaVenda()
+    {
+        gbxNumero.Text = "Venda Nº";
+        lbTotal.Text = $"{0:C2}";
+
+        lbCPF_CNPJ.Clear("NÃO INFORMADO");
+
+        RedefinirCamposConsulta();
+
+        dgvItens.Rows.Clear();
+    }
+
+    private void CarregarVenda()
+    {
+        lbTotal.Text =
+            $"{venda?.ValorTotal ?? throw new InvalidOperationException("Um erro interno aconteceu durante a venda"):C2}";
+
+        gbxNumero.Text = $"Nº da Venda: {venda.Id}";
+
+        DefinirCPFOuCNPJVenda();
+
+        dgvItens.Rows.Clear();
+
+        foreach (var item in venda.Itens)
+            AdicionarItemVenda(item);
+
+        dgvItens.SelecionarUltimaLinha();
+    }
+
+    private void AdicionarItemVenda(VendaItem item)
+    {
+        var count = dgvItens.Rows.GetRowCount(DataGridViewElementStates.Visible) + 1;
+
+        dgvItens.Adicionar(
+            item.Id,
+            count,
+            $"{item.ItemId:0000000}",
+            item.CodigoBarrasCodigoReferencia(),
+            item.DescricaoFormatada(),
+            item.UnidadeMedida.ConverterParaString(true),
+            $"{item.ValorUnitario:C2}",
+            $"{item.Quantidade:0.000}",
+            $"{item.ValorTotal:C2}");
+    }
+
+    private void RedefinirParametrosVenda()
+        => venda = default;
+
+    private void InformarCPFOuCNPJNaNotaVenda()
+    {
+        if (venda is not null)
+        {
+            using var frm = ProvedorServicos.FrmFrenteCaixaCPF_CNPJNaNota();
+
+            frm.DefinirCPF_CNPJ(venda.CPF_CNPJ_Nota);
+
+            if (frm.ShowDialog(this, DialogResult.OK))
+            {
+                venda = servicoVendas.ObterPorId(
+                            venda.Id,
+                            true)
+                        ?? throw new InvalidOperationException("A venda não foi encontrada");
+
+                venda.CPF_CNPJ_Nota = frm.CPF_CNPJ;
+
+                servicoVendas.Editar(venda);
+
+                servicoVendas.SalvarAlteracoes();
+
+                servicoVendas.DescartarAlteracoes();
+
+                DefinirCPFOuCNPJVenda();
+
+                txtCodBarrasCodRef.Selecionar();
+            }
+        }
+    }
+
+    private void CancelarVenda()
+    {
+        if (venda is not null)
+        {
+            if (this.ExibirMensagemSimNao("Tem certeza que deseja cancelar a venda?", "Confirmar cancelamento"))
+            {
+                try
+                {
+                    servicoVendas.CancelarVenda(venda.Id);
+
+                    RedefinirParametrosVenda();
+
+                    RedefinirTelaVenda();
+
+                    this.ExibirMensagemOperacaoConcluida("A venda foi cancelada com sucesso.");
+                }
+                catch (Exception erro)
+                {
+                    this.ExibirMensagemErro(erro);
+                }
+                finally
+                {
+                    txtCodBarrasCodRef.Selecionar();
+                }
+            }
+        }
+        else
+            Close();
+    }
+
+    private void AcoesVenda(KeyEventArgs e)
+    {
+        if (e.KeyData == Keys.F4)
+            ExcluirItemVenda();
+        else if (e.KeyData == Keys.F5)
+            FecharVenda();
+        else if (e.KeyData == Keys.F6)
+            ColocarEmEsperaVenda();
+        else if (e.KeyData == Keys.F7)
+            AbrirVendasEspera();
+        else if (e.KeyData == Keys.F3)
+            InformarCPFOuCNPJNaNotaVenda();
+        else if (e.KeyData == Keys.F8)
+        {
+            naoSelecionar = true;
+            dgvItens.Selecionar();
+        }
+        else if (e.KeyData != Keys.F2)
+            naoSelecionar = true;
+    }
+
+    private void ExcluirItemVenda()
+    {
+        if (dgvItens.ExisteLinhasSelecionadas()
+            && this.ExibirMensagemSimNao("Tem certeza que deseja excluir o tipoItem da venda?",
+                "Excluir tipoItem da venda"))
+        {
+            venda = servicoVendas.ExcluirItem(
+                dgvItens.ConverterPrimeiroSelecionado<long>());
+
+            dgvItens.RemoverPrimeiraLinhaSelecionada();
+
+            RecalcularPosicoes();
+            RecalcularVendaTotal();
+            RedefinirCamposConsulta();
+
+            this.ExibirMensagemOperacaoConcluida("O tipoItem foi excluído da venda.");
+        }
+
+    }
+
+    private void FecharVenda()
+    {
+        if (venda is not null
+            && dgvItens.ExisteLinhas())
+        {
+            using var frm = ProvedorServicos.FrmFrenteCaixaFechamento();
+
+            frm.DefinirVendaId(venda.Id);
+
+            frm.ShowDialog(this);
+
+            if (frm.Fechou)
+            {
+                RedefinirParametrosVenda();
+                RedefinirTelaVenda();
+            }
+        }
+    }
+
+    private void ColocarEmEsperaVenda()
+    {
+        if (venda is not null
+            && dgvItens.ExisteLinhas())
+        {
+            servicoVendas.ColocarVendaEmEspera(venda.Id);
+
+            RedefinirParametrosVenda();
+            RedefinirTelaVenda();
+        }
+    }
+
+    private void AcoesVenda(Item item, decimal quantidade)
+    {
+        VerificarVenda();
+        IncluirItemVenda(item, quantidade);
+    }
+
+    private void VerificarVenda()
+    {
+        if (venda is null)
+        {
+            venda = servicoVendas.NovaVenda(caixaId);
+
+            CarregarVenda();
+
+            InformarCPFOuCNPJNaNotaVenda();
+        }
+    }
+
+    private void IncluirItemVenda(Item item1, decimal quantidade)
+    {
+        var precoFinal = SelecionarPrecoFinalItem(item1);
+
+        var venda_VendaProduto = servicoVendas.AdicionarItem(
+            venda?.Id
+            ?? throw new InvalidOperationException("Um erro interno aconteceu durante a venda"),
+            item1.Id,
+            precoFinal,
+            quantidade);
+
+        venda = venda_VendaProduto.Item1;
+        var item = venda_VendaProduto.Item2;
+
+        AdicionarItemVenda(item);
+
+        dgvItens.Rows[dgvItens.Rows.GetLastRow(DataGridViewElementStates.Visible)].Selected = true;
+    }
+
+    private void DefinirCPFOuCNPJVenda()
+        => lbCPF_CNPJ.Text = venda?.CPF_CNPJ_Nota is null
+            ? "NÃO INFORMADO"
+            : venda.CPF_CNPJ_Nota
+              ?? throw new InvalidOperationException("Um erro interno aconteceu durante a venda");
+
     private void FrmFrenteCaixa_Load(object sender, EventArgs e)
     {
-        
+
+        try
+        {
+            venda = servicoVendas.ObterVendaAbertaPorCaixaId(caixaId);
+
+            if (!naoCarregarVendaEmAberto
+                && venda is not null)
+                CarregarVenda();
+            else
+            {
+                gbxNumero.Text = "Nº da venda";
+                lbTotal.Text = $"{0:C2}";
+            }
+        }
+        catch (Exception erro)
+        {
+            this.ExibirMensagemErro(erro);
+        }
+        finally
+        {
+            txtCodBarrasCodRef.Selecionar();
+        }
     }
 
     private void FrmFrenteCaixa_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (Keys.Escape.Comparar(e.KeyChar))
         {
-            if (tipo == TipoFrenteCaixa.Venda)
-                CancelarVenda();
-            else if (tipo == TipoFrenteCaixa.Pedido)
-                CancelarPedido();
+            CancelarVenda();
         }
     }
 
@@ -184,10 +366,7 @@ public partial class FrmFrenteCaixa : Form
 
         try
         {
-            if (tipo == TipoFrenteCaixa.Venda)
-                AcoesVenda(e);
-            else if (tipo == TipoFrenteCaixa.Pedido)
-                AcoesPedido(e);
+            AcoesVenda(e);
         }
         catch (Exception erro)
         {
@@ -227,17 +406,8 @@ public partial class FrmFrenteCaixa : Form
                         this.ExibirMensagem("O ítem com o Id, código de barras ou código referência não foi encontrado.", "Item não encontrado");
                     else
                     {
-                        if (tipo == TipoFrenteCaixa.Venda)
-                        {
-                            AcoesVenda(item, quantidade);
-                            RecalcularVendaTotal();
-                        }
-                        else if (tipo == TipoFrenteCaixa.Pedido)
-                        {
-                            AcoesPedido(item, quantidade);
-                            RecalcularPedidoTotal();
-                        }
-
+                        AcoesVenda(item, quantidade);
+                        RecalcularVendaTotal();
                         RedefinirCamposConsulta();
                     }
                 }
@@ -341,7 +511,6 @@ public partial class FrmFrenteCaixa : Form
 
             frm.DefinirCaixaId(caixaId);
             frm.DefinirFuncionarioId(funcionarioId);
-            frm.DefinirTipo(tipo);
 
             frm.ShowDialog(this);
         }

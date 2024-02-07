@@ -172,12 +172,10 @@ public partial class FrmInicio : FrmBase
 
             if (caixaId.HasValue)
             {
-                using var frmFrenteCaixa = ProvedorServicos.FrmFrenteCaixa();
+                using var frmFrenteCaixa = ProvedorServicos.FrmPedido();
 
                 frmFrenteCaixa.DefinirCaixaId(caixaId.Value);
                 frmFrenteCaixa.DefinirFuncionarioId(FuncionarioId);
-
-                frmFrenteCaixa.DefinirTipo(FrenteCaixa.TipoFrenteCaixa.Pedido);
 
                 frmFrenteCaixa.ShowDialog(this);
             }
@@ -200,8 +198,6 @@ public partial class FrmInicio : FrmBase
 
                 frmFrenteCaixa.DefinirCaixaId(caixaId.Value);
                 frmFrenteCaixa.DefinirFuncionarioId(FuncionarioId);
-
-                frmFrenteCaixa.DefinirTipo(FrenteCaixa.TipoFrenteCaixa.Venda);
 
                 frmFrenteCaixa.ShowDialog(this);
             }

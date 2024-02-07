@@ -11,8 +11,8 @@ public static partial class ServiceProviderHelper
     public static FrmFrenteCaixaCPF_CNPJNaNota FrmFrenteCaixaCPF_CNPJNaNota(this IServiceProvider services)
         => services.GetRequiredService<FrmFrenteCaixaCPF_CNPJNaNota>();
 
-    public static FrmFrenteCaixaEmAberto FrmFrenteCaixaEmAberto(this IServiceProvider services)
-        => services.GetRequiredService<FrmFrenteCaixaEmAberto>();
+    public static FrmFrenteCaixaEmEspera FrmFrenteCaixaEmAberto(this IServiceProvider services)
+        => services.GetRequiredService<FrmFrenteCaixaEmEspera>();
 
     public static FrmFrenteCaixaFechamento FrmFrenteCaixaFechamento(this IServiceProvider services)
         => services.GetRequiredService<FrmFrenteCaixaFechamento>();

@@ -67,7 +67,7 @@ public static class ServicoCollectionHelper
         static void ConfigurarFrenteCaixa(IServiceCollection services)
         {
             services.AddTransient<FrmFrenteCaixa>();
-            services.AddTransient<FrmFrenteCaixaEmAberto>();
+            services.AddTransient<FrmFrenteCaixaEmEspera>();
             services.AddTransient<FrmFrenteCaixaFechamento>();
             services.AddTransient<FrmFrenteCaixaFechamentoCartao>();
             services.AddTransient<FrmFrenteCaixaCPF_CNPJNaNota>();

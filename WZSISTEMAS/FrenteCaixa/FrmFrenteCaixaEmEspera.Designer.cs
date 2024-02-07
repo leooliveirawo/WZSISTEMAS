@@ -1,6 +1,6 @@
 ﻿namespace WZSISTEMAS.FrenteCaixa
 {
-    partial class FrmFrenteCaixaEmAberto
+    partial class FrmFrenteCaixaEmEspera
     {
         /// <summary>
         /// Required designer variable.

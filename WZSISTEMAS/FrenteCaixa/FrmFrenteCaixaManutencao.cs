@@ -1,73 +1,25 @@
-﻿using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Entidades.Helpers;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.FrenteCaixa;
+﻿namespace WZSISTEMAS.FrenteCaixa;
 
 public partial class FrmFrenteCaixaManutencao : Form
 {
     private readonly IServicoVendas servicoVendas;
-    private readonly IServicoPedidos servicoPedidos;
 
     private long caixaId;
     private long funcionarioId;
 
-    private TipoFrenteCaixa servicoTipo;
-
-    public FrmFrenteCaixaManutencao(
-        IServicoVendas servicoVendas,
-        IServicoPedidos servicoPedidos)
+    public FrmFrenteCaixaManutencao(IServicoVendas servicoVendas)
     {
         InitializeComponent();
 
         this.servicoVendas = servicoVendas 
             ?? throw new ArgumentNullException(nameof(servicoVendas));
-
-        this.servicoPedidos = servicoPedidos
-            ?? throw new ArgumentNullException(nameof(servicoPedidos));
     }
 
     public void DefinirCaixaId(long caixaId)
-    {
-        this.caixaId = caixaId;
-    }
+        => this.caixaId = caixaId;
 
     public void DefinirFuncionarioId(long funcionarioId)
-    {
-        this.funcionarioId = funcionarioId;
-    }
-
-    public void DefinirTipo(TipoFrenteCaixa tipo)
-    {
-        this.servicoTipo = tipo;
-
-        if (tipo == TipoFrenteCaixa.Pedido)
-        {
-            Text = "Manutenção de pedidos";
-            gbxItens.Text = "Pedidos";
-            gbxItemItens.Text = "Itens do pedido";
-
-            btnCancelar.Text = "Cancelar pedido";
-            gbxTipos.Text = "Pedidos";
-
-            clnItemTerminal.Visible = false;
-            clnItemCaixaId.Visible = false;
-        }
-        else if (tipo == TipoFrenteCaixa.Venda)
-        {
-            Text = "Manutenção de vendas";
-            gbxItens.Text = "Vendas";
-            gbxItemItens.Text = "Itens da venda";
-
-            btnCancelar.Text = "Cancelar venda";
-            gbxTipos.Text = "Vendas";
-
-            clnItemTerminal.Visible = true;
-            clnItemCaixaId.Visible = true;
-        }
-    }
+        => this.funcionarioId = funcionarioId;
 
     private void CarregarVendas(IEnumerable<Venda> itens)
     {
@@ -82,39 +34,6 @@ public partial class FrmFrenteCaixaManutencao : Form
                 item.ValorTotal,
                 item.Volume,
                 $"{item.AbertaEm:G}");
-
-        dgvItens.SelecionarUltimaLinha();
-
-        if (rbtnVendasFinalizadas.Checked)
-        {
-            btnImprimirNota.Show();
-            btnImprimirCupom.Show();
-            btnCancelar.Show();
-
-            btnImprimirNota.Desativar();
-            btnImprimirCupom.Desativar();
-            btnCancelar.Desativar();
-        }
-        else
-        {
-            btnImprimirNota.Hide();
-            btnImprimirCupom.Hide();
-            btnCancelar.Hide();
-        }
-    }
-    private void CarregarPedidos(IEnumerable<Pedido> itens)
-    {
-        dgvItens.Rows.Clear();
-        dgvItemItens.Rows.Clear();
-
-        foreach (var item in itens)
-            dgvItens.Adicionar(
-                item.Id,
-                0,
-                0,
-                item.ValorTotal,
-                item.Volume,
-                $"{item.AbertoEm:G}");
 
         dgvItens.SelecionarUltimaLinha();
 
@@ -156,32 +75,44 @@ public partial class FrmFrenteCaixaManutencao : Form
         }
     }
 
-    private void RecarregarPedidos()
+    private void PreencherVendas(long id)
     {
-        try
-        {
-            var itens = rbtnVendasFinalizadas.Checked
-                ? servicoPedidos.ObterPedidosFinalizadosFrenteCaixaManutencao(
-                    dtpFiltrarPorDataDe.Value.Date,
-                    dtpFiltrarPorDataAte.Value.Date)
-                : servicoPedidos.ObterPedidosCanceladosFrenteCaixaManutencao(
-                    dtpFiltrarPorDataDe.Value.Date,
-                    dtpFiltrarPorDataAte.Value.Date);
+        var itens = servicoVendas.ObterVendaFrenteCaixaManutencao(id)
+                    ?? throw new InvalidOperationException("A venda não foi localizada.");
 
-            CarregarPedidos(itens);
-        }
-        catch (Exception erro)
+        for (var i = 0; i < itens.Itens.Count(); i++)
         {
-            this.ExibirMensagemErro(erro);
+            var item = itens.Itens.ElementAt(i);
+
+            AdicionarItemVenda(item, i);
         }
     }
-
-    private void Recarregar()
+    
+    private void AdicionarItemVenda(VendaItem item, int index)
     {
-        if (servicoTipo == TipoFrenteCaixa.Venda)
+        dgvItemItens.Adicionar(
+            index + 1,
+            $"{item.ItemId:0000000}",
+            item.CodigoBarrasCodigoReferencia(),
+            item.Descricao,
+            item.UnidadeMedida.ConverterParaString(true),
+            $"{item.ValorUnitario:C2}",
+            $"{item.Quantidade:0.000}",
+            $"{item.ValorTotal:C2}");
+    }
+
+    private void CancelarVenda()
+    {
+        if (dgvItemItens.SelectedRows.Count > 0
+            && this.ExibirMensagem("Tem certeza que deseja cancelar a venda?", "Confirmar cancelamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+            servicoVendas.CancelarVenda(
+                dgvItens.ConverterPrimeiroSelecionado<long>());
+
             RecarregarVendas();
-        else if (servicoTipo == TipoFrenteCaixa.Pedido)
-            RecarregarPedidos();
+
+            this.ExibirMensagem(" A venda foi cancelada com sucesso.", "Venda cancelada");
+        }
     }
 
     private void FrmManutencaoVendas_Load(object sender, EventArgs e)
@@ -200,14 +131,14 @@ public partial class FrmFrenteCaixaManutencao : Form
     private void DtpFiltrarPorData_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (Keys.Return.Comparar(e.KeyChar))
-            Recarregar();
+            RecarregarVendas();
     }
 
     private void RbtnVendas_CheckedChanged(object sender, EventArgs e)
     {
         if (sender is RadioButton rbtn
             && rbtn.Checked)
-            Recarregar();
+            RecarregarVendas();
     }
 
     private void DefinirBotoesAcoes()
@@ -236,10 +167,7 @@ public partial class FrmFrenteCaixaManutencao : Form
 
                 dgvItemItens.Rows.Clear();
 
-                if (servicoTipo == TipoFrenteCaixa.Venda)
-                    PreencherVendas(id);
-                else if (servicoTipo == TipoFrenteCaixa.Pedido)
-                    PreencherPedidos(id);
+                PreencherVendas(id);
 
                 dgvItemItens.SelecionarUltimaLinha();
 
@@ -249,58 +177,6 @@ public partial class FrmFrenteCaixaManutencao : Form
             {
                 this.ExibirMensagemErro(erro);
             }
-        }
-
-        void PreencherVendas(long id)
-        {
-            var itens = servicoVendas.ObterVendaFrenteCaixaManutencao(id)
-                ?? throw new InvalidOperationException("A venda não foi localizada.");
-
-            for (var i = 0; i < itens.Itens.Count(); i++)
-            {
-                var item = itens.Itens.ElementAt(i);
-
-                AdicionarItemVenda(item, i);
-            }
-        }
-
-        void PreencherPedidos(long id)
-        {
-            var itens = servicoPedidos.ObterPedidoFrenteCaixaManutencao(id)
-                ?? throw new InvalidOperationException("O pedido não foi localizado.");
-
-            for (var i = 0; i < itens.Itens.Count(); i++)
-            {
-                var item = itens.Itens.ElementAt(i);
-
-                AdicionarItemPedido(item, i);
-            }
-
-        }
-       void AdicionarItemVenda(VendaItem item, int index)
-        {
-            dgvItemItens.Adicionar(
-                index + 1,
-                $"{item.ItemId:0000000}",
-                item.CodigoBarrasCodigoReferencia(),
-                item.Descricao,
-                item.UnidadeMedida.ConverterParaString(true),
-                $"{item.ValorUnitario:C2}",
-                $"{item.Quantidade:0.000}",
-                $"{item.ValorTotal:C2}");
-        }
-
-       void AdicionarItemPedido(PedidoItem item, int index)
-        {
-            dgvItemItens.Adicionar(
-                index + 1,
-                $"{item.ItemId:0000000}",
-                item.CodigoBarrasCodigoReferencia(),
-                item.Descricao,
-                item.UnidadeMedida.ConverterParaString(true),
-                $"{item.ValorUnitario:C2}",
-                $"{item.Quantidade:0.000}",
-                $"{item.ValorTotal:C2}");
         }
     }
 
@@ -314,45 +190,13 @@ public partial class FrmFrenteCaixaManutencao : Form
     {
         try
         {
-            if (servicoTipo == TipoFrenteCaixa.Venda)
-                CancelarVenda();
-            else if (servicoTipo == TipoFrenteCaixa.Pedido)
-                CancelarPedido();
+            CancelarVenda();
         }
         catch (Exception erro)
         {
             servicoVendas.DescartarAlteracoes();
 
             this.ExibirMensagemErro(erro);
-        }
-
-        void CancelarVenda()
-        {
-            if (dgvItemItens.SelectedRows.Count > 0
-                && this.ExibirMensagem("Tem certeza que deseja cancelar a venda?", "Confirmar cancelamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                servicoVendas.CancelarVenda(
-                    dgvItens.ConverterPrimeiroSelecionado<long>());
-
-                RecarregarVendas();
-
-                this.ExibirMensagem(" A venda foi cancelada com sucesso.", "Venda cancelada");
-            }
-        }
-
-        void CancelarPedido()
-        {
-            if (dgvItemItens.SelectedRows.Count > 0
-                && this.ExibirMensagem("Tem certeza que deseja cancelar o pedido?", "Confirmar cancelamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                servicoPedidos.CancelarPedido(
-                    dgvItens.ConverterPrimeiroSelecionado<long>());
-
-                RecarregarPedidos();
-
-                this.ExibirMensagem(" O pedido foi cancelado com sucesso.", "Pedido cancelado");
-            }
-
         }
     }
 }
