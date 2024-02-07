@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WZSISTEMAS.Base/NotaFiscal/Modelos/35221102766212000100550010000000191102392063-nfe.xml
+/WZSISTEMAS.Base/NotaFiscal/Modelos/35230547960950182050550010000033711055026039.xml
+/WZSISTEMAS.Base/NotaFiscal/Modelos/CFe1.xml
+/WZSISTEMAS.Base/NotaFiscal/Modelos/NFe.xml
+/WZSISTEMAS.Base/NotaFiscal/Modelos/NFe_Leonardo.xml
+/WZSISTEMAS.Base/NotaFiscal/Modelos/SatCfe216388.xml
+/WZSISTEMAS.Base/NotaFiscal/Modelos/SatCfe915964.xml
