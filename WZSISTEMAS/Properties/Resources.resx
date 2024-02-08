@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema pedidoId="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -67,7 +67,7 @@
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="valor" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
               <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
@@ -81,10 +81,10 @@
               <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
-          <xsd:element name="dados">
+          <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="valor" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
               <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
@@ -96,7 +96,7 @@
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="valor" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
               <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
@@ -106,124 +106,124 @@
     </xsd:element>
   </xsd:schema>
   <resheader name="resmimetype">
-    <valor>text/microsoft-resx</valor>
+    <value>text/microsoft-resx</value>
   </resheader>
   <resheader name="version">
-    <valor>2.0</valor>
+    <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <valor>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</valor>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <valor>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</valor>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <dados name="Funcionarios_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Funcionarios_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Funcionarios_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Funcionarios_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Fornecedores_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Fornecedores\Fornecedores_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Funcionarios_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Funcionarios_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Produtos_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Produtos\Produtos_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Cargos_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Cargos\Cargos_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Funcionarios_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Funcionarios\Funcionarios_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Clientes_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Clientes\Clientes_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
-  <dados name="Consulta_CEP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <valor>..\Icones\Consulta_CEP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</valor>
-  </dados>
+  <data name="Cargos_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargos_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargos_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargos_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargos_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargos_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cargos_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Cargos\Cargos_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clientes_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Clientes\Clientes_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Consulta_CEP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Consulta_CEP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedores_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Fornecedores\Fornecedores_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Funcionarios_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Funcionarios\Funcionarios_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Produtos_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Icones\Produtos\Produtos_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
