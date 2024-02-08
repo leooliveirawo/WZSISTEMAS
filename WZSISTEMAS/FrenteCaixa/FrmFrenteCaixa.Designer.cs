@@ -615,7 +615,7 @@
             groupBox4.ForeColor = Color.WhiteSmoke;
             groupBox4.Location = new Point(393, 140);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(712, 93);
+            groupBox4.Size = new Size(715, 93);
             groupBox4.TabIndex = 9;
             groupBox4.TabStop = false;
             groupBox4.Text = "Operador";
@@ -627,7 +627,7 @@
             lbOperador.ForeColor = Color.WhiteSmoke;
             lbOperador.Location = new Point(3, 27);
             lbOperador.Name = "lbOperador";
-            lbOperador.Size = new Size(706, 63);
+            lbOperador.Size = new Size(709, 63);
             lbOperador.TabIndex = 0;
             lbOperador.Text = "Não informado";
             lbOperador.TextAlign = ContentAlignment.MiddleLeft;

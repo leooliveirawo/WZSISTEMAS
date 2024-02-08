@@ -4,8 +4,11 @@ public partial class FrmFrenteCaixaFechamento : Form
 {
     private readonly IServicoVendas servicoVendas;
     private readonly IServicoClientesLancamentos servicoClientesTitulos;
+    private readonly IServicoFuncionarios servicoFuncionarios;
 
     private long vendaId;
+    private long funcionarioId;
+
     private Venda venda = default!;
     private decimal valorPago;
     private decimal valorRestante;
@@ -14,19 +17,26 @@ public partial class FrmFrenteCaixaFechamento : Form
 
     public FrmFrenteCaixaFechamento(
         IServicoVendas servicoVendas,
-        IServicoClientesLancamentos servicoClientesTitulos)
+        IServicoClientesLancamentos servicoClientesTitulos,
+        IServicoFuncionarios servicoFuncionarios)
     {
         InitializeComponent();
 
-        this.servicoVendas = servicoVendas 
-            ?? throw new ArgumentNullException(nameof(servicoVendas));
+        this.servicoVendas = servicoVendas
+                             ?? throw new ArgumentNullException(nameof(servicoVendas));
 
         this.servicoClientesTitulos = servicoClientesTitulos
-            ?? throw new ArgumentNullException(nameof(servicoClientesTitulos));
+                                      ?? throw new ArgumentNullException(nameof(servicoClientesTitulos));
+
+        this.servicoFuncionarios = servicoFuncionarios
+                                   ?? throw new ArgumentNullException(nameof(servicoFuncionarios));
     }
 
     public void DefinirVendaId(long vendaId)
         => this.vendaId = vendaId;
+
+    public void DefinirFuncionarioId(long funcionarioId)
+        => this.funcionarioId = funcionarioId;
 
     private void AdicionarPagamento(VendaPagamento vendaPagamento)
         => dgvItensVenda.Adicionar(
@@ -50,6 +60,11 @@ public partial class FrmFrenteCaixaFechamento : Form
             else
             {
                 this.venda = venda;
+
+                var funcionario = servicoFuncionarios.ObterPorId(funcionarioId)
+                                  ?? throw new InvalidOperationException("O funcionário não foi encontrado");
+
+                lbOperador.Text = funcionario.NomeCompleto;
 
                 valorPago = 0;
                 valorRestante = venda.ValorTotal;

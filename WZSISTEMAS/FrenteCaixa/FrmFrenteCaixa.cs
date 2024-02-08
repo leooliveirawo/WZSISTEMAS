@@ -265,6 +265,7 @@ public partial class FrmFrenteCaixa : Form
             using var frm = ProvedorServicos.FrmFrenteCaixaFechamento();
 
             frm.DefinirVendaId(venda.Id);
+            frm.DefinirFuncionarioId(funcionarioId);
 
             frm.ShowDialog(this);
 

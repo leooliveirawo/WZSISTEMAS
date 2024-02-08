@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle3 = new DataGridViewCellStyle();
             groupBox4 = new GroupBox();
             panel1 = new Panel();
             dgvItensVenda = new DataGridView();
@@ -67,6 +67,8 @@
             txtValorAPagar = new TextBox();
             groupBox2 = new GroupBox();
             lbCPF_CNPJ = new Label();
+            groupBox3 = new GroupBox();
+            lbOperador = new Label();
             groupBox4.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensVenda).BeginInit();
@@ -78,17 +80,18 @@
             groupBox6.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox4
             // 
             groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox4.Controls.Add(panel1);
-            groupBox4.Font = new Font("Segoe UI Black", 28F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox4.Font = new Font("Segoe UI Black", 28F, FontStyle.Bold);
             groupBox4.ForeColor = Color.WhiteSmoke;
-            groupBox4.Location = new Point(393, 139);
+            groupBox4.Location = new Point(393, 238);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(715, 784);
+            groupBox4.Size = new Size(715, 685);
             groupBox4.TabIndex = 5;
             groupBox4.TabStop = false;
             groupBox4.Text = "Itens da venda";
@@ -97,11 +100,11 @@
             // 
             panel1.Controls.Add(dgvItensVenda);
             panel1.Dock = DockStyle.Fill;
-            panel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            panel1.Font = new Font("Segoe UI", 9F);
             panel1.ForeColor = Color.Black;
             panel1.Location = new Point(3, 79);
             panel1.Name = "panel1";
-            panel1.Size = new Size(709, 702);
+            panel1.Size = new Size(709, 603);
             panel1.TabIndex = 1;
             // 
             // dgvItensVenda
@@ -114,7 +117,7 @@
             dgvItensVenda.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue;
             dataGridViewCellStyle1.SelectionForeColor = Color.WhiteSmoke;
@@ -124,7 +127,7 @@
             dgvItensVenda.Columns.AddRange(new DataGridViewColumn[] { clnId, clnIndex, clnFormaPagamento, clnValorPago });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -139,7 +142,7 @@
             dgvItensVenda.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -147,10 +150,10 @@
             dgvItensVenda.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvItensVenda.RowHeadersVisible = false;
             dgvItensVenda.RowHeadersWidth = 62;
-            dgvItensVenda.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dgvItensVenda.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
             dgvItensVenda.RowTemplate.Height = 45;
             dgvItensVenda.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvItensVenda.Size = new Size(709, 702);
+            dgvItensVenda.Size = new Size(709, 603);
             dgvItensVenda.TabIndex = 0;
             // 
             // clnId
@@ -187,7 +190,7 @@
             gbxVendaNumero.Controls.Add(gbxValorRestanteTroco);
             gbxVendaNumero.Controls.Add(gbxValorPago);
             gbxVendaNumero.Controls.Add(groupBox1);
-            gbxVendaNumero.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            gbxVendaNumero.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold);
             gbxVendaNumero.ForeColor = Color.WhiteSmoke;
             gbxVendaNumero.Location = new Point(12, 12);
             gbxVendaNumero.Name = "gbxVendaNumero";
@@ -211,7 +214,7 @@
             // lbValorRestanteTroco
             // 
             lbValorRestanteTroco.Dock = DockStyle.Fill;
-            lbValorRestanteTroco.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            lbValorRestanteTroco.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             lbValorRestanteTroco.ForeColor = Color.WhiteSmoke;
             lbValorRestanteTroco.Location = new Point(3, 47);
             lbValorRestanteTroco.Name = "lbValorRestanteTroco";
@@ -235,7 +238,7 @@
             // lbValorPago
             // 
             lbValorPago.Dock = DockStyle.Fill;
-            lbValorPago.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            lbValorPago.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             lbValorPago.ForeColor = Color.WhiteSmoke;
             lbValorPago.Location = new Point(3, 47);
             lbValorPago.Name = "lbValorPago";
@@ -259,7 +262,7 @@
             // lbValorTotal
             // 
             lbValorTotal.Dock = DockStyle.Fill;
-            lbValorTotal.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            lbValorTotal.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             lbValorTotal.ForeColor = Color.WhiteSmoke;
             lbValorTotal.Location = new Point(3, 47);
             lbValorTotal.Name = "lbValorTotal";
@@ -285,7 +288,7 @@
             // 
             groupBox6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox6.Controls.Add(tableLayoutPanel1);
-            groupBox6.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox6.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold);
             groupBox6.ForeColor = Color.WhiteSmoke;
             groupBox6.Location = new Point(6, 67);
             groupBox6.Name = "groupBox6";
@@ -334,7 +337,7 @@
             // label16
             // 
             label16.Dock = DockStyle.Fill;
-            label16.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label16.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label16.ForeColor = Color.IndianRed;
             label16.Location = new Point(63, 280);
             label16.Name = "label16";
@@ -346,7 +349,7 @@
             // label6
             // 
             label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label6.ForeColor = Color.SteelBlue;
             label6.Location = new Point(3, 80);
             label6.Name = "label6";
@@ -358,7 +361,7 @@
             // label15
             // 
             label15.Dock = DockStyle.Fill;
-            label15.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label15.ForeColor = Color.IndianRed;
             label15.Location = new Point(3, 280);
             label15.Name = "label15";
@@ -370,7 +373,7 @@
             // label4
             // 
             label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label4.ForeColor = Color.SteelBlue;
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
@@ -382,7 +385,7 @@
             // label1
             // 
             label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label1.ForeColor = Color.SteelBlue;
             label1.Location = new Point(63, 0);
             label1.Name = "label1";
@@ -394,7 +397,7 @@
             // label3
             // 
             label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label3.ForeColor = Color.SteelBlue;
             label3.Location = new Point(63, 40);
             label3.Name = "label3";
@@ -406,7 +409,7 @@
             // label5
             // 
             label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label5.ForeColor = Color.SteelBlue;
             label5.Location = new Point(3, 40);
             label5.Name = "label5";
@@ -418,7 +421,7 @@
             // label7
             // 
             label7.Dock = DockStyle.Fill;
-            label7.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label7.ForeColor = Color.SteelBlue;
             label7.Location = new Point(63, 80);
             label7.Name = "label7";
@@ -429,7 +432,7 @@
             // 
             // label2
             // 
-            label2.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label2.ForeColor = Color.SteelBlue;
             label2.Location = new Point(3, 120);
             label2.Name = "label2";
@@ -440,7 +443,7 @@
             // 
             // label8
             // 
-            label8.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label8.ForeColor = Color.SteelBlue;
             label8.Location = new Point(63, 120);
             label8.Name = "label8";
@@ -451,7 +454,7 @@
             // 
             // label9
             // 
-            label9.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label9.ForeColor = Color.SteelBlue;
             label9.Location = new Point(3, 160);
             label9.Name = "label9";
@@ -462,7 +465,7 @@
             // 
             // label10
             // 
-            label10.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label10.ForeColor = Color.SteelBlue;
             label10.Location = new Point(63, 160);
             label10.Name = "label10";
@@ -473,7 +476,7 @@
             // 
             // label11
             // 
-            label11.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label11.ForeColor = Color.SteelBlue;
             label11.Location = new Point(3, 200);
             label11.Name = "label11";
@@ -484,7 +487,7 @@
             // 
             // label12
             // 
-            label12.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label12.ForeColor = Color.SteelBlue;
             label12.Location = new Point(63, 200);
             label12.Name = "label12";
@@ -495,7 +498,7 @@
             // 
             // label13
             // 
-            label13.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label13.ForeColor = Color.SteelBlue;
             label13.Location = new Point(3, 240);
             label13.Name = "label13";
@@ -506,7 +509,7 @@
             // 
             // label14
             // 
-            label14.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold);
             label14.ForeColor = Color.SteelBlue;
             label14.Location = new Point(63, 240);
             label14.Name = "label14";
@@ -538,7 +541,7 @@
             // lbCPF_CNPJ
             // 
             lbCPF_CNPJ.Dock = DockStyle.Fill;
-            lbCPF_CNPJ.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            lbCPF_CNPJ.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
             lbCPF_CNPJ.ForeColor = Color.WhiteSmoke;
             lbCPF_CNPJ.Location = new Point(3, 27);
             lbCPF_CNPJ.Name = "lbCPF_CNPJ";
@@ -547,12 +550,37 @@
             lbCPF_CNPJ.Text = "Não informado";
             lbCPF_CNPJ.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // groupBox3
+            // 
+            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox3.Controls.Add(lbOperador);
+            groupBox3.ForeColor = Color.WhiteSmoke;
+            groupBox3.Location = new Point(393, 139);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(715, 93);
+            groupBox3.TabIndex = 10;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Operador";
+            // 
+            // lbOperador
+            // 
+            lbOperador.Dock = DockStyle.Fill;
+            lbOperador.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
+            lbOperador.ForeColor = Color.WhiteSmoke;
+            lbOperador.Location = new Point(3, 27);
+            lbOperador.Name = "lbOperador";
+            lbOperador.Size = new Size(709, 63);
+            lbOperador.TabIndex = 0;
+            lbOperador.Text = "Não informado";
+            lbOperador.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // FrmFrenteCaixaFechamento
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
             ClientSize = new Size(1120, 935);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(gbxValorAPagar);
             Controls.Add(groupBox4);
@@ -577,6 +605,7 @@
             groupBox6.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -618,5 +647,7 @@
         private Label label16;
         private GroupBox groupBox2;
         private Label lbCPF_CNPJ;
+        private GroupBox groupBox3;
+        private Label lbOperador;
     }
 }
