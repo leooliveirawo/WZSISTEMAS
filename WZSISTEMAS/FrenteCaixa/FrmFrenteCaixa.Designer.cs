@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            var dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            var dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle2 = new DataGridViewCellStyle();
             gbxNumero = new GroupBox();
             lbTerminalNumero = new Label();
             groupBox1 = new GroupBox();
@@ -77,6 +78,10 @@
             toolStripSeparator2 = new ToolStripSeparator();
             lbCPF_CNPJ = new Label();
             gbxCPF_CNPJ_NaNota = new GroupBox();
+            groupBox4 = new GroupBox();
+            lbOperador = new Label();
+            timerDataHora = new System.Windows.Forms.Timer(components);
+            lbDataHora = new Label();
             gbxNumero.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -88,6 +93,7 @@
             tableLayoutPanel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             gbxCPF_CNPJ_NaNota.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // gbxNumero
@@ -143,7 +149,7 @@
             groupBox2.ForeColor = Color.WhiteSmoke;
             groupBox2.Location = new Point(6, 270);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(378, 101);
+            groupBox2.Size = new Size(375, 101);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Cód.Barras (Cód.Ref) (F2)";
@@ -152,7 +158,7 @@
             // 
             chbxFiltrarCodRef.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             chbxFiltrarCodRef.AutoSize = true;
-            chbxFiltrarCodRef.Location = new Point(122, 67);
+            chbxFiltrarCodRef.Location = new Point(119, 67);
             chbxFiltrarCodRef.Name = "chbxFiltrarCodRef";
             chbxFiltrarCodRef.Size = new Size(250, 29);
             chbxFiltrarCodRef.TabIndex = 3;
@@ -164,7 +170,7 @@
             txtCodBarrasCodRef.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtCodBarrasCodRef.Location = new Point(6, 30);
             txtCodBarrasCodRef.Name = "txtCodBarrasCodRef";
-            txtCodBarrasCodRef.Size = new Size(366, 31);
+            txtCodBarrasCodRef.Size = new Size(363, 31);
             txtCodBarrasCodRef.TabIndex = 0;
             txtCodBarrasCodRef.KeyPress += TxtCodBarrasCodRef_KeyPress;
             // 
@@ -197,9 +203,9 @@
             gbxItens.Controls.Add(panel1);
             gbxItens.Font = new Font("Segoe UI Black", 28F, FontStyle.Bold);
             gbxItens.ForeColor = Color.WhiteSmoke;
-            gbxItens.Location = new Point(393, 168);
+            gbxItens.Location = new Point(393, 239);
             gbxItens.Name = "gbxItens";
-            gbxItens.Size = new Size(715, 755);
+            gbxItens.Size = new Size(715, 645);
             gbxItens.TabIndex = 3;
             gbxItens.TabStop = false;
             gbxItens.Text = "Itens da venda (F8)";
@@ -212,7 +218,7 @@
             panel1.ForeColor = Color.Black;
             panel1.Location = new Point(3, 79);
             panel1.Name = "panel1";
-            panel1.Size = new Size(709, 673);
+            panel1.Size = new Size(709, 563);
             panel1.TabIndex = 1;
             // 
             // dgvItens
@@ -223,24 +229,24 @@
             dgvItens.BackgroundColor = Color.Silver;
             dgvItens.BorderStyle = BorderStyle.None;
             dgvItens.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvItens.ColumnHeadersHeight = 60;
             dgvItens.Columns.AddRange(new DataGridViewColumn[] { clnId, clnIndex, clnCod, clnCodBarrasCodRef, cln, clnUnd, clnPrecoUnitario, clnQntd, clnTotal });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvItens.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvItens.DefaultCellStyle = dataGridViewCellStyle2;
             dgvItens.Dock = DockStyle.Fill;
             dgvItens.EnableHeadersVisualStyles = false;
             dgvItens.GridColor = Color.Silver;
@@ -253,7 +259,7 @@
             dgvItens.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
             dgvItens.RowTemplate.Height = 45;
             dgvItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvItens.Size = new Size(709, 673);
+            dgvItens.Size = new Size(709, 563);
             dgvItens.TabIndex = 0;
             // 
             // clnId
@@ -585,7 +591,7 @@
             lbCPF_CNPJ.ForeColor = Color.WhiteSmoke;
             lbCPF_CNPJ.Location = new Point(3, 27);
             lbCPF_CNPJ.Name = "lbCPF_CNPJ";
-            lbCPF_CNPJ.Size = new Size(706, 91);
+            lbCPF_CNPJ.Size = new Size(709, 63);
             lbCPF_CNPJ.TabIndex = 0;
             lbCPF_CNPJ.Text = "Não informado";
             lbCPF_CNPJ.TextAlign = ContentAlignment.MiddleLeft;
@@ -597,10 +603,50 @@
             gbxCPF_CNPJ_NaNota.ForeColor = Color.WhiteSmoke;
             gbxCPF_CNPJ_NaNota.Location = new Point(393, 41);
             gbxCPF_CNPJ_NaNota.Name = "gbxCPF_CNPJ_NaNota";
-            gbxCPF_CNPJ_NaNota.Size = new Size(712, 121);
+            gbxCPF_CNPJ_NaNota.Size = new Size(715, 93);
             gbxCPF_CNPJ_NaNota.TabIndex = 8;
             gbxCPF_CNPJ_NaNota.TabStop = false;
             gbxCPF_CNPJ_NaNota.Text = "CPF/CNPJ";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox4.Controls.Add(lbOperador);
+            groupBox4.ForeColor = Color.WhiteSmoke;
+            groupBox4.Location = new Point(393, 140);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(712, 93);
+            groupBox4.TabIndex = 9;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Operador";
+            // 
+            // lbOperador
+            // 
+            lbOperador.Dock = DockStyle.Fill;
+            lbOperador.Font = new Font("Segoe UI Black", 22F, FontStyle.Bold);
+            lbOperador.ForeColor = Color.WhiteSmoke;
+            lbOperador.Location = new Point(3, 27);
+            lbOperador.Name = "lbOperador";
+            lbOperador.Size = new Size(706, 63);
+            lbOperador.TabIndex = 0;
+            lbOperador.Text = "Não informado";
+            lbOperador.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // timerDataHora
+            // 
+            timerDataHora.Enabled = true;
+            timerDataHora.Interval = 1000;
+            timerDataHora.Tick += TimerDataHora_Tick;
+            // 
+            // lbDataHora
+            // 
+            lbDataHora.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            lbDataHora.Location = new Point(393, 901);
+            lbDataHora.Name = "lbDataHora";
+            lbDataHora.Size = new Size(715, 25);
+            lbDataHora.TabIndex = 10;
+            lbDataHora.Text = "Dia 00/00/0000 - 00:00:00";
+            lbDataHora.TextAlign = ContentAlignment.MiddleRight;
             // 
             // FrmFrenteCaixa
             // 
@@ -608,6 +654,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
             ClientSize = new Size(1120, 935);
+            Controls.Add(lbDataHora);
+            Controls.Add(groupBox4);
             Controls.Add(gbxCPF_CNPJ_NaNota);
             Controls.Add(groupBox5);
             Controls.Add(gbxItens);
@@ -641,6 +689,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             gbxCPF_CNPJ_NaNota.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -694,5 +743,9 @@
         private Label lbF3;
         private Label lbCPF_CNPJ;
         private GroupBox gbxCPF_CNPJ_NaNota;
+        private GroupBox groupBox4;
+        private Label lbOperador;
+        private System.Windows.Forms.Timer timerDataHora;
+        private Label lbDataHora;
     }
 }

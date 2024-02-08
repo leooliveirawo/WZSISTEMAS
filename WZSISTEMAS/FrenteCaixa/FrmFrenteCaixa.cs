@@ -5,6 +5,7 @@ public partial class FrmFrenteCaixa : Form
     private readonly IServicoCaixas servicoCaixas;
     private readonly IServicoVendas servicoVendas;
     private readonly IServicoProdutos servicoProdutos;
+    private readonly IServicoFuncionarios servicoFuncionarios;
 
     private Venda? venda;
 
@@ -15,13 +16,14 @@ public partial class FrmFrenteCaixa : Form
 
     private bool naoCarregarVendaEmAberto;
 
-    public FrmFrenteCaixa(IServicoCaixas servicoCaixas, IServicoVendas servicoVendas, IServicoProdutos servicoProdutos)
+    public FrmFrenteCaixa(IServicoCaixas servicoCaixas, IServicoVendas servicoVendas, IServicoProdutos servicoProdutos, IServicoFuncionarios servicoFuncionarios)
     {
         InitializeComponent();
 
         this.servicoCaixas = servicoCaixas ?? throw new ArgumentNullException(nameof(servicoCaixas));
         this.servicoVendas = servicoVendas ?? throw new ArgumentNullException(nameof(servicoVendas));
         this.servicoProdutos = servicoProdutos ?? throw new ArgumentNullException(nameof(servicoProdutos));
+        this.servicoFuncionarios = servicoFuncionarios ?? throw new ArgumentNullException(nameof(servicoFuncionarios));
     }
 
     public void DefinirCaixaId(long caixaId)
@@ -29,7 +31,7 @@ public partial class FrmFrenteCaixa : Form
 
     public void DefinirVenda(Venda venda)
         => this.venda = venda;
-    
+
     public void DefinirFuncionarioId(long funcionarioId)
         => this.funcionarioId = funcionarioId;
 
@@ -335,6 +337,11 @@ public partial class FrmFrenteCaixa : Form
 
         try
         {
+            var funcionario = servicoFuncionarios.ObterPorId(funcionarioId)
+                ?? throw new InvalidOperationException("O funcionário não foi encontrado");
+
+            lbOperador.Text = funcionario.NomeCompleto;
+
             if (venda is null)
                 venda = servicoVendas.ObterVendaAbertaPorCaixaId(caixaId);
 
@@ -524,4 +531,7 @@ public partial class FrmFrenteCaixa : Form
             this.ExibirMensagemErro(erro);
         }
     }
+
+    private void TimerDataHora_Tick(object sender, EventArgs e)
+        => lbDataHora.Text = $"{DateTime.Now.ToLongDateString()} - {DateTime.Now.ToLongTimeString()}";
 }
