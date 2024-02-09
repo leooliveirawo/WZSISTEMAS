@@ -64,9 +64,7 @@
 		<Compile Update="Pedidos\FrmPedidoEmAberto.cs">
 		  <SubType>Form</SubType>
 		</Compile>
-		<Compile Update="Pedidos\FrmPedidoManutencao.cs">
-		  <SubType>Form</SubType>
-		</Compile>
+		<Compile Update="Pedidos\FrmPedidoManutencao.cs" />
 		<Compile Update="Pedidos\FrmPedido.cs">
 		  <SubType>Form</SubType>
 		</Compile>
