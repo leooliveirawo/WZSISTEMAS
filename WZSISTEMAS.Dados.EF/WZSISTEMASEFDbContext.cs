@@ -43,6 +43,6 @@ public class WZSISTEMASEFDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(WZSISTEMASDbContext)));
     }
 }
