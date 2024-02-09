@@ -103,6 +103,8 @@ public partial class FrmPedido : Form
         RedefinirCamposConsulta();
 
         dgvItens.Rows.Clear();
+
+        txtBuscarPorNumeroPedido.Ativar();
     }
 
     private void CarregarPedido()
@@ -114,10 +116,14 @@ public partial class FrmPedido : Form
 
         dgvItens.Rows.Clear();
 
+        txtBuscarPorNumeroPedido.Clear();
+
         foreach (var item in pedido.Itens)
             AdicionarPedidoItem(item);
 
         dgvItens.SelecionarUltimaLinha();
+
+        txtBuscarPorNumeroPedido.Desativar();
     }
 
     private void AdicionarPedidoItem(PedidoItem item)
@@ -438,5 +444,32 @@ public partial class FrmPedido : Form
     {
         lbTerminalNumero.Text = $"Nº do terminal {TerminalId}";
         lbTotal.Text = $"{0:C2}";
+    }
+
+    private void TxtBuscarPorNumeroPedido_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (Keys.Return.Comparar(e.KeyChar)
+            && !string.IsNullOrWhiteSpace(txtBuscarPorNumeroPedido.Text))
+        {
+            try
+            {
+                if (long.TryParse(txtBuscarPorNumeroPedido.Text, out var pedidoId))
+                {
+                    pedido = servicoPedidos.ObterPedidoEmAbertoComItens(pedidoId);
+
+                    if (pedido is not null)
+                        CarregarPedido();
+                    else
+                        this.ExibirMensagem("O pedido não foi encontrado.", "Pedido não encontrado");
+                }
+                else
+                    this.ExibirMensagem("O Id do pedido informado não é válido.", "Id inválido");
+            }
+            catch (Exception erro)
+            {
+                this.ExibirMensagemErro(erro);
+            }
+        }
+
     }
 }

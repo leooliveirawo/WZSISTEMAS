@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            var dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            var dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            var dataGridViewCellStyle2 = new DataGridViewCellStyle();
             gbxNumero = new GroupBox();
             lbTerminalNumero = new Label();
             groupBox1 = new GroupBox();
@@ -73,6 +73,8 @@
             tsmiPedidosEmAberto = new ToolStripMenuItem();
             tsmiManutencaoPedidos = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
+            groupBox4 = new GroupBox();
+            txtBuscarPorNumeroPedido = new TextBox();
             gbxNumero.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -83,6 +85,7 @@
             groupBox5.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // gbxNumero
@@ -192,9 +195,9 @@
             gbxItens.Controls.Add(panel1);
             gbxItens.Font = new Font("Segoe UI Black", 28F, FontStyle.Bold);
             gbxItens.ForeColor = Color.WhiteSmoke;
-            gbxItens.Location = new Point(393, 41);
+            gbxItens.Location = new Point(393, 120);
             gbxItens.Name = "gbxItens";
-            gbxItens.Size = new Size(715, 882);
+            gbxItens.Size = new Size(715, 803);
             gbxItens.TabIndex = 3;
             gbxItens.TabStop = false;
             gbxItens.Text = "Itens do pedido (F8)";
@@ -207,7 +210,7 @@
             panel1.ForeColor = Color.Black;
             panel1.Location = new Point(3, 79);
             panel1.Name = "panel1";
-            panel1.Size = new Size(709, 800);
+            panel1.Size = new Size(709, 721);
             panel1.TabIndex = 1;
             // 
             // dgvItens
@@ -218,24 +221,24 @@
             dgvItens.BackgroundColor = Color.Silver;
             dgvItens.BorderStyle = BorderStyle.None;
             dgvItens.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvItens.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvItens.ColumnHeadersHeight = 60;
             dgvItens.Columns.AddRange(new DataGridViewColumn[] { clnId, clnIndex, clnCod, clnCodBarrasCodRef, cln, clnUnd, clnPrecoUnitario, clnQntd, clnTotal });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvItens.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvItens.DefaultCellStyle = dataGridViewCellStyle2;
             dgvItens.Dock = DockStyle.Fill;
             dgvItens.EnableHeadersVisualStyles = false;
             dgvItens.GridColor = Color.Silver;
@@ -248,7 +251,7 @@
             dgvItens.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
             dgvItens.RowTemplate.Height = 45;
             dgvItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvItens.Size = new Size(709, 800);
+            dgvItens.Size = new Size(709, 721);
             dgvItens.TabIndex = 0;
             // 
             // clnId
@@ -547,12 +550,34 @@
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(316, 6);
             // 
+            // groupBox4
+            // 
+            groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox4.Controls.Add(txtBuscarPorNumeroPedido);
+            groupBox4.ForeColor = Color.WhiteSmoke;
+            groupBox4.Location = new Point(393, 41);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(715, 73);
+            groupBox4.TabIndex = 5;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Buscar por Nº do pedido";
+            // 
+            // txtBuscarPorNumeroPedido
+            // 
+            txtBuscarPorNumeroPedido.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarPorNumeroPedido.Location = new Point(6, 30);
+            txtBuscarPorNumeroPedido.Name = "txtBuscarPorNumeroPedido";
+            txtBuscarPorNumeroPedido.Size = new Size(703, 31);
+            txtBuscarPorNumeroPedido.TabIndex = 1;
+            txtBuscarPorNumeroPedido.KeyPress += TxtBuscarPorNumeroPedido_KeyPress;
+            // 
             // FrmPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
             ClientSize = new Size(1120, 935);
+            Controls.Add(groupBox4);
             Controls.Add(groupBox5);
             Controls.Add(gbxItens);
             Controls.Add(groupBox3);
@@ -584,6 +609,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -633,5 +660,7 @@
         private ToolStripMenuItem tsmiManutencaoPedidos;
         private Label lbTerminalNumero;
         private ToolStripSeparator toolStripSeparator2;
+        private GroupBox groupBox4;
+        private TextBox txtBuscarPorNumeroPedido;
     }
 }
