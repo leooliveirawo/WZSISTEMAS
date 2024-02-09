@@ -150,6 +150,9 @@ public class ServicoPedidos(
             .Select(pedido => new Pedido
             {
                 Id = pedido.Id,
+                ValorTotal = pedido.ValorTotal,
+                ValorTotalDesconto = pedido.ValorTotalDesconto,
+                Volume = pedido.Volume,
                 Itens = pedido.Itens.Select(item => new PedidoItem()
                 {
                     CodigoBarras = item.CodigoBarras,
