@@ -212,7 +212,7 @@ public partial class FrmLogin : Form
                 {
                     if (this.ExibirMensagemSimNao("O usuário não foi cadastrado. \n\nDeseja cadastrar?", "Sem usuarios"))
                     {
-                        using var frm = ProvedorServicos.FrmCadastroClientes();
+                        using var frm = ProvedorServicos.FrmCadastroFuncionarios();
 
                         frm.ShowDialog(this);
                     }
