@@ -13,6 +13,12 @@ public class MapeamentoEmpresas : MapeamentoEntidades<Empresa>
 
         builder.ToTable("EMPRESAS");
 
+        builder.Property(x => x.CodigoReferencia)
+            .HasColumnName("CODIGO_REFERENCIA")
+            .HasString()
+            .HasMaxLength(150)
+            .IsRequired();
+
         builder.Property(x => x.RazaoSocial)
             .HasColumnName("RAZAO_SOCIAL")
             .HasString()
