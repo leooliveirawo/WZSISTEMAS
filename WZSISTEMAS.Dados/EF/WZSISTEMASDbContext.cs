@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WZSISTEMAS.Dados.EF;
 
-public class WZSISTEMASDbContext : DbContext
+public class WZSISTEMASDbContext(IServicoConexao servicoConexao) : DbContext
 {
+    private readonly IServicoConexao servicoConexao = servicoConexao ?? throw new ArgumentNullException(nameof(servicoConexao));
+
     public DbSet<Caixa> Caixas { get; set; }
     public DbSet<CaixaEntrada> CaixasEntradas { get; set; }
     public DbSet<CaixaSaida> CaixasSaidas { get; set; }
@@ -34,7 +36,12 @@ public class WZSISTEMASDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
 
-        optionsBuilder.UseSqlServer(ConfiguracoesConexao.ConnectionString, opt => { opt.EnableRetryOnFailure(); });
+        var configuracaoConexao = servicoConexao.Carregar();
+
+        if (configuracaoConexao is null) 
+            optionsBuilder.UseSqlServer(ConfiguracoesConexao.ConnectionString, opt => { opt.EnableRetryOnFailure(); });
+        else
+            optionsBuilder.UseSqlServer(configuracaoConexao.Converter(), opt => { opt.EnableRetryOnFailure(); });
 
         optionsBuilder.EnableSensitiveDataLogging();
     }
