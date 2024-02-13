@@ -16,7 +16,7 @@ public class MapeamentoEmpresas : MapeamentoEntidades<Empresa>
             .HasColumnName("CODIGO_REFERENCIA")
             .HasString()
             .HasMaxLength(150)
-            .IsRequired();
+            .IsOptional();
 
         builder.Property(x => x.RazaoSocial)
             .HasColumnName("RAZAO_SOCIAL")

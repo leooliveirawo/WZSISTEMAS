@@ -6,6 +6,8 @@ namespace WZSISTEMAS.Dados.EF;
 
 public class WZSISTEMASEFDbContext : DbContext
 {
+    public static string ConnectionString { get; set; } = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\source\repos\WZSISTEMAS\WZSISTEMAS.Dados\EF\WZSISTEMAS.mdf;Integrated Security=True";
+
     public DbSet<Caixa> Caixas { get; set; }
     public DbSet<CaixaEntrada> CaixasEntradas { get; set; }
     public DbSet<CaixaSaida> CaixasSaidas { get; set; }
@@ -33,7 +35,7 @@ public class WZSISTEMASEFDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
 
-        optionsBuilder.UseSqlServer(ConfiguracoesConexao.ConnectionString, opt => { opt.EnableRetryOnFailure(); });
+        optionsBuilder.UseSqlServer(ConnectionString, opt => { opt.EnableRetryOnFailure(); });
 
         optionsBuilder.EnableSensitiveDataLogging();
     }

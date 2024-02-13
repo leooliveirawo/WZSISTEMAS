@@ -17,6 +17,8 @@ public class Item : Entidade, IItem
         VendasItens = new HashSet<VendaItem>();
         EntradasItens = new HashSet<EntradaItem>();
         PedidosItens = new HashSet<PedidoItem>();
+
+        ItensDerivados = new HashSet<Item>();
     }
 
     public string? DescricaoPDV { get; set; }
@@ -48,6 +50,7 @@ public class Item : Entidade, IItem
     public ICollection<VendaItem> VendasItens { get; set; }
     public ICollection<EntradaItem> EntradasItens { get; set; }
     public ICollection<PedidoItem> PedidosItens { get; set; }
+
     public string CodigoBarras { get; set; } = default!;
     public string? CodigoReferencia { get; set; }
     public string Descricao { get; set; } = default!;
@@ -65,4 +68,10 @@ public class Item : Entidade, IItem
 
     public TiposCOFINS TipoCOFINS { get; set; }
     public string COFINS { get; set; } = default!;
+
+    public long? ItemPrincipalId { get; set; }
+
+    public Item? ItemPrincipal { get; set; }
+
+    public ICollection<Item> ItensDerivados { get; set; }
 }

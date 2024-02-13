@@ -38,8 +38,8 @@ public class WZSISTEMASDbContext(IServicoConexao servicoConexao) : DbContext
 
         var configuracaoConexao = servicoConexao.Carregar();
 
-        if (configuracaoConexao is null) 
-            optionsBuilder.UseSqlServer(ConfiguracoesConexao.ConnectionString, opt => { opt.EnableRetryOnFailure(); });
+        if (configuracaoConexao is null)
+            throw new InvalidOperationException("Os arquivos de configuração do banco de dados não foram carregados");
         else
             optionsBuilder.UseSqlServer(configuracaoConexao.Converter(), opt => { opt.EnableRetryOnFailure(); });
 
