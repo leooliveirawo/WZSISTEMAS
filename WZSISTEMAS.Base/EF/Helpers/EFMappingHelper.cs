@@ -4,59 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace WZSISTEMAS.Base.EF.Helpers;
 
-public static class EFHelper
-{
-    public static  List<T> ObterLista<T>(
-        this IQueryable<T> query,
-        bool tracking = false)
-    where T : class
-    {
-        var internalQuery = tracking
-            ? query
-            : query.AsNoTracking();
-
-        return query.ToList();
-    }
-
-    public static  List<T> ObterLista<T>(
-        this IQueryable<T> query,
-        Expression<Func<T, bool>> filter,
-        bool tracking = false)
-        where T : class
-    {
-        var internalQuery = tracking
-            ? query
-            : query.AsNoTracking();
-
-        return query.Where(filter).ToList();
-    }
-
-    public static  T? PrimeiroOuPadrao<T>(
-        this IQueryable<T> query,
-        bool tracking = false)
-        where T : class
-    {
-        var internalQuery = tracking
-            ? query
-            : query.AsNoTracking();
-
-        return query.FirstOrDefault();
-    }
-
-    public static  T? PrimeiroOuPadrao<T>(
-        this IQueryable<T> query,
-        Expression<Func<T, bool>> filter,
-        bool tracking = false)
-        where T : class
-    {
-        var internalQuery = tracking
-            ? query
-            : query.AsNoTracking();
-
-        return query.FirstOrDefault(filter);
-    }
-}
-
 public static class EFMappingHelper
 {
 
@@ -77,6 +24,11 @@ public static class EFMappingHelper
         => builder.IsRequired(false);
 
     public static PropertyBuilder<T> IsOptional<T>(this PropertyBuilder<T> builder)
+        => builder.IsRequired(false);
+
+    public static ReferenceCollectionBuilder<T1, T2> IsOptional<T1, T2>(this ReferenceCollectionBuilder<T1, T2> builder)
+    where T1 : class
+    where T2 : class
         => builder.IsRequired(false);
 
     public static PropertyBuilder<T> HasColumnType<T>(this PropertyBuilder<T> builder, SqlDbType sqlDbType)
