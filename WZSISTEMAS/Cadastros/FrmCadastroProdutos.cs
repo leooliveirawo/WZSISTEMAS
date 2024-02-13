@@ -1,12 +1,3 @@
-﻿using WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.Consultas;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.Dados.Valores;
-using WZSISTEMAS.WinForms.Helpers;
-
 namespace WZSISTEMAS.Cadastros;
 
 public partial class FrmCadastroProdutos : Form

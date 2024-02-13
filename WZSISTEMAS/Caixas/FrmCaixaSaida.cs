@@ -1,10 +1,4 @@
-﻿using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.Dados.Valores;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Caixas;
+﻿namespace WZSISTEMAS.Caixas;
 
 public partial class FrmCaixaSaida : Form
 {

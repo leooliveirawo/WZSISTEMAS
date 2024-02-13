@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Servicos.Interfaces;
-
-namespace WZSISTEMAS.Dados.Validacoes;
+﻿namespace WZSISTEMAS.Dados.Validacoes;
 
 public class ValidacaoFornecedor : AbstractValidator<Fornecedor>
 {

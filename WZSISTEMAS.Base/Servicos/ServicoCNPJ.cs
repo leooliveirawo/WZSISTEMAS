@@ -1,8 +1,4 @@
-﻿using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.Base.Valores;
-
-namespace WZSISTEMAS.Base.Servicos;
+﻿namespace WZSISTEMAS.Base.Servicos;
 
 public class ServicoCNPJ(
     IServicoRandomico servicoRandomico) : IServicoCNPJ

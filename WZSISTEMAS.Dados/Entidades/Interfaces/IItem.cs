@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.NotaFiscal.Interfaces;
-
-namespace WZSISTEMAS.Dados.Entidades.Interfaces;
+﻿namespace WZSISTEMAS.Dados.Entidades.Interfaces;
 
 public interface IItem : IImpostoICMS, IImpostoPIS, IImpostoCOFINS
 {

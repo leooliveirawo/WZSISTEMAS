@@ -1,10 +1,4 @@
-﻿using System.Data;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Helpers;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Caixas;
+﻿namespace WZSISTEMAS.Caixas;
 
 public partial class FrmCaixaFechamento : Form
 {

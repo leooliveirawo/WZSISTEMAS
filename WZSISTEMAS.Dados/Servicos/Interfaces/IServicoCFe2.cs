@@ -1,5 +1,4 @@
-﻿using WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces;
-using WZSISTEMAS.Base.NotaFiscal.Valores;
+﻿using WZSISTEMAS.Base.NotaFiscal.Valores;
 using WZSISTEMAS.Base.NotaFiscal.Valores.SAT;
 
 namespace WZSISTEMAS.Dados.Servicos.Interfaces;

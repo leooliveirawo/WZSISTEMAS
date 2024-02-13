@@ -1,4 +1,4 @@
-using WZSISTEMAS.Base.EF.Services.Interfaces;
+using WZSISTEMAS.Base.EF.Servicos.Interfaces;
 using WZSISTEMAS.Base.EF.Valores;
 using WZSISTEMAS.WinForms.Helpers;
 

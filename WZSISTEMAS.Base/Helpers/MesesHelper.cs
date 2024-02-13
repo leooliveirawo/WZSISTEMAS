@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Valores;
-
-namespace WZSISTEMAS.Base.Helpers;
+﻿namespace WZSISTEMAS.Base.Helpers;
 
 public static class MesesHelper
 {

@@ -1,6 +1,4 @@
 ﻿using System.Net.Http.Json;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.Base.Valores;
 
 namespace WZSISTEMAS.Base.Servicos;
 public class ServicoConsultaCEP : IServicoConsultaCEP

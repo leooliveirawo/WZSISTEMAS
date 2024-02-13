@@ -1,16 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using WZSISTEMAS.Base.Cartoes.Drivers;
-using WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
 using WZSISTEMAS.Base.Cartoes.Servicos;
 using WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
 using WZSISTEMAS.Base.Diretorios;
-using WZSISTEMAS.Base.Diretorios.Interfaces;
-using WZSISTEMAS.Base.EF.Services;
-using WZSISTEMAS.Base.EF.Services.Interfaces;
+using WZSISTEMAS.Base.EF.Servicos;
 using WZSISTEMAS.Base.NotaFiscal.Servicos;
-using WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces;
 using WZSISTEMAS.Base.Servicos;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 using ServicoNFe = WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces.ServicoNFe;
 
 namespace WZSISTEMAS.Base.Helpers;

@@ -1,7 +1,4 @@
-﻿using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.FrenteCaixa;
+﻿namespace WZSISTEMAS.FrenteCaixa;
 
 public partial class FrmFrenteCaixaCPF_CNPJNaNota : Form
 {

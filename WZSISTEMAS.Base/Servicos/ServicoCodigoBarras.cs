@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Servicos.Interfaces;
-
-namespace WZSISTEMAS.Base.Servicos;
+﻿namespace WZSISTEMAS.Base.Servicos;
 
 public class ServicoCodigoBarras(IServicoRandomico servicoRandomico) : IServicoCodigoBarras
 {

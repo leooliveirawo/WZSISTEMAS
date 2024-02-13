@@ -1,5 +1,3 @@
-﻿using WZSISTEMAS.Base.EF.Valores;
-
 namespace WZSISTEMAS.Servicos;
 
 public class ServicoLogin(

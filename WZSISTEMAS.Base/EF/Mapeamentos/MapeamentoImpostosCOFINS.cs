@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WZSISTEMAS.Base.EF.Helpers;
-using WZSISTEMAS.Base.NotaFiscal.Interfaces;
 
 namespace WZSISTEMAS.Base.EF.Mapeamentos;
 

@@ -1,8 +1,4 @@
-﻿using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Caixas;
+﻿namespace WZSISTEMAS.Caixas;
 
 public partial class FrmCaixaAbertura : Form
 {

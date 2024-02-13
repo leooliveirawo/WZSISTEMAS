@@ -1,6 +1,5 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using WZSISTEMAS.Base.EF.Helpers;
 
 namespace WZSISTEMAS.Dados.Servicos;
 

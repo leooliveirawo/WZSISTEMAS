@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using System.Text.Json;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Base.Servicos;
 

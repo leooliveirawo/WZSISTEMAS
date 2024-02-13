@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
-using WZSISTEMAS.Base.Cartoes.Eventos;
-using WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
+﻿using WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Base.Cartoes.Servicos;
 

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using WZSISTEMAS.Cadastros;
 using WZSISTEMAS.Caixas;
-using WZSISTEMAS.Consultas;
 using WZSISTEMAS.Entradas;
 using WZSISTEMAS.FrenteCaixa;
 using WZSISTEMAS.Pedidos;

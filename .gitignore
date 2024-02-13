@@ -368,3 +368,5 @@ FodyWeavers.xsd
 /WZSISTEMAS.Base/NotaFiscal/Modelos/NFe_Leonardo.xml
 /WZSISTEMAS.Base/NotaFiscal/Modelos/SatCfe216388.xml
 /WZSISTEMAS.Base/NotaFiscal/Modelos/SatCfe915964.xml
+/WZSISTEMAS.Dados/EF/WZSISTEMAS.mdf
+/WZSISTEMAS.Dados/EF/WZSISTEMAS_log.ldf

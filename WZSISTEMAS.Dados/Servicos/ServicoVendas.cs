@@ -1,6 +1,5 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces;
 using WZSISTEMAS.Base.NotaFiscal.Valores;
 
 namespace WZSISTEMAS.Dados.Servicos;

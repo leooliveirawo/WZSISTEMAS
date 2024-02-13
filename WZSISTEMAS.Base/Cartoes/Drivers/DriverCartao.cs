@@ -1,7 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
-using WZSISTEMAS.Base.Cartoes.Eventos;
-
-namespace WZSISTEMAS.Base.Cartoes.Drivers;
+﻿namespace WZSISTEMAS.Base.Cartoes.Drivers;
 
 public abstract class DriverCartao : IDriverCartao
 {

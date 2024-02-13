@@ -1,6 +1,4 @@
 ﻿using System.Xml.Serialization;
-using WZSISTEMAS.Base.NotaFiscal.Interfaces;
-using WZSISTEMAS.Base.Valores;
 
 namespace WZSISTEMAS.Base.NotaFiscal.Valores;
 

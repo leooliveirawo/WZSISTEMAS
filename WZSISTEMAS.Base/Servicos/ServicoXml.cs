@@ -1,6 +1,5 @@
 ﻿using System.Xml;
 using System.Xml.Serialization;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Base.Servicos;
 

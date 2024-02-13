@@ -1,7 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Eventos;
-using WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
-using WZSISTEMAS.Dados.Valores;
-using WZSISTEMAS.WinForms.Helpers;
+﻿using WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
 
 namespace WZSISTEMAS.FrenteCaixa;
 

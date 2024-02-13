@@ -1,9 +1,4 @@
-﻿using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.Helpers;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.FrenteCaixa;
+﻿namespace WZSISTEMAS.FrenteCaixa;
 
 public partial class FrmFrenteCaixaFechamentoConvenio : Form
 {

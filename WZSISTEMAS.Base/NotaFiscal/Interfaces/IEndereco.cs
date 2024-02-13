@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Valores;
-
-namespace WZSISTEMAS.Base.NotaFiscal.Interfaces;
+﻿namespace WZSISTEMAS.Base.NotaFiscal.Interfaces;
 
 public interface IEndereco
 {

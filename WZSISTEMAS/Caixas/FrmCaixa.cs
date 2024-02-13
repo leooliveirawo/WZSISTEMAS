@@ -1,12 +1,4 @@
-﻿using System.Linq;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.Dados.Valores;
-using WZSISTEMAS.Helpers;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Caixas;
+﻿namespace WZSISTEMAS.Caixas;
 
 public partial class FrmCaixa : Form
 {

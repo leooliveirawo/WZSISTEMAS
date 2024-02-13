@@ -1,8 +1,4 @@
-﻿using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Cadastros;
+﻿namespace WZSISTEMAS.Cadastros;
 
 public partial class FrmCadastroCargos : Form
 {

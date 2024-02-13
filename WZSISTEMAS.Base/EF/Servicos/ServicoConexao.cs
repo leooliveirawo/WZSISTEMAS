@@ -1,4 +1,4 @@
-﻿namespace WZSISTEMAS.Base.EF.Services;
+﻿namespace WZSISTEMAS.Base.EF.Servicos;
 public class ServicoConexao(
     IGerenciadorDiretorios gerenciadorDiretorios,
     IServicoJson servicoJson,

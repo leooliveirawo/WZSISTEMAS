@@ -1,6 +1,5 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Base.Servicos;
 

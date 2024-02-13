@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-
-using WZSISTEMAS.Dados.Entidades;
 using WZSISTEMAS.Dados.Entidades.Interfaces;
 
 namespace WZSISTEMAS.Dados.Servicos;

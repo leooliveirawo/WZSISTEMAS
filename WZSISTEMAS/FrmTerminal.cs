@@ -1,7 +1,4 @@
-﻿using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS;
+﻿namespace WZSISTEMAS;
 
 public partial class FrmTerminal : Form
 {

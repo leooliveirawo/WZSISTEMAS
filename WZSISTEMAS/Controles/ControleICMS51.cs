@@ -1,7 +1,4 @@
-﻿using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
-
-namespace WZSISTEMAS.Controles;
+﻿namespace WZSISTEMAS.Controles;
 
 public partial class ControleICMS51 : UserControl
 {

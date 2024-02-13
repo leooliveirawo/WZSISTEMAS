@@ -1,4 +1,4 @@
-﻿namespace WZSISTEMAS.Base.EF.Services.Interfaces;
+﻿namespace WZSISTEMAS.Base.EF.Servicos.Interfaces;
 
 public interface IServicoConexao
 {

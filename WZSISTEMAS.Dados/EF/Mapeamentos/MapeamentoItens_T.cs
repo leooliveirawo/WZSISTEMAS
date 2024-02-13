@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WZSISTEMAS.Base.EF.Helpers;
 using WZSISTEMAS.Base.EF.Mapeamentos;
 using WZSISTEMAS.Dados.Entidades.Interfaces;
 

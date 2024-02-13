@@ -1,13 +1,4 @@
-﻿using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.Base.Valores;
-using WZSISTEMAS.Consultas;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.Helpers;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Cadastros;
+﻿namespace WZSISTEMAS.Cadastros;
 
 public partial class FrmCadastroFuncionarios : Form
 {

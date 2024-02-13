@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using WZSISTEMAS.Entradas;
-using WZSISTEMAS.FrenteCaixa;
 
 namespace WZSISTEMAS.Helpers;
 

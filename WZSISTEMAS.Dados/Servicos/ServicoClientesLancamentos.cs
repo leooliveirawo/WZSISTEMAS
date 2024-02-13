@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WZSISTEMAS.Dados.Helpers;
 
 namespace WZSISTEMAS.Dados.Servicos;
 

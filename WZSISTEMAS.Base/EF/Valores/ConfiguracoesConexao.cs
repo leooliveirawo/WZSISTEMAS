@@ -1,5 +1,3 @@
-﻿using WZSISTEMAS.Base.Helpers;
-
 namespace WZSISTEMAS.Base.EF.Valores;
 public class ConfiguracoesConexao
 {

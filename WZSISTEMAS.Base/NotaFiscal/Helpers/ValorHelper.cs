@@ -1,5 +1,4 @@
 ﻿using WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
-using WZSISTEMAS.Base.Valores;
 
 namespace WZSISTEMAS.Base.NotaFiscal.Helpers;
 

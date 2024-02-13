@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
 
 namespace WZSISTEMAS.Controles;
 

@@ -1,6 +1,5 @@
 ﻿using System.Xml;
 using WZSISTEMAS.Base.NotaFiscal.Valores;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Base.NotaFiscal.Servicos;
 

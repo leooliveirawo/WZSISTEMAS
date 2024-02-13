@@ -1,10 +1,6 @@
 ﻿using System.Runtime.InteropServices;
-using WZSISTEMAS.Base.Diretorios.Interfaces;
-using WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces;
 using WZSISTEMAS.Base.NotaFiscal.Valores;
 using WZSISTEMAS.Base.NotaFiscal.Valores.SAT;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using static System.IO.Directory;
 
 namespace WZSISTEMAS.Base.NotaFiscal.Servicos;
 

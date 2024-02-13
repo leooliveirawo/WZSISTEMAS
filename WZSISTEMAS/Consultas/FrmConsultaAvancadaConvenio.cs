@@ -1,9 +1,4 @@
-﻿using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Consultas;
+﻿namespace WZSISTEMAS.Consultas;
 
 public partial class FrmConsultaAvancadaConvenio : Form
 {

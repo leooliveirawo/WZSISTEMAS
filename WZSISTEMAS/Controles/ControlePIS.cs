@@ -1,7 +1,4 @@
 ﻿using WZSISTEMAS.Base.NotaFiscal.Helpers;
-using WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
 
 namespace WZSISTEMAS.Controles;
 

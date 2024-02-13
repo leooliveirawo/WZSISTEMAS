@@ -1,14 +1,4 @@
-﻿using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces;
-using WZSISTEMAS.Base.NotaFiscal.Valores;
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.Base.Valores;
-using WZSISTEMAS.Consultas;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Cadastros;
+﻿namespace WZSISTEMAS.Cadastros;
 
 public partial class FrmCadastroFornecedores : Form
 {

@@ -1,6 +1,4 @@
 ﻿using WZSISTEMAS.Caixas;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Valores;
 
 namespace WZSISTEMAS.Helpers;
 

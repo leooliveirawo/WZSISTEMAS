@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WZSISTEMAS.Base.Diretorios.Interfaces;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Dados.Servicos;
 

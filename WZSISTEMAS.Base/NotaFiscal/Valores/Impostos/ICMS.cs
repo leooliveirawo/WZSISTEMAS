@@ -1,5 +1,4 @@
 ﻿using System.Xml.Serialization;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
 

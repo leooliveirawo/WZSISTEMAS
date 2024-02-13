@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Diretorios.Interfaces;
-
-namespace WZSISTEMAS.Base.Diretorios;
+﻿namespace WZSISTEMAS.Base.Diretorios;
 
 public class GerenciadorDiretorios(IConfiguracoes configuracoes) : IGerenciadorDiretorios
 {

@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using WZSISTEMAS.Base.EF.Valores;
 using WZSISTEMAS.Dados.Entidades;
 
 namespace WZSISTEMAS.Dados.EF;

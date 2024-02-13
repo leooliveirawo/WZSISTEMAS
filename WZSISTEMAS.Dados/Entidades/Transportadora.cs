@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.NotaFiscal.Interfaces;
-
-namespace WZSISTEMAS.Dados.Entidades;
+﻿namespace WZSISTEMAS.Dados.Entidades;
 
 public class Transportadora : Entidade, IEnderecoCompleto
 {

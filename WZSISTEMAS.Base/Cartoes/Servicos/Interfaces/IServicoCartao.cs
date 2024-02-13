@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Eventos;
-
-namespace WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
+﻿namespace WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
 
 public interface IServicoCartao
 {

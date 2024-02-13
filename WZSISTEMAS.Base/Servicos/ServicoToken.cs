@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Valores;
-
-namespace WZSISTEMAS.Base.Servicos;
+﻿namespace WZSISTEMAS.Base.Servicos;
 
 public class ServicoToken(
     IServicoJson servicoJson,

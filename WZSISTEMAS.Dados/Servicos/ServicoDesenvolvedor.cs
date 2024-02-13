@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WZSISTEMAS.Base.NotaFiscal.Valores.Impostos;
-using WZSISTEMAS.Base.Servicos.Interfaces;
 
 namespace WZSISTEMAS.Dados.Servicos;
 

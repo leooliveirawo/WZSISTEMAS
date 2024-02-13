@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Eventos;
-
-namespace WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
+﻿namespace WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
 
 public interface IDriverCartao
 {

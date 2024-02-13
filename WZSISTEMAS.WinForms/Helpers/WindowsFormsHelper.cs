@@ -1,5 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
-using WZSISTEMAS.Dados.Entidades;
+﻿using WZSISTEMAS.Dados.Entidades;
 using WZSISTEMAS.Dados.Servicos.Interfaces;
 
 namespace WZSISTEMAS.WinForms.Helpers;

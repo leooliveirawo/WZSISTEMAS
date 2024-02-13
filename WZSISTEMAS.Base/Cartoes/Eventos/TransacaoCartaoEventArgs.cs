@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Valores;
-
-namespace WZSISTEMAS.Base.Cartoes.Eventos;
+﻿namespace WZSISTEMAS.Base.Cartoes.Eventos;
 
 public class TransacaoCartaoEventArgs(
     DateTime data,

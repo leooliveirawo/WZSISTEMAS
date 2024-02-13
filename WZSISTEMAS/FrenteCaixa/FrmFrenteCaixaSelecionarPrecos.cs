@@ -1,6 +1,3 @@
-﻿using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
 namespace WZSISTEMAS.FrenteCaixa;
 
 public partial class FrmFrenteCaixaSelecionarPrecos : Form
