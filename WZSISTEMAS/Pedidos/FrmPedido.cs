@@ -5,7 +5,7 @@ public partial class FrmPedido : Form
     private readonly IServicoCaixas servicoCaixas;
     private readonly IServicoVendas servicoVendas;
     private readonly IServicoPedidos servicoPedidos;
-    private readonly IServicoProdutos servicoProdutos;
+    private readonly IServicoItens servicoItens;
 
     private Pedido? pedido;
 
@@ -17,14 +17,14 @@ public partial class FrmPedido : Form
     public Venda? Venda { get; private set; }
     public bool PedidoConvertidoParaVenda { get; private set; }
 
-    public FrmPedido(IServicoCaixas servicoCaixas, IServicoVendas servicoVendas, IServicoPedidos servicoPedidos, IServicoProdutos servicoProdutos)
+    public FrmPedido(IServicoCaixas servicoCaixas, IServicoVendas servicoVendas, IServicoPedidos servicoPedidos, IServicoItens servicoItens)
     {
         InitializeComponent();
 
         this.servicoCaixas = servicoCaixas ?? throw new ArgumentNullException(nameof(servicoCaixas));
         this.servicoVendas = servicoVendas ?? throw new ArgumentNullException(nameof(servicoVendas));
         this.servicoPedidos = servicoPedidos ?? throw new ArgumentNullException(nameof(servicoPedidos));
-        this.servicoProdutos = servicoProdutos ?? throw new ArgumentNullException(nameof(servicoProdutos));
+        this.servicoItens = servicoItens ?? throw new ArgumentNullException(nameof(servicoItens));
     }
 
     public void DefinirCaixaId(long caixaId)
@@ -71,8 +71,8 @@ public partial class FrmPedido : Form
 
     private Item? BuscarItem()
         => chbxFiltrarCodRef.Checked
-            ? servicoProdutos.ObterPorCodigoReferencia(txtCodBarrasCodRef.Text)
-            : servicoProdutos.ObterPorIdOuCodigoBarras(txtCodBarrasCodRef.Text);
+            ? servicoItens.ObterPorCodigoReferencia(txtCodBarrasCodRef.Text)
+            : servicoItens.ObterPorIdOuCodigoBarras(txtCodBarrasCodRef.Text);
 
     private void AbrirPedidosEmAberto()
     {

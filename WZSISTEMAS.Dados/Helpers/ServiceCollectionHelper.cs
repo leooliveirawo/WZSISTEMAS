@@ -27,7 +27,7 @@ public static class ServiceCollectionHelper
         servicos.AddTransient<IServicoCargos, ServicoCargos>();
         servicos.AddTransient<IServicoFuncionarios, ServicoFuncionarios>();
         servicos.AddTransient<IServicoUsuarios, ServicoUsuarios>();
-        servicos.AddTransient<IServicoProdutos, ServicoProdutos>();
+        servicos.AddTransient<IServicoItens, ServicoItens>();
         servicos.AddTransient<IServicoCaixas, ServicoCaixas>();
         servicos.AddTransient<IServicoCaixasEntradas, ServicoCaixasEntradas>();
         servicos.AddTransient<IServicoCaixasSaidas, ServicoCaixasSaidas>();

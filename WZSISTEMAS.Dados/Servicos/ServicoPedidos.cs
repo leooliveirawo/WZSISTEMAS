@@ -9,7 +9,7 @@ namespace WZSISTEMAS.Dados.Servicos;
 public class ServicoPedidos(
     DbContext dbContext,
     IServicoPedidosItens servicoPedidosItens,
-    IServicoProdutos servicoProdutos,
+    IServicoItens servicoItens,
     IServicoVendas servicoVendas,
     IServicoVendasItens servicoVendasItens) : ServicoEntidades<Pedido>(dbContext), IServicoPedidos
 {
@@ -270,8 +270,8 @@ public class ServicoPedidos(
                                                                 ?? throw new ArgumentNullException(
                                                                     nameof(servicoPedidosItens));
 
-    private readonly IServicoProdutos servicoProdutos = servicoProdutos
-                                                        ?? throw new ArgumentNullException(nameof(servicoProdutos));
+    private readonly IServicoItens servicoItens = servicoItens
+                                                        ?? throw new ArgumentNullException(nameof(servicoItens));
 
     private readonly IServicoVendas servicoVendas = servicoVendas
                                                     ?? throw new ArgumentNullException(nameof(servicoVendas));

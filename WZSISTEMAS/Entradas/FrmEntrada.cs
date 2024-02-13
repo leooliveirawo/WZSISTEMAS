@@ -1,9 +1,4 @@
-﻿using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces;
-using WZSISTEMAS.Base.NotaFiscal.Valores;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
+﻿using WZSISTEMAS.Base.NotaFiscal.Valores;
 
 namespace WZSISTEMAS.Entradas;
 

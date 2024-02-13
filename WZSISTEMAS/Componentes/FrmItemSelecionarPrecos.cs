@@ -1,11 +1,8 @@
-﻿using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS.Componentes;
+﻿namespace WZSISTEMAS.Componentes;
 
 public partial class FrmItemSelecionarPrecos : Form
 {
-    private readonly IServicoProdutos servicoProdutos;
+    private readonly IServicoItens servicoItens;
 
     private long itemId;
 
@@ -16,12 +13,12 @@ public partial class FrmItemSelecionarPrecos : Form
     public decimal PrecoSelecionado { get; set; }
 
     public FrmItemSelecionarPrecos(
-        IServicoProdutos servicoProdutos)
+        IServicoItens servicoItens)
     {
         InitializeComponent();
 
-        this.servicoProdutos = servicoProdutos
-            ?? throw new ArgumentNullException(nameof(servicoProdutos));
+        this.servicoItens = servicoItens
+            ?? throw new ArgumentNullException(nameof(servicoItens));
     }
 
     public void DefinirProdutoId(long itemId)
@@ -31,7 +28,7 @@ public partial class FrmItemSelecionarPrecos : Form
     {
         try
         {
-            var item = servicoProdutos.ObterPorId(itemId);
+            var item = servicoItens.ObterPorId(itemId);
 
             if (item is null)
             {

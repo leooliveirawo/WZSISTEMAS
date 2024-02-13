@@ -1,10 +1,3 @@
-using WZSISTEMAS.Base.Servicos.Interfaces;
-using WZSISTEMAS.Dados.Entidades;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.FrenteCaixa;
-using WZSISTEMAS.Helpers;
-using WZSISTEMAS.WinForms.Helpers;
-
 namespace WZSISTEMAS;
 
 public partial class FrmInicio : FrmBase

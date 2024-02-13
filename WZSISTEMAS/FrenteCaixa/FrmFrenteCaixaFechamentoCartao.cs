@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.Base.Cartoes.Servicos.Interfaces;
-
-namespace WZSISTEMAS.FrenteCaixa;
+﻿namespace WZSISTEMAS.FrenteCaixa;
 
 public partial class FrmFrenteCaixaFechamentoCartao : Form
 {

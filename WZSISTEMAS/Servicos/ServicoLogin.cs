@@ -108,7 +108,6 @@ public class ServicoLogin(
 
         if (configuracoesConexao is not null)
         {
-            ConfiguracoesConexao.ConnectionString = configuracoesConexao.Converter();
         }
     }
 

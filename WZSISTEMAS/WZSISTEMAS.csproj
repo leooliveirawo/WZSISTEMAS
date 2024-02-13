@@ -14,10 +14,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="FrenteCaixa\FrmFrenteCaixa.resx.old" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1">
 			<TreatAsUsed>true</TreatAsUsed>
 		</PackageReference>
@@ -95,7 +91,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Using Include="WZSISTEMAS.Base.EF.Services.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.EF.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Base.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Base.Valores" />
@@ -107,6 +103,11 @@
 		<Using Include="WZSISTEMAS.Program">
 			<Static>True</Static>
 		</Using>
+		<Using Include="WZSISTEMAS.Base.Cartoes.Eventos" />
+		<Using Include="WZSISTEMAS.Base.Cartoes.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Consultas" />
+		<Using Include="WZSISTEMAS.Base.NotaFiscal.Valores.Impostos" />
+		<Using Include="WZSISTEMAS.Base.NotaFiscal.Valores" />
 		<Using Include="WZSISTEMAS.Base.Cartoes.Drivers.Interfaces" />
 		<Using Include="WZSISTEMAS.Base.Helpers" />
 		<Using Include="WZSISTEMAS.Dados.Servicos.Interfaces" />

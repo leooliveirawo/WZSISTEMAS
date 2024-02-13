@@ -28,9 +28,14 @@
 		<Using Include="WZSISTEMAS.Base.Cartoes.Eventos" />
 		<Using Include="WZSISTEMAS.Base.Cartoes.Valores" />
 		<Using Include="WZSISTEMAS.Base.Diretorios.Interfaces" />
-		<Using Include="WZSISTEMAS.Base.EF.Services.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.EF.Helpers" />
+		<Using Include="WZSISTEMAS.Base.EF.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Base.EF.Valores" />
+		<Using Include="WZSISTEMAS.Base.NotaFiscal.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.NotaFiscal.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.Helpers" />
 		<Using Include="WZSISTEMAS.Base.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.Valores" />
 	</ItemGroup>
 
 </Project>

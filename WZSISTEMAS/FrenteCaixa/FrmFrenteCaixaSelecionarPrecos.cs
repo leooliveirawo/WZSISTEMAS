@@ -2,7 +2,7 @@ namespace WZSISTEMAS.FrenteCaixa;
 
 public partial class FrmFrenteCaixaSelecionarPrecos : Form
 {
-    private readonly IServicoProdutos servicoProdutos;
+    private readonly IServicoItens servicoItens;
 
     private long itemId;
 
@@ -13,12 +13,12 @@ public partial class FrmFrenteCaixaSelecionarPrecos : Form
     public decimal PrecoSelecionado { get; set; }
 
     public FrmFrenteCaixaSelecionarPrecos(
-        IServicoProdutos servicoProdutos)
+        IServicoItens servicoItens)
     {
         InitializeComponent();
 
-        this.servicoProdutos = servicoProdutos
-            ?? throw new ArgumentNullException(nameof(servicoProdutos));
+        this.servicoItens = servicoItens
+            ?? throw new ArgumentNullException(nameof(servicoItens));
     }
 
     public void DefinirProdutoId(long itemId)
@@ -28,7 +28,7 @@ public partial class FrmFrenteCaixaSelecionarPrecos : Form
     {
         try
         {
-            var produto = servicoProdutos.ObterPorId(itemId);
+            var produto = servicoItens.ObterPorId(itemId);
 
             if (produto is null)
             {

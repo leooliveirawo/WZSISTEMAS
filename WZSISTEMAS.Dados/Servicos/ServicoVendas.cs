@@ -13,7 +13,7 @@ public class ServicoVendas(
     IServicoCaixasEntradas servicoCaixasEntradas,
     IServicoCaixasSaidas servicoCaixasSaidas,
     IServicoCaixasSuprimentos servicoCaixasSuprimentos,
-    IServicoProdutos servicoProdutos,
+    IServicoItens servicoItens,
     IServicoCFe2 icFe,
     IServicoSAT servicoSAT) : ServicoEntidades<Venda>(dbContext), IServicoVendas
 {
@@ -67,7 +67,7 @@ public class ServicoVendas(
                     {
                         item.Item.EstoqueAtual += Convert.ToInt64(item.Quantidade);
 
-                        servicoProdutos.Editar(item.Item);
+                        servicoItens.Editar(item.Item);
                     }
         }
 
@@ -221,7 +221,7 @@ public class ServicoVendas(
                 {
                     item.Item.EstoqueAtual -= Convert.ToInt64(item.Quantidade);
 
-                    servicoProdutos.Editar(item.Item);
+                    servicoItens.Editar(item.Item);
                 }
         }
 
@@ -506,9 +506,9 @@ public class ServicoVendas(
         = servicoCaixasSuprimentos
           ?? throw new ArgumentNullException(nameof(servicoCaixasSuprimentos));
 
-    private readonly IServicoProdutos servicoProdutos
-        = servicoProdutos
-          ?? throw new ArgumentNullException(nameof(servicoProdutos));
+    private readonly IServicoItens servicoItens
+        = servicoItens
+          ?? throw new ArgumentNullException(nameof(servicoItens));
 
     private readonly IServicoCFe2 servicoIcFe
         = icFe

@@ -21,6 +21,11 @@ public static class StringHelper
         return saida;
     }
 
+    public static bool ConverterParaLong(
+        this string texto,
+        out long numero)
+    => long.TryParse(texto, out numero);
+
     public static decimal ConverterParaDecimal(this string texto)
     {
         decimal.TryParse(texto, out var saida);

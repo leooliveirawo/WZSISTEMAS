@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WZSISTEMAS.Base.Cartoes.Drivers.Interfaces;
 
 namespace WZSISTEMAS.Base.Helpers;
 

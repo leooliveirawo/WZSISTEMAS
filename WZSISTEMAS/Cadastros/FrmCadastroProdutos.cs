@@ -2,14 +2,14 @@ namespace WZSISTEMAS.Cadastros;
 
 public partial class FrmCadastroProdutos : Form
 {
-    private readonly IServicoProdutos servicoEntidades;
+    private readonly IServicoItens servicoEntidades;
     private readonly IServicoJson servicoJson;
     private long id;
 
     private CadastroModos modo;
 
     public FrmCadastroProdutos(
-        IServicoProdutos servicoEntidades,
+        IServicoItens servicoEntidades,
         IServicoJson servicoJson)
     {
         InitializeComponent();

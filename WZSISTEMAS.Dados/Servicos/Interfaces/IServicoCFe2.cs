@@ -1,7 +1,4 @@
-﻿using WZSISTEMAS.Base.NotaFiscal.Valores;
-using WZSISTEMAS.Base.NotaFiscal.Valores.SAT;
-
-namespace WZSISTEMAS.Dados.Servicos.Interfaces;
+﻿namespace WZSISTEMAS.Dados.Servicos.Interfaces;
 
 public interface IServicoCFe2 : IServicoCFe
 {

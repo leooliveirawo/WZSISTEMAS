@@ -4,13 +4,13 @@ using WZSISTEMAS.Dados.Entidades.Interfaces;
 
 namespace WZSISTEMAS.Dados.Servicos;
 
-public class ServicoPedidosItens(DbContext dbContext, IServicoProdutos servicoProdutos)
+public class ServicoPedidosItens(DbContext dbContext, IServicoItens servicoItens)
     : ServicoEntidades<PedidoItem>(dbContext), IServicoPedidosItens
 {
     private readonly IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<IItem, IItem>(); })
         .CreateMapper();
 
-    private readonly IServicoProdutos servicoProdutos = servicoProdutos ?? throw new ArgumentNullException(nameof(servicoProdutos));
+    private readonly IServicoItens servicoItens = servicoItens ?? throw new ArgumentNullException(nameof(servicoItens));
 
     public  PedidoItem Criar(
         long pedidoId,
@@ -18,7 +18,7 @@ public class ServicoPedidosItens(DbContext dbContext, IServicoProdutos servicoPr
         decimal precoUnitario,
         decimal quantidade = 1)
     {
-        var produto = servicoProdutos.ObterPorId(itemId)
+        var produto = servicoItens.ObterPorId(itemId)
                       ?? throw new InvalidOperationException("O produto não foi encontrado");
 
         var pedidoItem = new PedidoItem
@@ -42,7 +42,7 @@ public class ServicoPedidosItens(DbContext dbContext, IServicoProdutos servicoPr
         var entidade = ObterPorId(id) ??
                        throw new InvalidOperationException("O produto não foi encontrado");
 
-        var produto = servicoProdutos.ObterPorId(entidade.ItemId, true) ??
+        var produto = servicoItens.ObterPorId(entidade.ItemId, true) ??
                       throw new InvalidOperationException("O produto não foi encontrado");
 
         base.ExcluirPeloId(id);
@@ -51,7 +51,7 @@ public class ServicoPedidosItens(DbContext dbContext, IServicoProdutos servicoPr
         {
             produto.EstoqueAtual -= Convert.ToInt64(entidade.Quantidade);
 
-            servicoProdutos.Editar(produto);
+            servicoItens.Editar(produto);
         }
     }
 

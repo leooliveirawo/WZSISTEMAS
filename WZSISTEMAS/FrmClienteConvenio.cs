@@ -1,13 +1,4 @@
-﻿using System.Windows.Forms;
-using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Base.Valores;
-using WZSISTEMAS.Dados.Helpers;
-using WZSISTEMAS.Dados.Servicos.Interfaces;
-using WZSISTEMAS.Helpers;
-using WZSISTEMAS.WinForms.Helpers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace WZSISTEMAS;
+﻿namespace WZSISTEMAS;
 
 public partial class FrmClienteConvenio : Form
 {

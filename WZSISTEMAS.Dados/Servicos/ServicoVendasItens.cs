@@ -4,32 +4,32 @@ using WZSISTEMAS.Dados.Entidades.Interfaces;
 
 namespace WZSISTEMAS.Dados.Servicos;
 
-public class ServicoVendasItens(DbContext dbContext, IServicoProdutos servicoProdutos)
+public class ServicoVendasItens(DbContext dbContext, IServicoItens servicoItens)
     : ServicoEntidades<VendaItem>(dbContext), IServicoVendasItens
 {
     private readonly IMapper mapper = new MapperConfiguration(cfg => { cfg.CreateMap<IItem, IItem>(); })
         .CreateMapper();
 
-    private readonly IServicoProdutos servicoProdutos = servicoProdutos ?? throw new ArgumentNullException(nameof(servicoProdutos));
+    private readonly IServicoItens servicoItens = servicoItens ?? throw new ArgumentNullException(nameof(servicoItens));
 
     public override void Criar(VendaItem entidade)
     {
         base.Criar(entidade);
 
-        var produto = servicoProdutos.ObterPorId(entidade.ItemId, true) ??
+        var produto = servicoItens.ObterPorId(entidade.ItemId, true) ??
                       throw new InvalidOperationException("O produto não foi encontrado");
 
         if (produto.GerenciarEstoque)
         {
             produto.EstoqueAtual -= Convert.ToInt64(entidade.Quantidade);
 
-            servicoProdutos.Editar(produto);
+            servicoItens.Editar(produto);
         }
     }
 
     public  VendaItem Criar(long vendaId, long itemId, decimal precoUnitario, decimal quantidade = 1)
     {
-        var produto = servicoProdutos.ObterPorId(itemId) ??
+        var produto = servicoItens.ObterPorId(itemId) ??
                       throw new InvalidOperationException("O produto não foi encontrado");
 
         var vendaItem = new VendaItem
@@ -53,7 +53,7 @@ public class ServicoVendasItens(DbContext dbContext, IServicoProdutos servicoPro
         var entidade = ObterPorId(id) ??
                        throw new InvalidOperationException("O produto não foi encontrado");
 
-        var produto = servicoProdutos.ObterPorId(entidade.ItemId, true) ??
+        var produto = servicoItens.ObterPorId(entidade.ItemId, true) ??
                       throw new InvalidOperationException("O produto não foi encontrado");
 
         base.ExcluirPeloId(id);
@@ -62,7 +62,7 @@ public class ServicoVendasItens(DbContext dbContext, IServicoProdutos servicoPro
         {
             produto.EstoqueAtual -= Convert.ToInt64(entidade.Quantidade);
 
-            servicoProdutos.Editar(produto);
+            servicoItens.Editar(produto);
         }
     }
 

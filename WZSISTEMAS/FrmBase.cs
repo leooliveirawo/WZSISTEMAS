@@ -1,6 +1,4 @@
-﻿using WZSISTEMAS.WinForms.Helpers;
-
-namespace WZSISTEMAS;
+﻿namespace WZSISTEMAS;
 
 public partial class FrmBase : Form
 {

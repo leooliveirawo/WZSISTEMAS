@@ -10,7 +10,7 @@ public class ServicoDesenvolvedor(
     IServicoCargos servicoCargos,
     IServicoFornecedores servicoFornecedores,
     IServicoUsuarios servicoUsuarios,
-    IServicoProdutos servicoProdutos,
+    IServicoItens servicoItens,
     IServicoEmpresas servicoEmpresas,
     IServicoJson servicoJson,
     IServicoCPF servicoCPF,
@@ -32,7 +32,7 @@ public class ServicoDesenvolvedor(
     private readonly IServicoFuncionarios servicoFuncionarios = servicoFuncionarios ?? throw new ArgumentNullException( nameof(servicoFuncionarios));
     private readonly IServicoInscricaoEstadual servicoInscricaoEstadual = servicoInscricaoEstadual ?? throw new  ArgumentNullException(nameof(servicoInscricaoEstadual));
     private readonly IServicoJson servicoJson = servicoJson ?? throw new ArgumentNullException(nameof(servicoJson));
-    private readonly IServicoProdutos servicoProdutos = servicoProdutos ?? throw new ArgumentNullException(nameof(servicoProdutos));
+    private readonly IServicoItens servicoItens = servicoItens ?? throw new ArgumentNullException(nameof(servicoItens));
     private readonly IServicoRandomico servicoServicoRandomico = servicoRandomico ?? throw new ArgumentNullException(nameof(servicoRandomico));
     private readonly IServicoToken servicoToken = servicoToken ?? throw new ArgumentNullException(nameof(servicoToken));
     private readonly IServicoUsuarios servicoUsuarios = servicoUsuarios ?? throw new ArgumentNullException(nameof(servicoUsuarios));
@@ -440,7 +440,7 @@ public class ServicoDesenvolvedor(
                 pCOFINS = 0.04m
             }) ?? default!;
 
-            servicoProdutos.Criar(new Item
+            servicoItens.Criar(new Item
             {
                 Descricao = "REFRIGERANTE FUNADA 2L LARANJA",
                 DescricaoPDV = "REFR FUNADA 2L LAR",
@@ -460,7 +460,7 @@ public class ServicoDesenvolvedor(
                 GerenciarEstoque = true
             });
 
-            servicoProdutos.Criar(new Item
+            servicoItens.Criar(new Item
             {
                 Descricao = "REFRIGERANTE FUNADA 2L UVA",
                 DescricaoPDV = "REFR FUNADA 2L UVA",
@@ -480,7 +480,7 @@ public class ServicoDesenvolvedor(
                 GerenciarEstoque = true
             });
 
-            servicoProdutos.Criar(new Item
+            servicoItens.Criar(new Item
             {
                 Descricao = "REFRIGERANTE FUNADA 2L LIMAO",
                 DescricaoPDV = "REFR FUNADA 2L LIM",
@@ -501,7 +501,7 @@ public class ServicoDesenvolvedor(
             });
 
 
-            servicoProdutos.Criar(new Item
+            servicoItens.Criar(new Item
             {
                 Descricao = "REFRIGERANTE FUNADA 2L TUBAINA",
                 DescricaoPDV = "REFR FUNADA 2L TUB",
@@ -521,7 +521,7 @@ public class ServicoDesenvolvedor(
                 GerenciarEstoque = true
             });
 
-            servicoProdutos.Criar(new Item
+            servicoItens.Criar(new Item
             {
                 Descricao = "REFRIGERANTE FUNADA 2L COLA",
                 DescricaoPDV = "REFR FUNADA 2L COLA",
@@ -541,7 +541,7 @@ public class ServicoDesenvolvedor(
                 GerenciarEstoque = true
             });
 
-            servicoProdutos.SalvarAlteracoes();
+            servicoItens.SalvarAlteracoes();
         }
 
         void PreencherEmpresas()
