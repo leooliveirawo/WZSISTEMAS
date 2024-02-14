@@ -1,10 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using WZSISTEMAS.Entradas;
+using WZSISTEMAS.Utiliarios;
 
 namespace WZSISTEMAS.Helpers;
 
 public static partial class ServiceProviderHelper
 {
+    public static FrmControleItens FrmControleItens(this IServiceProvider services)
+        => services.GetRequiredService<FrmControleItens>();
+
     public static FrmEntrada FrmEntrada(this IServiceProvider services)
         => services.GetRequiredService<FrmEntrada>();
 

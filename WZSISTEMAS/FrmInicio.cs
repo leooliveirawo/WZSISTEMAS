@@ -33,7 +33,7 @@ public partial class FrmInicio : FrmBase
             ?? throw new ArgumentNullException(nameof(desenvolvedor));
     }
 
-    private  long? AbrirCaixa()
+    private long? AbrirCaixa()
     {
         if (!VerificarTerminalConfigurado())
             return default;
@@ -72,7 +72,7 @@ public partial class FrmInicio : FrmBase
             }
         }
 
-         bool VerificarTerminalConfigurado()
+        bool VerificarTerminalConfigurado()
         {
             var terminal = servicoTerminais.ObterTerminalVinculado();
 
@@ -99,7 +99,7 @@ public partial class FrmInicio : FrmBase
 
         frmFrenteCaixa.ShowDialog(this);
     }
-    
+
     private void AbrirCadastrosClientes_Click(object sender, EventArgs e)
     {
         using var frm = ProvedorServicos.FrmCadastroClientes();
@@ -168,7 +168,7 @@ public partial class FrmInicio : FrmBase
             this.ExibirMensagemErro(erro);
         }
     }
-    
+
     private void TsmiPedidos_Click(object sender, EventArgs e)
     {
         try
@@ -199,7 +199,7 @@ public partial class FrmInicio : FrmBase
         try
         {
             var caixaId = AbrirCaixa();
-            
+
             if (caixaId.HasValue)
                 AbrirFrenteCaixa(caixaId.Value);
         }
@@ -285,5 +285,12 @@ public partial class FrmInicio : FrmBase
         {
             this.ExibirMensagemErro(erro);
         }
+    }
+
+    private void TsmiUtilitariosControleItens_Click(object sender, EventArgs e)
+    {
+        using var frm = ProvedorServicos.FrmControleItens();
+
+        frm.ShowDialog(this);
     }
 }

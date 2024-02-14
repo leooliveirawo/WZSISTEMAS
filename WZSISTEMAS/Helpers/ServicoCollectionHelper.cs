@@ -5,6 +5,7 @@ using WZSISTEMAS.Entradas;
 using WZSISTEMAS.FrenteCaixa;
 using WZSISTEMAS.Pedidos;
 using WZSISTEMAS.Servicos;
+using WZSISTEMAS.Utiliarios;
 
 namespace WZSISTEMAS.Helpers;
 
@@ -22,6 +23,7 @@ public static class ServicoCollectionHelper
         servicos.AddTransient<FrmInicio>();
         servicos.AddTransient<FrmTerminal>();
         servicos.AddTransient<FrmClienteConvenio>();
+        servicos.AddTransient<FrmControleItens>();
 
         ConfigurarCadastros(servicos);
         ConfigurarConsultas(servicos);

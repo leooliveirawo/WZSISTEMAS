@@ -7,10 +7,10 @@ public static class EFHelper
 {
     public static  List<T> ObterLista<T>(
         this IQueryable<T> query,
-        bool tracking = false)
+        bool usarRastreamento = false)
         where T : class
     {
-        var internalQuery = tracking
+        var internalQuery = usarRastreamento
             ? query
             : query.AsNoTracking();
 
@@ -20,10 +20,10 @@ public static class EFHelper
     public static  List<T> ObterLista<T>(
         this IQueryable<T> query,
         Expression<Func<T, bool>> filter,
-        bool tracking = false)
+        bool usarRastreamento = false)
         where T : class
     {
-        var internalQuery = tracking
+        var internalQuery = usarRastreamento
             ? query
             : query.AsNoTracking();
 
@@ -32,10 +32,10 @@ public static class EFHelper
 
     public static  T? PrimeiroOuPadrao<T>(
         this IQueryable<T> query,
-        bool tracking = false)
+        bool usarRastreamento = false)
         where T : class
     {
-        var internalQuery = tracking
+        var internalQuery = usarRastreamento
             ? query
             : query.AsNoTracking();
 
@@ -45,10 +45,10 @@ public static class EFHelper
     public static  T? PrimeiroOuPadrao<T>(
         this IQueryable<T> query,
         Expression<Func<T, bool>> filter,
-        bool tracking = false)
+        bool usarRastreamento = false)
         where T : class
     {
-        var internalQuery = tracking
+        var internalQuery = usarRastreamento
             ? query
             : query.AsNoTracking();
 

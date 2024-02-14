@@ -11,6 +11,13 @@ public class ServicoItens(
     private readonly IValidator<Item> validacao = validacao
                                                   ?? throw new ArgumentNullException(nameof(validacao));
 
+    protected override Expression<Func<Item, ItemLista<long>>> ConverterEntidadeParaLista()
+        => item => new ItemLista<long>
+        {
+            Descricao = item.Descricao,
+            Item = item.Id
+        };
+
     public IEnumerable<Item> ListarPorIdCodigoBarrasCodigoReferenciaDescricao(
         string valor,
         TipoConsultaItens tipo = TipoConsultaItens.Padrao)
@@ -32,6 +39,39 @@ public class ServicoItens(
         
         return query.ToList();
     }
+
+    public Item? ObterPorIdComItensDerivados(long id)
+    {
+        var item = DbContext.Set<Item>()
+            .Include(item => item.ItensDerivados)
+            .Where(item => item.Id == id)
+            .Select(item => new Item()
+            {
+                Id = item.Id,
+                Descricao = item.Descricao,
+                CodigoBarras = item.CodigoBarras,
+                CodigoReferencia = item.CodigoReferencia,
+                CustoReal = item.CustoReal,
+                PrecoFinal = item.PrecoFinal,
+                MargemLucro = item.MargemLucro,
+                ItensDerivados = item.ItensDerivados.Select(itemDerivado =>
+                        new Item
+                        {
+                            Id = itemDerivado.Id,
+                            Descricao = itemDerivado.Descricao,
+                            CodigoBarras = itemDerivado.CodigoBarras,
+                            CodigoReferencia = itemDerivado.CodigoReferencia,
+                            CustoReal = itemDerivado.CustoReal,
+                            PrecoFinal = itemDerivado.PrecoFinal,
+                            MargemLucro = itemDerivado.MargemLucro,
+                        })
+                    .ToList()
+            })
+            .PrimeiroOuPadrao();
+
+        return item;
+    }
+
 
 
     public Item? ObterPorCodigoReferencia(string codigoReferencia)

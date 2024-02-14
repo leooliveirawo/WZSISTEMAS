@@ -7,4 +7,6 @@ public interface IServicoItens : IServicoEntidades<Item>, IServicoValidacaoEntid
     IEnumerable<Item> ListarPorIdCodigoBarrasCodigoReferenciaDescricao(
         string valor,
         TipoConsultaItens tipo = TipoConsultaItens.Padrao);
+
+    Item? ObterPorIdComItensDerivados(long id);
 }

@@ -1,6 +1,6 @@
 namespace WZSISTEMAS.Cadastros;
 
-public partial class FrmCadastroProdutos : Form
+public partial class FrmCadastroItens : Form
 {
     private readonly IServicoItens servicoEntidades;
     private readonly IServicoJson servicoJson;
@@ -19,6 +19,33 @@ public partial class FrmCadastroProdutos : Form
 
         this.servicoJson = servicoJson 
             ?? throw new ArgumentNullException(nameof(servicoJson));
+    }
+
+    private void CarregarItensPrincipais()
+    {
+
+        try
+        {
+            var itensPrincipais = new List<ItemLista<long>>
+                {
+                    new()
+                    {
+                        Descricao = "NÃO SELECIONADO",
+                        Item = 0
+                    }
+                }
+                .Concat(id > 0
+                    ? servicoEntidades.ObterListaItens(id)
+                    : servicoEntidades.ObterListaItens())
+                .ToList();
+
+            cbbxItemPrincipal.Configurar(itensPrincipais);
+
+        }
+        catch (Exception erro)
+        {
+            this.ExibirMensagemErro(erro);
+        }
     }
 
     private void DefinirModo(CadastroModos modo)
@@ -44,6 +71,9 @@ public partial class FrmCadastroProdutos : Form
             DefinirBusca(false);
             DefinirCampos(true);
 
+            if (modo == CadastroModos.Novo)
+                CarregarItensPrincipais();
+            
             btnSalvar.Ativar();
             btnCancelar.Ativar();
 
@@ -93,6 +123,17 @@ public partial class FrmCadastroProdutos : Form
         txtDescricaoPDV.Clear();
         rbtnProdutoModo_Padrao.Checked = true;
 
+        cbbxItemPrincipal.Configurar(new List<ItemLista<long>>
+        {
+            new()
+            {
+                Descricao = "NÃO SELECIONADO",
+                Item = 0
+            }
+        });
+
+        cbbxItemPrincipal.Definir(0L);
+
         txtCustoReal.Clear();
         txtMargemLucro.Clear();
         txtPrecoFinal.Clear();
@@ -135,6 +176,13 @@ public partial class FrmCadastroProdutos : Form
         entidade.CodigoReferencia = txtCodigoReferencia.Text;
         entidade.Descricao = txtDescricao.Text;
         entidade.DescricaoPDV = txtDescricaoPDV.Text;
+        
+        var itemPrincipalId = cbbxItemPrincipal.Converter<long>();
+
+        entidade.ItemPrincipalId =
+            itemPrincipalId == 0L
+                ? null
+                : itemPrincipalId;
 
         entidade.EstoqueMinimo = txtEstoqueMinimo.ConverterParaLong();
         entidade.EstoqueAtual = txtEstoqueAtual.ConverterParaLong();
@@ -196,6 +244,13 @@ public partial class FrmCadastroProdutos : Form
 
         txtDescricao.Text = entidade.Descricao;
         txtDescricaoPDV.Text = entidade.DescricaoPDV;
+
+        CarregarItensPrincipais();
+
+        cbbxItemPrincipal.Definir(
+            entidade.ItemPrincipalId.HasValue
+                ? entidade.ItemPrincipalId
+                : 0L);
 
         if (entidade.ModoItem == ModosItem.Padrao)
             rbtnProdutoModo_Padrao.Checked = true;
@@ -275,13 +330,14 @@ public partial class FrmCadastroProdutos : Form
 
         this.ExibirMensagemCadastroNaoEncontrado();
     }
-
+    
     private void FrmCadastroProdutos_Load(object sender, EventArgs e)
     {
+        DefinirModo(CadastroModos.Padrao);
         cbbxUnidadeMedida.Configurar(UnidadeMedidaHelper.ObterLista());
         cbbxTipo.Configurar(TipoItemHelper.ObterLista());
 
-        DefinirModo(CadastroModos.Padrao);
+        RedefinirCampos();
     }
 
     private void TxtBuscarIdCodigoBarrasCodigoReferencia_KeyPress(object sender, KeyPressEventArgs e)

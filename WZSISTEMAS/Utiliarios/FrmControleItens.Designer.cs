@@ -1,6 +1,6 @@
-﻿namespace WZSISTEMAS.Acougue;
+﻿namespace WZSISTEMAS.Utiliarios;
 
-partial class FrmAcougue
+partial class FrmControleItens
 {
     /// <summary>
     /// Required designer variable.
@@ -174,7 +174,7 @@ partial class FrmAcougue
         dgvItensDerivadosCadastros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dgvItensDerivadosCadastros.Size = new Size(1054, 372);
         dgvItensDerivadosCadastros.TabIndex = 0;
-        dgvItensDerivadosCadastros.CellContentDoubleClick += dgvCadastros_CellContentDoubleClick;
+        dgvItensDerivadosCadastros.CellDoubleClick += DgvCadastros_CellDoubleClick;
         // 
         // clnId
         // 
@@ -373,6 +373,7 @@ partial class FrmAcougue
         txtItemPrincipalCustoKG.Size = new Size(178, 31);
         txtItemPrincipalCustoKG.TabIndex = 0;
         txtItemPrincipalCustoKG.Text = "0";
+        txtItemPrincipalCustoKG.Leave += txtItemPrincipalCustoKG_Leave;
         // 
         // groupBox2
         // 
@@ -443,14 +444,14 @@ partial class FrmAcougue
         tabPage2.Text = "tabPage2";
         tabPage2.UseVisualStyleBackColor = true;
         // 
-        // FrmAcougue
+        // FrmControleItens
         // 
         AutoScaleDimensions = new SizeF(10F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1120, 935);
         Controls.Add(tabControl1);
         DoubleBuffered = true;
-        Name = "FrmAcougue";
+        Name = "FrmControleItens";
         StartPosition = FormStartPosition.CenterParent;
         Text = "Controle de ítens";
         tabControl1.ResumeLayout(false);

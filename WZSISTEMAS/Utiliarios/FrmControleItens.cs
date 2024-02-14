@@ -1,12 +1,12 @@
-﻿namespace WZSISTEMAS.Acougue;
+﻿namespace WZSISTEMAS.Utiliarios;
 
-public partial class FrmAcougue : Form
+public partial class FrmControleItens : Form
 {
     private readonly IServicoItens servicoItens;
     private Item itemPrincipal;
     private int indexSelecionado;
 
-    public FrmAcougue(IServicoItens servicoItens)
+    public FrmControleItens(IServicoItens servicoItens)
     {
         InitializeComponent();
 
@@ -38,7 +38,21 @@ public partial class FrmAcougue : Form
             {
                 txtItemPrincipalValorTotal.Text.ConverterParaDecimal(out var valorTotal);
 
-                txtItemPrincipalCustoKG.Text = (valorTotal / peso).ToString();
+                txtItemPrincipalCustoKG.Text = $"{(valorTotal / peso):0.000}";
+            }
+        }
+    }
+
+    private void txtItemPrincipalCustoKG_Leave(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(txtItemPrincipalCustoKG.Text))
+        {
+            if (!decimal.TryParse(txtItemPrincipalPeso.Text, out var peso))
+            {
+                this.ExibirMensagem("O custo (KG) não é válido.", "Custo (KG) inválido");
+
+                txtItemPrincipalPeso.Clear();
+                txtItemPrincipalPeso.Selecionar();
             }
         }
     }
@@ -70,7 +84,7 @@ public partial class FrmAcougue : Form
 
             if (frm.ShowDialog(this, DialogResult.OK))
             {
-                var item = servicoItens.ObterPorId(frm.Id);
+                var item = servicoItens.ObterPorIdComItensDerivados(frm.Id);
 
                 if (item is null)
                 {
@@ -79,6 +93,25 @@ public partial class FrmAcougue : Form
                 else
                 {
                     itemPrincipal = item;
+
+                    txtItemPrincipalId.Text = item.Id.ToString();
+                    txtItemPrincipalDescricao.Text = item.Descricao;
+
+                    foreach (var itemDerivado in item.ItensDerivados)
+                        dgvItensDerivadosCadastros.Adicionar(itemDerivado.Id, itemDerivado.Descricao, "0.000", "0.000");
+
+                    txtItemDerivadoDescricao.Clear();
+                    txtItemDerivadoPeso.Clear();
+                    txtItemDerivadoCustoReal.Clear();
+                    txtItemDerivadoMargemLucro.Clear();
+                    txtItemDerivadoPrecoFinal.Clear();
+
+                    txtItemDerivadoPeso.Desativar();
+                    txtItemDerivadoCustoReal.Desativar();
+                    txtItemDerivadoMargemLucro.Desativar();
+                    txtItemDerivadoPrecoFinal.Desativar();
+
+                    btnItensDerivadosSalvar.Hide();
                 }
             }
         }
@@ -88,7 +121,7 @@ public partial class FrmAcougue : Form
         }
     }
 
-    private void dgvCadastros_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+    private void DgvCadastros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.LinhaEColunaSelecionada())
         {

@@ -3,32 +3,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WZSISTEMAS.Dados.Servicos;
 
-public abstract class ServicoEntidades<TEntity>(
+public abstract class ServicoEntidades<TEntidade>(
     DbContext dbContext)
-    : IServicoEntidades<TEntity> where TEntity : Entidade
+    : IServicoEntidades<TEntidade> where TEntidade : Entidade
 {
     protected DbContext DbContext { get; } = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
 
-    public virtual void Criar(TEntity entidade)
+    public virtual void Criar(TEntidade entidade)
         => DbContext.Add(entidade ?? throw new ArgumentNullException(nameof(entidade)));
 
-    public virtual void CriarVarios(IEnumerable<TEntity> entidades)
-        => DbContext.Set<TEntity>().AddRange(entidades);
+    public virtual void CriarVarios(IEnumerable<TEntidade> entidades)
+        => DbContext.Set<TEntidade>().AddRange(entidades);
 
-    public virtual void Editar(TEntity entidade)
+    public virtual void Editar(TEntidade entidade)
         => DbContext.Update(entidade ?? throw new ArgumentNullException(nameof(entidade)));
 
-    public virtual void EditarVarios(IEnumerable<TEntity> entidades)
+    public virtual void EditarVarios(IEnumerable<TEntidade> entidades)
         => DbContext.UpdateRange(entidades);
 
     public virtual void ExcluirPeloId(long id)
-        => DbContext.Set<TEntity>().Remove(ObterPorId(id) ?? throw new InvalidOperationException("Entidade não encontrada"));
+        => DbContext.Set<TEntidade>().Remove(ObterPorId(id) ?? throw new InvalidOperationException("Entidade não encontrada"));
 
-    public virtual TEntity? ObterPorId(long id, bool usarRastreamento = false)
-        => dbContext.Set<TEntity>().PrimeiroOuPadrao(entidade => entidade.Id == id, usarRastreamento);
+    public virtual TEntidade? ObterPorId(long id, bool usarRastreamento = false)
+        => dbContext.Set<TEntidade>().PrimeiroOuPadrao(entidade => entidade.Id == id, usarRastreamento);
 
-    public virtual IEnumerable<TEntity> ObterLista()
-        => DbContext.Set<TEntity>().ObterLista();
+    public virtual IEnumerable<TEntidade> ObterLista()
+        => DbContext.Set<TEntidade>().ObterLista();
 
     public virtual void DescartarAlteracoes()
         => DbContext.ChangeTracker.Clear();
@@ -37,18 +37,19 @@ public abstract class ServicoEntidades<TEntity>(
         => DbContext.SaveChanges();
 
     public virtual bool Contem()
-        => DbContext.Set<TEntity>()
+        => DbContext.Set<TEntidade>()
         .AsNoTracking()
         .Select(entidade => entidade.Id)
         .Any();
 
-    public virtual IEnumerable<ItemLista<long>> ObterListaItens()
-        => DbContext.Set<TEntity>()
+    public virtual IEnumerable<ItemLista<long>> ObterListaItens(params long[] idsIgnorados)
+        => DbContext.Set<TEntidade>()
             .AsNoTracking()
+            .FiltrarIdsIgnorados(idsIgnorados)
             .Select(ConverterEntidadeParaLista())
             .ObterLista();
 
-    protected virtual Expression<Func<TEntity, ItemLista<long>>> ConverterEntidadeParaLista()
+    protected virtual Expression<Func<TEntidade, ItemLista<long>>> ConverterEntidadeParaLista()
         => entidade => new ItemLista<long>
         {
             Item = entidade.Id,

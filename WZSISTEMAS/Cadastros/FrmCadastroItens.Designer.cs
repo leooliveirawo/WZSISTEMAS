@@ -2,7 +2,7 @@
 
 namespace WZSISTEMAS.Cadastros;
 
-partial class FrmCadastroProdutos
+partial class FrmCadastroItens
 {
     /// <summary>
     /// Required designer variable.
@@ -33,6 +33,9 @@ partial class FrmCadastroProdutos
         gbxDados = new GroupBox();
         tbcDados = new TabControl();
         tbpDadosPrincipais = new TabPage();
+        groupBox4 = new GroupBox();
+        cbbxTipo = new ComboBox();
+        label20 = new Label();
         groupBox6 = new GroupBox();
         chbxNotificarEstoqueBaixo = new CheckBox();
         chbxGerenciarEstoque = new CheckBox();
@@ -106,11 +109,11 @@ partial class FrmCadastroProdutos
         gbxBusca = new GroupBox();
         chbxUsarCodigoReferencia = new CheckBox();
         btnBuscarConsultaAvancada = new Button();
-        cbbxTipo = new ComboBox();
-        label20 = new Label();
+        cbbxItemPrincipal = new ComboBox();
         gbxDados.SuspendLayout();
         tbcDados.SuspendLayout();
         tbpDadosPrincipais.SuspendLayout();
+        groupBox4.SuspendLayout();
         groupBox6.SuspendLayout();
         groupBox5.SuspendLayout();
         groupBox1.SuspendLayout();
@@ -157,6 +160,7 @@ partial class FrmCadastroProdutos
         // 
         // tbpDadosPrincipais
         // 
+        tbpDadosPrincipais.Controls.Add(groupBox4);
         tbpDadosPrincipais.Controls.Add(cbbxTipo);
         tbpDadosPrincipais.Controls.Add(label20);
         tbpDadosPrincipais.Controls.Add(groupBox6);
@@ -180,6 +184,35 @@ partial class FrmCadastroProdutos
         tbpDadosPrincipais.TabIndex = 0;
         tbpDadosPrincipais.Text = "Dados principais";
         tbpDadosPrincipais.UseVisualStyleBackColor = true;
+        // 
+        // groupBox4
+        // 
+        groupBox4.Controls.Add(cbbxItemPrincipal);
+        groupBox4.Location = new Point(544, 396);
+        groupBox4.Name = "groupBox4";
+        groupBox4.Size = new Size(499, 145);
+        groupBox4.TabIndex = 16;
+        groupBox4.TabStop = false;
+        groupBox4.Text = "Ítem principal";
+        // 
+        // cbbxTipo
+        // 
+        cbbxTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbbxTipo.FormattingEnabled = true;
+        cbbxTipo.Location = new Point(269, 357);
+        cbbxTipo.Name = "cbbxTipo";
+        cbbxTipo.Size = new Size(256, 33);
+        cbbxTipo.TabIndex = 14;
+        // 
+        // label20
+        // 
+        label20.AutoSize = true;
+        label20.Location = new Point(271, 329);
+        label20.Margin = new Padding(4, 0, 4, 0);
+        label20.Name = "label20";
+        label20.Size = new Size(47, 25);
+        label20.TabIndex = 15;
+        label20.Text = "Tipo";
         // 
         // groupBox6
         // 
@@ -978,24 +1011,14 @@ partial class FrmCadastroProdutos
         btnBuscarConsultaAvancada.UseVisualStyleBackColor = true;
         btnBuscarConsultaAvancada.Click += BtnBuscarConsultaAvancada_Click;
         // 
-        // cbbxTipo
+        // cbbxItemPrincipal
         // 
-        cbbxTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-        cbbxTipo.FormattingEnabled = true;
-        cbbxTipo.Location = new Point(269, 357);
-        cbbxTipo.Name = "cbbxTipo";
-        cbbxTipo.Size = new Size(256, 33);
-        cbbxTipo.TabIndex = 14;
-        // 
-        // label20
-        // 
-        label20.AutoSize = true;
-        label20.Location = new Point(271, 329);
-        label20.Margin = new Padding(4, 0, 4, 0);
-        label20.Name = "label20";
-        label20.Size = new Size(47, 25);
-        label20.TabIndex = 15;
-        label20.Text = "Tipo";
+        cbbxItemPrincipal.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbbxItemPrincipal.FormattingEnabled = true;
+        cbbxItemPrincipal.Location = new Point(6, 30);
+        cbbxItemPrincipal.Name = "cbbxItemPrincipal";
+        cbbxItemPrincipal.Size = new Size(487, 33);
+        cbbxItemPrincipal.TabIndex = 14;
         // 
         // FrmCadastroProdutos
         // 
@@ -1020,6 +1043,7 @@ partial class FrmCadastroProdutos
         tbcDados.ResumeLayout(false);
         tbpDadosPrincipais.ResumeLayout(false);
         tbpDadosPrincipais.PerformLayout();
+        groupBox4.ResumeLayout(false);
         groupBox6.ResumeLayout(false);
         groupBox6.PerformLayout();
         groupBox5.ResumeLayout(false);
@@ -1126,4 +1150,6 @@ partial class FrmCadastroProdutos
     private Controles.ControleCOFINS ctCOFINS;
     private ComboBox cbbxTipo;
     private Label label20;
+    private GroupBox groupBox4;
+    private ComboBox cbbxItemPrincipal;
 }

@@ -50,6 +50,7 @@
 		<Using Include="WZSISTEMAS.Base.NotaFiscal.Valores.SAT" />
 		<Using Include="WZSISTEMAS.Base.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Base.Valores" />
+		<Using Include="WZSISTEMAS.Dados.EF.Helpers" />
 		<Using Include="WZSISTEMAS.Dados.Entidades" />
 		<Using Include="WZSISTEMAS.Dados.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Dados.Valores" />
@@ -62,6 +63,12 @@
 
 	<ItemGroup>
 	  <None Update="EF\CriarDB.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="EF\WZSISTEMAS.mdf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="EF\WZSISTEMAS_log.ldf">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>

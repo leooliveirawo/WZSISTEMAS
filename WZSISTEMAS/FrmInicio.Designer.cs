@@ -46,6 +46,7 @@
             tsmiCaixa = new ToolStripMenuItem();
             tsmiUtilitarios = new ToolStripMenuItem();
             tsmiUtilitariosManutencaoVenda = new ToolStripMenuItem();
+            tsmiPedidos = new ToolStripMenuItem();
             tsmiFrenteCaixa = new ToolStripMenuItem();
             tsmiConfiguracoes = new ToolStripMenuItem();
             bancoDeDadosToolStripMenuItem = new ToolStripMenuItem();
@@ -59,7 +60,7 @@
             groupBox1 = new GroupBox();
             btnCadastrosFornecedores = new Button();
             bntCadastrosProdutos = new Button();
-            tsmiPedidos = new ToolStripMenuItem();
+            tsmiUtilitariosControleItens = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -178,7 +179,7 @@
             // 
             // tsmiUtilitarios
             // 
-            tsmiUtilitarios.DropDownItems.AddRange(new ToolStripItem[] { tsmiUtilitariosManutencaoVenda, tsmiPedidos });
+            tsmiUtilitarios.DropDownItems.AddRange(new ToolStripItem[] { tsmiUtilitariosManutencaoVenda, tsmiPedidos, tsmiUtilitariosControleItens });
             tsmiUtilitarios.Name = "tsmiUtilitarios";
             tsmiUtilitarios.Size = new Size(102, 29);
             tsmiUtilitarios.Text = "Utilitários";
@@ -189,6 +190,13 @@
             tsmiUtilitariosManutencaoVenda.Size = new Size(299, 34);
             tsmiUtilitariosManutencaoVenda.Text = "Manutençao de Vendas";
             tsmiUtilitariosManutencaoVenda.Click += ManutencaoDeVendasToolStripMenuItem_Click;
+            // 
+            // tsmiPedidos
+            // 
+            tsmiPedidos.Name = "tsmiPedidos";
+            tsmiPedidos.Size = new Size(299, 34);
+            tsmiPedidos.Text = "Pedidos";
+            tsmiPedidos.Click += TsmiPedidos_Click;
             // 
             // tsmiFrenteCaixa
             // 
@@ -320,12 +328,12 @@
             bntCadastrosProdutos.UseVisualStyleBackColor = true;
             bntCadastrosProdutos.Click += AbrirCadastrosProdutos_Click;
             // 
-            // tsmiPedidos
+            // tsmiUtilitariosControleItens
             // 
-            tsmiPedidos.Name = "tsmiPedidos";
-            tsmiPedidos.Size = new Size(299, 34);
-            tsmiPedidos.Text = "Pedidos";
-            tsmiPedidos.Click += TsmiPedidos_Click;
+            tsmiUtilitariosControleItens.Name = "tsmiUtilitariosControleItens";
+            tsmiUtilitariosControleItens.Size = new Size(299, 34);
+            tsmiUtilitariosControleItens.Text = "Controle de ítens";
+            tsmiUtilitariosControleItens.Click += TsmiUtilitariosControleItens_Click;
             // 
             // FrmInicio
             // 
@@ -381,5 +389,6 @@
         private ToolStripMenuItem tsmiDesenvolvedorInvalidarToken;
         private ToolStripMenuItem tsmiUtilitarios;
         private ToolStripMenuItem tsmiPedidos;
+        private ToolStripMenuItem tsmiUtilitariosControleItens;
     }
 }

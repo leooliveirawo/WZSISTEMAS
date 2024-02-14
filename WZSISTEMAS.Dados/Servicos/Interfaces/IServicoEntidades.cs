@@ -13,9 +13,9 @@ public interface IServicoEntidades<TEntidade> where TEntidade : Entidade
         bool usarRastreamento = false);
 
     IEnumerable<TEntidade> ObterLista();
-    IEnumerable<ItemLista<long>> ObterListaItens();
-   void DescartarAlteracoes();
-   void SalvarAlteracoes();
+    IEnumerable<ItemLista<long>> ObterListaItens(params long[] idsIgnorados);
+    void DescartarAlteracoes();
+    void SalvarAlteracoes();
 
     bool Contem();
 }

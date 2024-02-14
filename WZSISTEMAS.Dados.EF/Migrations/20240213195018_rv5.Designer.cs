@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WZSISTEMAS.Dados.EF;
 
@@ -11,9 +12,11 @@ using WZSISTEMAS.Dados.EF;
 namespace WZSISTEMAS.Dados.EF.Migrations
 {
     [DbContext(typeof(WZSISTEMASEFDbContext))]
-    partial class WZSISTEMASEFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240213195018_rv5")]
+    partial class rv5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
