@@ -1020,7 +1020,7 @@ partial class FrmCadastroItens
         cbbxItemPrincipal.Size = new Size(487, 33);
         cbbxItemPrincipal.TabIndex = 14;
         // 
-        // FrmCadastroProdutos
+        // FrmCadastroItens
         // 
         AutoScaleDimensions = new SizeF(10F, 25F);
         AutoScaleMode = AutoScaleMode.Font;

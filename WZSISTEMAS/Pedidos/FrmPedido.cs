@@ -403,7 +403,7 @@ public partial class FrmPedido : Form
     {
         try
         {
-            using var frm = ProvedorServicos.FrmCadastroProdutos();
+            using var frm = ProvedorServicos.FrmCadastroItens();
 
             frm.ShowDialog(this);
         }

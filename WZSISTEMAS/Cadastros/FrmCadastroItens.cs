@@ -8,7 +8,7 @@ public partial class FrmCadastroItens : Form
 
     private CadastroModos modo;
 
-    public FrmCadastroProdutos(
+    public FrmCadastroItens(
         IServicoItens servicoEntidades,
         IServicoJson servicoJson)
     {
@@ -373,6 +373,8 @@ public partial class FrmCadastroItens : Form
         try
         {
             using var frm = new FrmConsultaAvancadaItens(servicoEntidades);
+
+            frm.DefinirTipo(TipoConsultaItens.Padrao);
 
             if (frm.ShowDialog(this, DialogResult.OK))
             {

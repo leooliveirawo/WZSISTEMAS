@@ -20,8 +20,8 @@ public static partial class ServiceProviderHelper
     public static FrmCadastroFuncionarios FrmCadastroFuncionarios(this IServiceProvider services)
         => services.GetRequiredService<FrmCadastroFuncionarios>();
 
-    public static FrmCadastroProdutos FrmCadastroProdutos(this IServiceProvider services)
-        => services.GetRequiredService<FrmCadastroProdutos>();
+    public static FrmCadastroItens FrmCadastroItens(this IServiceProvider services)
+        => services.GetRequiredService<FrmCadastroItens>();
 
     public static FrmCadastroTransportadoras FrmCadastroTransportadoras(this IServiceProvider services)
         => services.GetRequiredService<FrmCadastroTransportadoras>();

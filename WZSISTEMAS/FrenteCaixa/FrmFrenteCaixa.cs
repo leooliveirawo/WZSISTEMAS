@@ -494,7 +494,7 @@ public partial class FrmFrenteCaixa : Form
     {
         try
         {
-            using var frm = ProvedorServicos.FrmCadastroProdutos();
+            using var frm = ProvedorServicos.FrmCadastroItens();
 
             frm.ShowDialog(this);
         }

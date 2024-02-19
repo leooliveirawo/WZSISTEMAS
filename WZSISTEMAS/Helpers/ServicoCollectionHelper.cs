@@ -42,7 +42,7 @@ public static class ServicoCollectionHelper
             servicos.AddTransient<FrmCadastroEmpresas>();
             servicos.AddTransient<FrmCadastroFornecedores>();
             servicos.AddTransient<FrmCadastroFuncionarios>();
-            servicos.AddTransient<FrmCadastroProdutos>();
+            servicos.AddTransient<FrmCadastroItens>();
             servicos.AddTransient<FrmCadastroTransportadoras>();
         }
 

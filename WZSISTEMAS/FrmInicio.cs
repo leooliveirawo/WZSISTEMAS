@@ -130,7 +130,7 @@ public partial class FrmInicio : FrmBase
 
     private void AbrirCadastrosProdutos_Click(object sender, EventArgs e)
     {
-        using var frm = ProvedorServicos.FrmCadastroProdutos();
+        using var frm = ProvedorServicos.FrmCadastroItens();
 
         frm.ShowDialog(this);
     }
