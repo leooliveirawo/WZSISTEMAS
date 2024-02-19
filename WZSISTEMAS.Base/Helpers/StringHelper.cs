@@ -33,7 +33,7 @@ public static class StringHelper
         return saida;
     }
 
-    public static void ConverterParaDecimal(
+    public static bool ConverterParaDecimal(
         this string texto,
         out decimal numero)
         => decimal.TryParse(texto, out numero);
@@ -53,4 +53,10 @@ public static class StringHelper
             out var saida)
         ? saida :
         (decimal?)default;
+
+    public static bool VazioOuNulo(this string? texto)
+        => string.IsNullOrEmpty(texto);
+
+    public static bool EmBrancoOuNulo(this string? texto)
+        => string.IsNullOrWhiteSpace(texto);
 }
