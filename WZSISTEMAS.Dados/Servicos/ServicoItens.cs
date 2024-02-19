@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.EntityFrameworkCore;
 
 namespace WZSISTEMAS.Dados.Servicos;
@@ -21,24 +22,53 @@ public class ServicoItens(
     public IEnumerable<Item> ListarPorIdCodigoBarrasCodigoReferenciaDescricao(
         string valor,
         TipoConsultaItens tipo = TipoConsultaItens.Padrao)
-    {
-        var query = DbContext.Set<Item>()
-            .Where(item => item.Descricao.Contains(valor)
-                           || item.CodigoBarras == valor
-                           || item.CodigoReferencia == valor);
-
-        query = valor.ConverterParaLong(out var id)
-            ? query.Where(item => item.Id == id)
-            : query;
-
-        query = tipo == TipoConsultaItens.ItensPrincipais
-            ? query.Where(item => item.ItensDerivados.Any())
-            : tipo == TipoConsultaItens.ItensDerivados
-                ? query.Where(item => item.ItemPrincipalId.HasValue)
-                : query;
-        
-        return query.ToList();
-    }
+        => tipo switch
+        {
+            TipoConsultaItens.Padrao when valor.ConverterParaLong(out var id) => DbContext.Set<Item>()
+                .Where(item => 
+                    item.Id == id 
+                    || item.Descricao.Contains(valor) 
+                    || item.CodigoBarras == valor 
+                    || item.CodigoReferencia == valor)
+                .ToList(),
+            TipoConsultaItens.Padrao => DbContext.Set<Item>()
+                .Where(item =>
+                    item.Descricao.Contains(valor)
+                    || item.CodigoBarras == valor
+                    || item.CodigoReferencia == valor)
+                .ToList(),
+            TipoConsultaItens.ItensPrincipais when valor.ConverterParaLong(out var id) => DbContext.Set<Item>()
+                .Where(item => 
+                    item.ItensDerivados.Any()
+                    && item.Id == id
+                    || item.Descricao.Contains(valor)
+                    || item.CodigoBarras == valor
+                    || item.CodigoReferencia == valor)
+                .ToList(),
+            TipoConsultaItens.ItensPrincipais => DbContext.Set<Item>()
+                .Where(item =>
+                    item.ItensDerivados.Any()
+                    && item.Descricao.Contains(valor)
+                    || item.CodigoBarras == valor
+                    || item.CodigoReferencia == valor)
+                .ToList(),
+            TipoConsultaItens.ItensDerivados when valor.ConverterParaLong(out var id) => DbContext.Set<Item>()
+                .Where(item =>
+                    item.ItemPrincipalId.HasValue
+                    && item.Id == id 
+                    || item.Descricao.Contains(valor)
+                    || item.CodigoBarras == valor
+                    || item.CodigoReferencia == valor)
+                .ToList(),
+            TipoConsultaItens.ItensDerivados => DbContext.Set<Item>()
+                .Where(item =>
+                    item.ItemPrincipalId.HasValue
+                    && item.Descricao.Contains(valor) 
+                    || item.CodigoBarras == valor 
+                    || item.CodigoReferencia == valor)
+                .ToList(),
+            _ => throw new NotSupportedException()
+        };
 
     public Item? ObterPorIdComItensDerivados(long id)
     {

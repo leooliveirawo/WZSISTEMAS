@@ -1,9 +1,11 @@
-﻿namespace WZSISTEMAS.Utiliarios;
+﻿using System.Reflection.PortableExecutable;
+
+namespace WZSISTEMAS.Utiliarios;
 
 public partial class FrmControleItens : Form
 {
     private readonly IServicoItens servicoItens;
-    private Item itemPrincipal;
+    private ItemPrincipal? itemPrincipal;
     private int indexSelecionado;
 
     public FrmControleItens(IServicoItens servicoItens)
@@ -15,66 +17,114 @@ public partial class FrmControleItens : Form
 
     private void RedefinirItensDerivados()
     {
-        txtItemDerivadoCustoReal.Clear();
-        txtItemDerivadoMargemLucro.Clear();
-        txtItemDerivadoPeso.Clear();
-        txtItemDerivadoPrecoFinal.Clear();
         txtItemDerivadoDescricao.Clear();
+        txtItemDerivadoPeso.Clear();
+        txtItemDerivadoCustoRealKG.Clear();
+        txtItemDerivadoMargemLucro.Clear();
+        txtItemDerivadoPrecoFinalKG.Clear();
     }
 
-    private void TxtPeso_Leave(object sender, EventArgs e)
+    private void TxtItemPrincipalPeso_Leave(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(txtItemPrincipalPeso.Text))
+        if (!txtItemPrincipalPeso.Text.EmBrancoOuNulo())
         {
-            if (!decimal.TryParse(txtItemPrincipalPeso.Text, out var peso))
+            if (!txtItemPrincipalPeso.Text.ConverterParaDecimal(out var peso))
             {
-                this.ExibirMensagem("O peso informado não é válido.", "Peso inválido");
+                this.ExibirMensagem("O peso informado do ítem principal não é válido.", "Peso inválido");
+
+                itemPrincipal.PesoKG = 0;
 
                 txtItemPrincipalPeso.Clear();
                 txtItemPrincipalPeso.Selecionar();
             }
-            else if (!string.IsNullOrWhiteSpace(txtItemPrincipalValorTotal.Text)
-                     && this.ExibirMensagemSimNao("Deseja calcular o custo/kg?", "Calcular?"))
-            {
-                txtItemPrincipalValorTotal.Text.ConverterParaDecimal(out var valorTotal);
+            else
+                itemPrincipal.PesoKG = peso;
+        }
+        else
+            itemPrincipal.PesoKG = 0;
+    }
 
-                txtItemPrincipalCustoKG.Text = $"{(valorTotal / peso):0.000}";
+    private void TxtItemPrincipalCustoReal_Leave(object sender, EventArgs e)
+    {
+        if (!txtItemPrincipalCustoReal.Text.EmBrancoOuNulo())
+        {
+            if (!txtItemPrincipalCustoReal.Text.ConverterParaDecimal(out var custoReal))
+            {
+                this.ExibirMensagem("O custo real informado do ítem principal não é válido.", "Custo real inválido");
+
+                itemPrincipal.CustoReal = 0;
+                itemPrincipal.CustoRealFinal = 0;
+                itemPrincipal.CustoRealKG = 0;
+
+                txtItemPrincipalCustoReal.Clear();
+                txtItemPrincipalCustoRealFinal.Clear();
+                txtItemPrincipalCustoRealKG.Clear();
+
+                txtItemPrincipalCustoReal.Selecionar();
+            }
+            else
+            {
+                itemPrincipal.CustoReal = custoReal;
+                
+                CalcularItemPrincipalCustoRealKG();
             }
         }
+        else
+            itemPrincipal.CustoReal = 0;
     }
 
-    private void txtItemPrincipalCustoKG_Leave(object sender, EventArgs e)
+    private void CalcularItemPrincipalCustoRealKG()
     {
-        if (!string.IsNullOrWhiteSpace(txtItemPrincipalCustoKG.Text))
+        if (itemPrincipal is { CustoReal: > 0, PesoKG: > 0 })
         {
-            if (!decimal.TryParse(txtItemPrincipalPeso.Text, out var peso))
+            itemPrincipal.CalcularCustoRealFinal();
+            itemPrincipal.CalcularCustoRealKG();
+
+            txtItemPrincipalCustoRealFinal.Text = $"{itemPrincipal.CustoRealFinal:0.00}";
+            txtItemPrincipalCustoRealKG.Text = $"{itemPrincipal.CustoRealKG:0.00}";
+
+            for (var index = 0; index < itemPrincipal.ItensDerivados.Count; index++)
             {
-                this.ExibirMensagem("O custo (KG) não é válido.", "Custo (KG) inválido");
+                var itemDerivado = itemPrincipal.ItensDerivados.ElementAt(index);
 
-                txtItemPrincipalPeso.Clear();
-                txtItemPrincipalPeso.Selecionar();
+                itemDerivado.CustoRealKG = itemPrincipal.CustoRealKG;
+
+                if (itemDerivado.MargemLucro > 0)
+                {
+                    itemDerivado.PrecoFinalKG = itemDerivado.CustoRealKG.AplicarPorcentagem(itemDerivado.MargemLucro);
+
+                    dgvItensDerivadosCadastros[clnItemDerivadoPrecoFinalKG.Name, index].Value =
+                        $"{itemDerivado.PrecoFinalKG:C2}";
+                }
             }
+
+            txtItemPrincipalCustoRealKG.Selecionar();
         }
     }
 
-    private void TxtValorTotal_Leave(object sender, EventArgs e)
+
+    private void TxtItemPrincipalQuebra_Leave(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(txtItemPrincipalValorTotal.Text)
-            && !decimal.TryParse(txtItemPrincipalValorTotal.Text, out var peso))
+        if (!txtItemPrincipalQuebra.Text.EmBrancoOuNulo())
         {
-            this.ExibirMensagem("O valor total da novilha informado não é válido.", "Valor total inválido");
+            if (!txtItemPrincipalQuebra.Text.ConverterParaDecimal(out var quebra))
+            {
+                this.ExibirMensagem("O peso (quebra) informado do ítem principal não é válido.", "Peso (quebra) inválido");
 
-            txtItemPrincipalValorTotal.Clear();
-            txtItemPrincipalValorTotal.Selecionar();
+                itemPrincipal.Quebra = 0;
+
+                txtItemPrincipalQuebra.Clear();
+
+                txtItemPrincipalQuebra.Selecionar();
+            }
+            else
+                itemPrincipal.Quebra = quebra;
         }
+        else
+            itemPrincipal.Quebra = 0;
     }
 
-    private void btnItemDerivadoSalvar_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnItemPrincipalSelecionar_Click(object sender, EventArgs e)
+    private void BtnItemPrincipalSelecionar_Click(object sender, EventArgs e)
     {
         try
         {
@@ -87,31 +137,56 @@ public partial class FrmControleItens : Form
                 var item = servicoItens.ObterPorIdComItensDerivados(frm.Id);
 
                 if (item is null)
-                {
                     this.ExibirMensagem("O item não foi encontrado.", "Item não encontrado");
-                }
                 else
                 {
-                    itemPrincipal = item;
+                    itemPrincipal = new(item);
 
-                    txtItemPrincipalId.Text = item.Id.ToString();
-                    txtItemPrincipalDescricao.Text = item.Descricao;
+                    txtItemPrincipalId.Text = itemPrincipal.Id.ToString();
+                    txtItemPrincipalCodBarrasCodRef.Text = itemPrincipal.CodigoBarrasCodigoReferencia;
+                    txtItemPrincipalDescricao.Text = itemPrincipal.Descricao;
 
-                    foreach (var itemDerivado in item.ItensDerivados)
-                        dgvItensDerivadosCadastros.Adicionar(itemDerivado.Id, itemDerivado.Descricao, "0.000", "0.000");
+                    txtItemPrincipalPeso.Ativar();
+                    txtItemPrincipalQuebra.Ativar();
+                    txtItemPrincipalCustoReal.Ativar();
+
+                    txtItemPrincipalCustoRealKG.Ativar();
+
+                    txtItemPrincipalPeso.Clear();
+
+                    txtItemPrincipalCustoReal.Clear();
+
+                    txtItemPrincipalCustoRealKG.Clear();
+
+                    dgvItensDerivadosCadastros.Rows.Clear();
+
+                    foreach (var itemDerivado in itemPrincipal.ItensDerivados)
+                        dgvItensDerivadosCadastros.Adicionar(
+                            itemDerivado.Id,
+                            itemDerivado.Descricao,
+                            $"{itemDerivado.PesoKG:0.000}",
+                            $"{itemDerivado.MargemLucro:0.000}",
+                            $"{itemDerivado.PrecoFinalKG:C2}");
 
                     txtItemDerivadoDescricao.Clear();
+
                     txtItemDerivadoPeso.Clear();
-                    txtItemDerivadoCustoReal.Clear();
+
+                    txtItemDerivadoCustoRealKG.Clear();
                     txtItemDerivadoMargemLucro.Clear();
-                    txtItemDerivadoPrecoFinal.Clear();
+                    txtItemDerivadoPrecoFinalKG.Clear();
 
                     txtItemDerivadoPeso.Desativar();
-                    txtItemDerivadoCustoReal.Desativar();
-                    txtItemDerivadoMargemLucro.Desativar();
-                    txtItemDerivadoPrecoFinal.Desativar();
 
-                    btnItensDerivadosSalvar.Hide();
+                    txtItemDerivadoCustoRealKG.Desativar();
+                    txtItemDerivadoMargemLucro.Desativar();
+                    txtItemDerivadoPrecoFinalKG.Desativar();
+
+                    gbxItemDerivado.Ativar();
+
+                    btnItensDerivadosSalvar.Desativar();
+
+                    txtItemPrincipalPeso.Selecionar();
                 }
             }
         }
@@ -119,6 +194,81 @@ public partial class FrmControleItens : Form
         {
             this.ExibirMensagemErro(erro);
         }
+    }
+
+    private void TxtItemDerivadoMargemLucro_Leave(object sender, EventArgs e)
+    {
+        var itemDerivado = itemPrincipal.ItensDerivados.ElementAt(indexSelecionado);
+
+        if (!txtItemDerivadoMargemLucro.Text.EmBrancoOuNulo())
+        {
+            if (!txtItemDerivadoMargemLucro.Text.ConverterParaDecimal(out var margemLucro))
+            {
+                this.ExibirMensagem("A margem de lucro do item derivado informada não é válida.",
+                    "Margem de lucro inválida");
+
+                itemDerivado.MargemLucro = 0;
+                txtItemDerivadoMargemLucro.Text = "0";
+                txtItemDerivadoMargemLucro.Selecionar();
+            }
+            else
+                itemDerivado.MargemLucro = margemLucro;
+        }
+        else
+            itemDerivado.MargemLucro = 0;
+
+    }
+
+    private void TxtItemDerivadoPrecoFinalKG_Leave(object sender, EventArgs e)
+    {
+        var itemDerivado = itemPrincipal.ItensDerivados.ElementAt(indexSelecionado);
+
+        if (!txtItemDerivadoPrecoFinalKG.Text.EmBrancoOuNulo())
+        {
+            if (!txtItemDerivadoPrecoFinalKG.Text.ConverterParaDecimal(out var precoFinal))
+            {
+                this.ExibirMensagem("O preço final/KG do item derivado informado não é válido.",
+                    "Preço final/KG inválido");
+
+                itemDerivado.PrecoFinalKG = 0;
+                txtItemDerivadoPrecoFinalKG.Text = "0";
+                txtItemDerivadoPrecoFinalKG.Selecionar();
+            }
+            else
+                itemDerivado.PrecoFinalKG = precoFinal;
+        }
+        else
+            itemDerivado.PrecoFinalKG = 0;
+
+        dgvItensDerivadosCadastros.ObterPrimeiraLinhaSelecionada().Cells[clnItemDerivadoPrecoFinalKG.Name].Value =
+            $"{itemDerivado.PrecoFinalKG:C2}";
+
+    }
+
+    private void TxtItemDerivadoPeso_Leave(object sender, EventArgs e)
+    {
+        var itemDerivado = itemPrincipal.ItensDerivados.ElementAt(indexSelecionado);
+
+        if (!txtItemDerivadoPeso.Text.EmBrancoOuNulo())
+        {
+            if (!txtItemDerivadoPeso.Text.ConverterParaDecimal(out var peso))
+            {
+                this.ExibirMensagem("O peso/KG do item derivado informado não é válido.",
+                    "Peso/KG inválido");
+
+                itemDerivado.PesoKG = 0;
+                txtItemDerivadoPeso.Text = "0";
+                txtItemDerivadoPeso.Selecionar();
+            }
+            else
+                itemDerivado.PesoKG = peso;
+        }
+        else
+            itemDerivado.PesoKG = 0;
+
+
+        dgvItensDerivadosCadastros.ObterPrimeiraLinhaSelecionada().Cells[clnItemDerivadoPeso.Name].Value =
+            $"{itemDerivado.PesoKG:0.000}";
     }
 
     private void DgvCadastros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -132,22 +282,64 @@ public partial class FrmControleItens : Form
                 var itemDerivado = itemPrincipal.ItensDerivados.ElementAt(indexSelecionado);
 
                 txtItemDerivadoDescricao.Text = itemDerivado.Descricao;
-                txtItemDerivadoPeso.Text = itemDerivado.ToString();
-                txtItemDerivadoCustoReal.Text = itemDerivado.CustoReal.ToString();
-                txtItemDerivadoMargemLucro.Text = itemDerivado.MargemLucro.ToString();
-                txtItemDerivadoPrecoFinal.Text = itemDerivado.PrecoFinal.ToString();
+                txtItemDerivadoPeso.Text = itemDerivado.PesoKG.ToString();
+                txtItemDerivadoCustoRealKG.Text = $"{itemDerivado.CustoRealKG:0.00}";
+                txtItemDerivadoMargemLucro.Text = $"{itemDerivado.MargemLucro:0.000}";
+                txtItemDerivadoPrecoFinalKG.Text = $"{itemDerivado.PrecoFinalKG:0.00}";
 
                 txtItemDerivadoPeso.Ativar();
-                txtItemDerivadoCustoReal.Ativar();
+                txtItemDerivadoCustoRealKG.Ativar();
                 txtItemDerivadoMargemLucro.Ativar();
-                txtItemDerivadoPrecoFinal.Ativar();
+                txtItemDerivadoPrecoFinalKG.Ativar();
 
-                btnItensDerivadosSalvar.Show();
+                btnItensDerivadosSalvar.Ativar();
+
+                txtItemDerivadoPeso.Selecionar();
             }
             catch (Exception erro)
             {
                 this.ExibirMensagemErro(erro);
             }
+        }
+    }
+
+    private void CalcularItemDerivado(ItemDerivado itemDerivado)
+    {
+        itemDerivado.PrecoFinalKG = itemDerivado.CustoRealKG.AplicarPorcentagem(itemDerivado.MargemLucro);
+
+        txtItemDerivadoCustoRealKG.Text = $"{itemDerivado.CustoRealKG:0.00}";
+        txtItemDerivadoPrecoFinalKG.Text = $"{itemDerivado.PrecoFinalKG:0.00}";
+
+        dgvItensDerivadosCadastros.ObterPrimeiraLinhaSelecionada().Cells[clnItemDerivadoPrecoFinalKG.Name].Value =
+            $"{itemDerivado.PrecoFinalKG:C2}";
+    }
+
+    private void txtItemDerivadoMargemLucro_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void btnItensDerivadosSalvar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            foreach (var itemDerivado in itemPrincipal.ItensDerivados)
+            {
+                var item = servicoItens.ObterPorId(itemDerivado.Id, true);
+
+                item.CustoReal = itemDerivado.CustoRealKG;
+                item.PrecoFinal = itemDerivado.PrecoFinalKG;
+
+                servicoItens.Editar(item);
+            }
+
+            servicoItens.SalvarAlteracoes();
+
+            this.ExibirMensagemOperacaoConcluida("As alterações dos itens derivados foram salvas com sucesso.");
+        }
+        catch (Exception erro)
+        {
+            this.ExibirMensagemErro(erro);
         }
     }
 }
