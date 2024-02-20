@@ -47,6 +47,7 @@ partial class FrmConfigurarBancoDados
         txtBancoDados = new TextBox();
         btnSalvar = new Button();
         btnImportar = new Button();
+        btnTestarConexao = new Button();
         groupBox1.SuspendLayout();
         groupBox2.SuspendLayout();
         groupBox3.SuspendLayout();
@@ -241,11 +242,22 @@ partial class FrmConfigurarBancoDados
         btnImportar.UseVisualStyleBackColor = true;
         btnImportar.Click += BtnImportar_Click;
         // 
+        // btnTestarConexao
+        // 
+        btnTestarConexao.Location = new Point(12, 408);
+        btnTestarConexao.Name = "btnTestarConexao";
+        btnTestarConexao.Size = new Size(146, 34);
+        btnTestarConexao.TabIndex = 9;
+        btnTestarConexao.Text = "Testar conexão";
+        btnTestarConexao.UseVisualStyleBackColor = true;
+        btnTestarConexao.Click += btnTestarConexao_Click;
+        // 
         // FrmConfigurarBancoDados
         // 
         AutoScaleDimensions = new SizeF(10F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 454);
+        Controls.Add(btnTestarConexao);
         Controls.Add(btnImportar);
         Controls.Add(btnSalvar);
         Controls.Add(groupBox5);
@@ -297,4 +309,5 @@ partial class FrmConfigurarBancoDados
     private TextBox txtBancoDados;
     private Button btnSalvar;
     private Button btnImportar;
+    private Button btnTestarConexao;
 }

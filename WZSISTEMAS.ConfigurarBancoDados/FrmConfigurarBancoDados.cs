@@ -1,7 +1,3 @@
-using WZSISTEMAS.Base.EF.Servicos.Interfaces;
-using WZSISTEMAS.Base.EF.Valores;
-using WZSISTEMAS.WinForms.Helpers;
-
 namespace WZSISTEMAS.ConfigurarBancoDados;
 
 public partial class FrmConfigurarBancoDados : Form
@@ -12,35 +8,39 @@ public partial class FrmConfigurarBancoDados : Form
     {
         InitializeComponent();
 
-        this.servicoConexao = servicoConexao ?? throw new ArgumentNullException(nameof(servicoConexao));
+        this.servicoConexao = servicoConexao 
+                              ?? throw new ArgumentNullException(nameof(servicoConexao));
     }
 
-    private void FrmConfigurarBancoDados_Load(object sender, EventArgs e)
+    private ConfiguracoesConexao CriarConfiguracoesConexao()
     {
-        try
-        {
-            Hide();
+        var configuracoesConexao = new ConfiguracoesConexao();
 
-            var configuracoesConexao = servicoConexao.Carregar();
+        configuracoesConexao.TipoConexao =
+            rbtnAutenticacaoWindows.Checked
+                ? TipoConexao.AutenticacaoWindows
+                : TipoConexao.AutenticacaoSQL;
 
-            if (configuracoesConexao is not null)
-            {
-                Carregar(configuracoesConexao);
-            }
+        if (configuracoesConexao.TipoConexao == configuracoesConexao.TipoConexao)
+        {
+            configuracoesConexao.NomeUsuario = txtNomeUsuario.Text;
+            configuracoesConexao.Senha = txtSenha.Text;
+        }
 
-            Show();
-        }
-        catch (FormatException)
-        {
-            this.ExibirMensagemErro("Os dados de conexão salvos não são válidos.");
-        }
-        catch (Exception erro)
-        {
-            this.ExibirMensagemErro(erro);
-        }
+        configuracoesConexao.ModoConexao = rbtnModoSomenteLeitura.Checked
+            ? ModoConexao.SomenteLeitura
+            : ModoConexao.LeituraEEscrita;
+
+        configuracoesConexao.Criptografado = chbxUsarCriptografia.Checked;
+        configuracoesConexao.PossuiCertificado = chbxPossuiCertificado.Checked;
+
+        configuracoesConexao.Servidor = txtServidor.Text;
+        configuracoesConexao.BancoDados = txtBancoDados.Text;
+
+        return configuracoesConexao;
     }
 
-    private void Carregar(ConfiguracoesConexao configuracoesConexao)
+    private void PreencherTela(ConfiguracoesConexao configuracoesConexao)
     {
         if (configuracoesConexao.TipoConexao == TipoConexao.AutenticacaoWindows)
             rbtnAutenticacaoWindows.Marcar();
@@ -63,34 +63,35 @@ public partial class FrmConfigurarBancoDados : Form
         txtBancoDados.Text = configuracoesConexao.BancoDados;
     }
 
+    private void FrmConfigurarBancoDados_Load(object sender, EventArgs e)
+    {
+        try
+        {
+            Hide();
+
+            var configuracoesConexao = servicoConexao.Carregar();
+
+            if (configuracoesConexao is not null)
+                PreencherTela(configuracoesConexao);
+
+            Show();
+        }
+        catch (FormatException)
+        {
+            this.ExibirMensagemErro("Os dados de conexão salvos não são válidos.");
+        }
+        catch (Exception erro)
+        {
+            this.ExibirMensagemErro(erro);
+        }
+    }
+
     private void BtnSalvar_Click(object sender, EventArgs e)
     {
         try
         {
-            var configuracoesConexao = new ConfiguracoesConexao();
-
-            configuracoesConexao.TipoConexao =
-                rbtnAutenticacaoWindows.Checked
-                    ? TipoConexao.AutenticacaoWindows
-                    : TipoConexao.AutenticacaoSQL;
-
-            if (configuracoesConexao.TipoConexao == configuracoesConexao.TipoConexao)
-            {
-                configuracoesConexao.NomeUsuario = txtNomeUsuario.Text;
-                configuracoesConexao.Senha = txtSenha.Text;
-            }
-
-            configuracoesConexao.ModoConexao = rbtnModoSomenteLeitura.Checked
-                ? ModoConexao.SomenteLeitura
-                : ModoConexao.LeituraEEscrita;
-
-            configuracoesConexao.Criptografado = chbxUsarCriptografia.Checked;
-            configuracoesConexao.PossuiCertificado = chbxPossuiCertificado.Checked;
-
-            configuracoesConexao.Servidor = txtServidor.Text;
-            configuracoesConexao.BancoDados = txtBancoDados.Text;
-
-            servicoConexao.Salvar(configuracoesConexao);
+            servicoConexao.Salvar(
+                CriarConfiguracoesConexao());
 
             this.ExibirMensagemOperacaoConcluida("As alterações foram salvas com sucesso.");
         }
@@ -105,7 +106,7 @@ public partial class FrmConfigurarBancoDados : Form
     {
         try
         {
-            Carregar(
+            PreencherTela(
                 ConfiguracoesConexao.Criar(
                     Clipboard.GetText()));
         }
@@ -122,5 +123,25 @@ public partial class FrmConfigurarBancoDados : Form
 
         txtNomeUsuario.Clear();
         txtSenha.Clear();
+    }
+
+    private void btnTestarConexao_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            var configuracoesConexao = CriarConfiguracoesConexao();
+
+            if (servicoConexao.TestarConexao(configuracoesConexao))
+                this.ExibirMensagemOperacaoConcluida("A conexão com o banco de dados foi estabelecida com sucesso.");
+            else
+                this.ExibirMensagemErro(
+                    $"Não foi possível estabelecer a conexão com o banco de dados.{Environment.NewLine}{Environment.NewLine}Por favor verifique os dados de conexão.", "Conexão não estabelecida");
+
+            btnTestarConexao.Selecionar();
+        }
+        catch (Exception erro)
+        {
+            this.ExibirMensagemErro(erro);
+        }
     }
 }

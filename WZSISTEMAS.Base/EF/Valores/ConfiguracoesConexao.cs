@@ -83,4 +83,7 @@ public class ConfiguracoesConexao
                 : ModoConexao.SomenteLeitura
         };
     }
+
+    public static implicit operator string(ConfiguracoesConexao configuracoesConexao)
+        => configuracoesConexao.Converter();
 }

@@ -3,6 +3,7 @@
 public interface IServicoConexao
 {
     ConfiguracoesConexao? Carregar();
-   void Salvar(ConfiguracoesConexao configuracoesConexao);
+    void Salvar(ConfiguracoesConexao configuracoesConexao);
     bool Verificar();
+    bool TestarConexao(ConfiguracoesConexao configuracoesConexao);
 }

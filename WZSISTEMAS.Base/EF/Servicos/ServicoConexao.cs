@@ -1,4 +1,8 @@
-﻿namespace WZSISTEMAS.Base.EF.Servicos;
+﻿using System.Data;
+using System.Data.Common;
+using Microsoft.Data.SqlClient;
+
+namespace WZSISTEMAS.Base.EF.Servicos;
 public class ServicoConexao(
     IGerenciadorDiretorios gerenciadorDiretorios,
     IServicoJson servicoJson,
@@ -49,8 +53,29 @@ public class ServicoConexao(
         gerenciadorDiretorios.Configuracoes.Escrever(nomeArquivo, configuracoesConexaoJson);
     }
 
-    public bool Verificar()
+    public virtual bool Verificar()
+        => gerenciadorDiretorios.Configuracoes.Verificar(nomeArquivo);
+
+    public virtual bool TestarConexao(ConfiguracoesConexao configuracoesConexao)
     {
-        return gerenciadorDiretorios.Configuracoes.Verificar(nomeArquivo);
+        using var dbConnection = new SqlConnection();
+
+        try
+        {
+            configuracoesConexao.TempoExpiracao = 10;
+
+            dbConnection.ConnectionString = configuracoesConexao;
+            dbConnection.Open();
+
+            return true;
+        }
+        catch (DbException)
+        {
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
     }
 }
