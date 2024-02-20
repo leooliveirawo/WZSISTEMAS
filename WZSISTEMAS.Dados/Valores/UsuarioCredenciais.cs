@@ -2,8 +2,8 @@
 
 public class UsuarioCredenciais
 {
-    public string NomeUsuario { get; set; }
-    public string Senha { get; set; }
+    public string NomeUsuario { get; set; } = default!;
+    public string Senha { get; set; } = default!;
 
     public string GerarHash(IServicoHash servicoHash)
         => servicoHash.GerarHash(Senha);
