@@ -44,6 +44,6 @@ public class WZSISTEMASEFDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(WZSISTEMASDbContext)));
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(WZSISTEMASDbContext)) ?? throw new InvalidOperationException("Erro ao acessar o Assembly"));
     }
 }
