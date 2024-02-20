@@ -1,6 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using WZSISTEMAS.Base.Helpers;
-using WZSISTEMAS.Dados.Helpers;
 
 namespace WZSISTEMAS.ConfigurarBancoDados;
 
@@ -8,7 +6,7 @@ internal static class Program
 {
     public static bool EmDesenvolvimento { get; private set; }
 
-    public static IServiceProvider ProvedorServicos { get; private set; }
+    public static IServiceProvider ProvedorServicos { get; private set; } = default!;
 
     /// <summary>
     ///  The main entry point for the application.
@@ -27,12 +25,7 @@ internal static class Program
 #endif
         var servicos = new ServiceCollection();
 
-        servicos.ConfigurarDados();
-        servicos.ConfigurarCore();
-
-        servicos.AddTransient<FrmConfigurarBancoDados>();
-
-        ProvedorServicos = servicos.BuildServiceProvider();
+        ProvedorServicos = servicos.Configurar();
 
         Application.Run(ProvedorServicos.GetRequiredService<FrmConfigurarBancoDados>());
     }
