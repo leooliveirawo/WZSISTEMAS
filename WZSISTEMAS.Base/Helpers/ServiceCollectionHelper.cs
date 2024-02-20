@@ -12,7 +12,7 @@ namespace WZSISTEMAS.Base.Helpers;
 
 public static class ServiceCollectionHelper
 {
-    public static void ConfigurarCore(this IServiceCollection servicos)
+    public static IServiceCollection ConfigurarCore(this IServiceCollection servicos)
     {
         servicos.AddTransient<IServicoRandomico, ServicoRandomico>();
         servicos.AddTransient<IServicoCodigoBarras, ServicoCodigoBarras>();
@@ -22,50 +22,59 @@ public static class ServiceCollectionHelper
 
         servicos.AddTransient<IGerenciadorDiretorios, GerenciadorDiretorios>();
         servicos.AddTransient<IConfiguracoes, Configuracoes>();
-
-        servicos.ConfigurarCoreSeguranca();
-        servicos.ConfigurarCoreArquivos();
-        servicos.ConfigurarCoreNotaFiscal();
-        servicos.ConfigurarCoreDocumentos();
-        servicos.ConfigurarCoreCartoes();
-
+        
+        return servicos.ConfigurarSeguranca()
+            .ConfigurarArquivos()
+            .ConfigurarNotaFiscal()
+            .ConfigurarDocumentos()
+            .ConfigurarCartoes(); ;
     }
 
-    static void ConfigurarCoreNotaFiscal(this IServiceCollection services)
+    private static IServiceCollection ConfigurarNotaFiscal(this IServiceCollection servicos)
     {
-        services.AddTransient<ServicoNFe, NotaFiscal.Servicos.ServicoNFe>();
-        services.AddTransient<ServicoCFe, ServicoCFe>();
-        services.AddTransient<IServicoSAT, ServicoSAT>();
+        servicos.AddTransient<ServicoNFe, NotaFiscal.Servicos.ServicoNFe>();
+        servicos.AddTransient<ServicoCFe, ServicoCFe>();
+        servicos.AddTransient<IServicoSAT, ServicoSAT>();
+
+        return servicos;
     }
 
-    static void ConfigurarCoreDocumentos(this IServiceCollection services)
+    private static IServiceCollection ConfigurarDocumentos(this IServiceCollection servicos)
     {
-        services.AddTransient<IServicoCPF, ServicoCPF>();
-        services.AddTransient<IServicoCNPJ, ServicoCNPJ>();
-        services.AddTransient<IServicoInscricaoEstadual, ServicoInscricaoEstadual>();
+        servicos.AddTransient<IServicoCPF, ServicoCPF>();
+        servicos.AddTransient<IServicoCNPJ, ServicoCNPJ>();
+        servicos.AddTransient<IServicoInscricaoEstadual, ServicoInscricaoEstadual>();
+
+        return servicos;
     }
 
-    static void ConfigurarCoreCartoes(this IServiceCollection services)
+    private static IServiceCollection ConfigurarCartoes(this IServiceCollection servicos)
     {
-        services.AddSingleton<IDriverCartao, DriverCartaoVirtual>();
+        servicos.AddSingleton<IDriverCartao, DriverCartaoVirtual>();
 
-        services.AddTransient<IServicoCartaoDebito, ServicoCartaoDebito>();
-        services.AddTransient<IServicoCartaoCredito, ServicoCartaoCredito>();
-        services.AddTransient<IServicoCartaoVoucher, Cartoes.Servicos.ServicoCartaoVoucher>();
-        services.AddTransient<IServicoCartaoLoja, ServicoCartaoLoja>();
+        servicos.AddTransient<IServicoCartaoDebito, ServicoCartaoDebito>();
+        servicos.AddTransient<IServicoCartaoCredito, ServicoCartaoCredito>();
+        servicos.AddTransient<IServicoCartaoVoucher, ServicoCartaoVoucher>();
+        servicos.AddTransient<IServicoCartaoLoja, ServicoCartaoLoja>();
+
+        return servicos;
     }
 
-    static void ConfigurarCoreSeguranca(this IServiceCollection services)
+    private static IServiceCollection ConfigurarSeguranca(this IServiceCollection servicos)
     {
-        services.AddTransient<IServicoCredenciais, ServicoCredenciais>();
-        services.AddTransient<IServicoCriptografia, ServicoCriptografia>();
-        services.AddTransient<IServicoHash, ServicoHash>();
-        services.AddTransient<IServicoToken, ServicoToken>();
+        servicos.AddTransient<IServicoCredenciais, ServicoCredenciais>();
+        servicos.AddTransient<IServicoCriptografia, ServicoCriptografia>();
+        servicos.AddTransient<IServicoHash, ServicoHash>();
+        servicos.AddTransient<IServicoToken, ServicoToken>();
+
+        return servicos;
     }
 
-    static void ConfigurarCoreArquivos(this IServiceCollection services)
+    private static IServiceCollection ConfigurarArquivos(this IServiceCollection servicos)
     {
-        services.AddTransient<IServicoJson, ServicoJson>();
-        services.AddTransient<IServicoXml, ServicoXml>();
+        servicos.AddTransient<IServicoJson, ServicoJson>();
+        servicos.AddTransient<IServicoXml, ServicoXml>();
+
+        return servicos;
     }
 }

@@ -8,17 +8,21 @@ namespace WZSISTEMAS.Dados.Helpers;
 
 public static class ServiceCollectionHelper
 {
-    public static void ConfigurarDados(this IServiceCollection servicos)
+    public static IServiceCollection ConfigurarDados(this IServiceCollection servicos)
     {
-        servicos.ConfigurarDadosDbContext();
-        servicos.ConfigurarDadosServicos();
-        servicos.ConfigurarDadosValidadacoes();
+        return servicos.ConfigurarDbContext()
+            .ConfigurarServicos()
+            .ConfigurarValidadacoes();
     }
 
-    private static void ConfigurarDadosDbContext(this IServiceCollection servicos)
-        => servicos.AddScoped<DbContext, WZSISTEMASDbContext>();
+    private static IServiceCollection ConfigurarDbContext(this IServiceCollection servicos)
+    {
+        servicos.AddScoped<DbContext, WZSISTEMASDbContext>();
 
-    private static void ConfigurarDadosServicos(this IServiceCollection servicos)
+        return servicos;
+    } 
+
+    private static IServiceCollection ConfigurarServicos(this IServiceCollection servicos)
     {
         servicos.AddTransient<IServicoClientes, ServicoClientes>();
         servicos.AddTransient<IServicoClientesFaturas, ServicoClientesFaturas>();
@@ -45,9 +49,11 @@ public static class ServiceCollectionHelper
         servicos.AddTransient<IServicoCFe2, ServicoCFe2>();
 
         servicos.AddTransient<IServicoDesenvolvedor, ServicoDesenvolvedor>();
+
+        return servicos;
     }
 
-    private static void ConfigurarDadosValidadacoes(this IServiceCollection servicos)
+    private static IServiceCollection ConfigurarValidadacoes(this IServiceCollection servicos)
     {
         servicos.AddTransient<IValidator<Item>, ValidacaoProduto>();
         servicos.AddTransient<IValidator<Cliente>, ValidacaoCliente>();
@@ -58,5 +64,7 @@ public static class ServiceCollectionHelper
         servicos.AddTransient<IValidator<Usuario>, ValidacaoUsuario>();
         servicos.AddTransient<IValidator<Cargo>, ValidacaoCargo>();
         servicos.AddTransient<IValidator<UsuarioCredenciais>, ValidacaoUsuarioCredencial>();
+
+        return servicos;
     }
 }
