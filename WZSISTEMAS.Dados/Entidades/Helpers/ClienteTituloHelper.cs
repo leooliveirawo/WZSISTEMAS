@@ -1,6 +1,6 @@
 ﻿namespace WZSISTEMAS.Dados.Entidades.Helpers;
 
-public static class AuxiliarClienteTitulo
+public static class ClienteTituloHelper
 {
     public static decimal CalcularValorTotal(this IEnumerable<ClienteLancamento> titulos)
     {

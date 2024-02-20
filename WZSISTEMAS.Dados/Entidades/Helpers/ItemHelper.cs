@@ -2,7 +2,7 @@
 
 namespace WZSISTEMAS.Dados.Entidades.Helpers;
 
-public static class AuxiliarItem
+public static class ItemHelper
 {
     public static string CodigoBarrasCodigoReferencia(this IItem item)
     {

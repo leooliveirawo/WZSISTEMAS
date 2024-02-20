@@ -24,6 +24,12 @@ public static class AuxiliarTextBox
         textBox.SelectAll();
     }
 
+    public static void SomenteLeitura(this TextBox textBox)
+        => textBox.ReadOnly = true;
+
+    public static void LeituraEEscrita(this TextBox textBox)
+        => textBox.ReadOnly = false;
+
     public static void Clear(
         this TextBox textBox,
         string valorPadrao = "")
