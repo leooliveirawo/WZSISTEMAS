@@ -1,6 +1,6 @@
-﻿namespace WZSISTEMAS
+﻿namespace WZSISTEMAS.Utiliarios
 {
-    partial class FrmTerminal
+    partial class FrmConfigurarTerminal
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@
             label3 = new Label();
             txtIdentificacao = new TextBox();
             label2 = new Label();
+            btnImportar = new Button();
             gbxDados.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             // gbxDados
             // 
             gbxDados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbxDados.Controls.Add(btnImportar);
             gbxDados.Controls.Add(cbbxEmpresa);
             gbxDados.Controls.Add(label3);
             gbxDados.Controls.Add(txtIdentificacao);
@@ -93,6 +95,7 @@
             txtIdentificacao.ReadOnly = true;
             txtIdentificacao.Size = new Size(581, 31);
             txtIdentificacao.TabIndex = 3;
+            txtIdentificacao.KeyPress += TxtIdentificacao_KeyPress;
             // 
             // label2
             // 
@@ -104,7 +107,18 @@
             label2.TabIndex = 2;
             label2.Text = "Identificação";
             // 
-            // FrmTerminal
+            // btnImportar
+            // 
+            btnImportar.Location = new Point(611, 60);
+            btnImportar.Margin = new Padding(4, 5, 4, 5);
+            btnImportar.Name = "btnImportar";
+            btnImportar.Size = new Size(107, 38);
+            btnImportar.TabIndex = 17;
+            btnImportar.Text = "Importar";
+            btnImportar.UseVisualStyleBackColor = true;
+            btnImportar.Click += BtnImportar_Click;
+            // 
+            // FrmConfigurarTerminal
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -112,9 +126,9 @@
             Controls.Add(gbxDados);
             Controls.Add(btnVoltar);
             DoubleBuffered = true;
-            Name = "FrmTerminal";
+            Name = "FrmConfigurarTerminal";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Terminal";
+            Text = "Configurar o terminal";
             Load += FrmTerminal_Load;
             gbxDados.ResumeLayout(false);
             gbxDados.PerformLayout();
@@ -129,5 +143,6 @@
         private Label label3;
         private TextBox txtIdentificacao;
         private Label label2;
+        private Button btnImportar;
     }
 }
