@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using WZSISTEMAS.Consultas;
 
 namespace WZSISTEMAS.Helpers;
 
