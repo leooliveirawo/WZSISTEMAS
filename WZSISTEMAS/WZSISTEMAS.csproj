@@ -105,7 +105,6 @@
 		</Using>
 		<Using Include="WZSISTEMAS.Base.Cartoes.Eventos" />
 		<Using Include="WZSISTEMAS.Base.Cartoes.Servicos.Interfaces" />
-		<Using Include="WZSISTEMAS.Consultas" />
 		<Using Include="WZSISTEMAS.Base.NotaFiscal.Valores.Impostos" />
 		<Using Include="WZSISTEMAS.Base.NotaFiscal.Valores" />
 		<Using Include="WZSISTEMAS.Base.Cartoes.Drivers.Interfaces" />

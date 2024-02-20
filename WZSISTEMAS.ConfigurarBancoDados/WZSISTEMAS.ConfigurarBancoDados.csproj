@@ -14,4 +14,13 @@
     <ProjectReference Include="..\WZSISTEMAS.WinForms\WZSISTEMAS.WinForms.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="WZSISTEMAS.Base.EF.Servicos.Interfaces" />
+    <Using Include="WZSISTEMAS.Base.EF.Valores" />
+    <Using Include="WZSISTEMAS.Base.Helpers" />
+    <Using Include="WZSISTEMAS.ConfigurarBancoDados.Helpers" />
+    <Using Include="WZSISTEMAS.Dados.Helpers" />
+    <Using Include="WZSISTEMAS.WinForms.Helpers" />
+  </ItemGroup>
+
 </Project>

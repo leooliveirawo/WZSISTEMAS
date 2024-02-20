@@ -52,9 +52,11 @@
 		<Using Include="WZSISTEMAS.Base.Valores" />
 		<Using Include="WZSISTEMAS.Dados.EF.Helpers" />
 		<Using Include="WZSISTEMAS.Dados.Entidades" />
+		<Using Include="WZSISTEMAS.Dados.Entidades.Helpers" />
 		<Using Include="WZSISTEMAS.Dados.Servicos.Interfaces" />
 		<Using Include="WZSISTEMAS.Dados.Valores" />
 		<Using Include="WZSISTEMAS.Dados.Helpers" />
+
 	</ItemGroup>
 
 	<ItemGroup>
