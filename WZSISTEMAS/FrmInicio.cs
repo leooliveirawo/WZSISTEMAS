@@ -239,7 +239,7 @@ public partial class FrmInicio : FrmBase
 
     private void TerminalToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        using var frm = ProvedorServicos.FrmTerminal();
+        using var frm = ProvedorServicos.FrmConfigurarTerminal();
 
         frm.ShowDialog(this);
     }

@@ -372,7 +372,7 @@ public partial class FrmCadastroItens : Form
     {
         try
         {
-            using var frm = new FrmConsultaAvancadaItens(servicoEntidades);
+            using var frm = ProvedorServicos.FrmConsultaAvancadaItens();
 
             frm.DefinirTipo(TipoConsultaItens.Padrao);
 

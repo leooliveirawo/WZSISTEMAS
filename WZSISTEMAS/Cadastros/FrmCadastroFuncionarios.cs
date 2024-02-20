@@ -319,7 +319,7 @@ public partial class FrmCadastroFuncionarios : Form
     {
         try
         {
-            using var frm = new FrmConsultaAvancadaFuncionarios(servicoEntidades);
+            using var frm = ProvedorServicos.FrmConsultaAvancadaFuncionarios();
 
             if (frm.ShowDialog(this, DialogResult.OK))
             {

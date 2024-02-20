@@ -219,7 +219,7 @@ public partial class FrmCadastroTransportadoras : Form
     {
         try
         {
-            using var frm = new FrmConsultaAvancadaTransportadoras(servicoEntidades);
+            using var frm = ProvedorServicos.FrmConsultaAvancadaTransportadoras();
 
             if (frm.ShowDialog(this, DialogResult.OK))
             {

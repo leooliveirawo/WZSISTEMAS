@@ -247,7 +247,7 @@ public partial class FrmCadastroFornecedores : Form
     {
         try
         {
-            using var frm = new FrmConsultaAvancadaFornecedores(servicoEntidades);
+            using var frm = ProvedorServicos.FrmConsultaAvancadaFornecedores();
 
             if (frm.ShowDialog(this, DialogResult.OK))
             {
