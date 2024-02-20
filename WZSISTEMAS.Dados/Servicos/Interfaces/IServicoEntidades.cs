@@ -13,6 +13,7 @@ public interface IServicoEntidades<TEntidade> where TEntidade : Entidade
         bool usarRastreamento = false);
 
     IEnumerable<TEntidade> ObterLista();
+    IEnumerable<ItemLista<long>> ConverterParaListaItem(IEnumerable<TEntidade> entidades);
     IEnumerable<ItemLista<long>> ObterListaItens(params long[] idsIgnorados);
     void DescartarAlteracoes();
     void SalvarAlteracoes();

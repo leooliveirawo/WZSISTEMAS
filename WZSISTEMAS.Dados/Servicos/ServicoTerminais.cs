@@ -33,7 +33,7 @@ public class ServicoTerminais(
         return default;
     }
 
-    public  Terminal VincularTerminal(long empresaId)
+    public  virtual Terminal VincularTerminal(long empresaId)
     {
         var terminal = new Terminal
         {
@@ -55,7 +55,7 @@ public class ServicoTerminais(
                 })
             .First();
 
-        terminal.Nome = $"Terminal {terminal.Id} - {empresa.RazaoSocial} ({empresa.CNPJ})";
+        terminal.Nome = terminal.DefinirNome(empresa);
 
         Editar(terminal);
         SalvarAlteracoes();

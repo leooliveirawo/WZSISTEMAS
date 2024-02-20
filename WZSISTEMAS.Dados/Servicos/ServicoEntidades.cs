@@ -30,6 +30,12 @@ public abstract class ServicoEntidades<TEntidade>(
     public virtual IEnumerable<TEntidade> ObterLista()
         => DbContext.Set<TEntidade>().ObterLista();
 
+    public virtual IEnumerable<ItemLista<long>> ConverterParaListaItem(IEnumerable<TEntidade> entidades)
+        => entidades
+            .AsQueryable()
+            .Select(ConverterEntidadeParaLista())
+            .ToList();
+
     public virtual void DescartarAlteracoes()
         => DbContext.ChangeTracker.Clear();
 
