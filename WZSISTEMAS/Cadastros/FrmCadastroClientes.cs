@@ -257,11 +257,9 @@ public partial class FrmCadastroClientes : Form
 
     private void TxtBuscarCPF_CNPJ_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarCPF_CNPJ.Text))
         {
-            e.Handled = true;
-
             if (this.VerificarAutenticacao(servicoUsuarios))
             {
                 try

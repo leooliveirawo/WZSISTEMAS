@@ -193,11 +193,9 @@ public partial class FrmCadastroTransportadoras : Form
 
     private void TxtBuscarCNPJOuCodigoReferencia_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarCNPJOuCodigoReferencia.Text))
         {
-            e.Handled = true;
-
             try
             {
                 var entidade = servicoEntidades.ObterPorCNPJOuCodigoReferencia(txtBuscarCNPJOuCodigoReferencia.Text);

@@ -291,11 +291,9 @@ public partial class FrmCadastroFuncionarios : Form
 
     private void TxtBuscarCPF_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarCPF.Text))
         {
-            e.Handled = true;
-
             try
             {
                 var entidade = servicoEntidades.ObterPorCPF(txtBuscarCPF.Text);

@@ -45,10 +45,8 @@ public partial class FrmConfigurarTerminal : Form
 
     private void CbbxEmpresa_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
+        if (e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             var cNPJOuCodigoReferencia = cbbxEmpresa.Text;
 
             var empresaItem = empresas.FirstOrDefault(x => x.CNPJ == cNPJOuCodigoReferencia || x.CodigoReferencia == cNPJOuCodigoReferencia);

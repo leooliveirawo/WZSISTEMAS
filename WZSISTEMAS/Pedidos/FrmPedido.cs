@@ -311,10 +311,8 @@ public partial class FrmPedido : Form
 
     private void TxtCodBarrasCodRef_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
+        if (e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             if (string.IsNullOrWhiteSpace(txtCodBarrasCodRef.Text))
                 txtQntd.Selecionar();
             else
@@ -349,12 +347,8 @@ public partial class FrmPedido : Form
 
     private void TxtQntd_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
-        {
-            e.Handled = true;
-
+        if (e.VerificarTeclaEnter())
             txtCodBarrasCodRef.Selecionar();
-        }
     }
 
     private void TsmiCadastroCliente_Click(object sender, EventArgs e)
@@ -448,7 +442,7 @@ public partial class FrmPedido : Form
 
     private void TxtBuscarPorNumeroPedido_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarPorNumeroPedido.Text))
         {
             try

@@ -342,11 +342,9 @@ public partial class FrmCadastroItens : Form
 
     private void TxtBuscarIdCodigoBarrasCodigoReferencia_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarIdCodigoBarrasCodigoReferencia.Text))
         {
-            e.Handled = true;
-
             try
             {
                 var entidade = chbxUsarCodigoReferencia.Checked

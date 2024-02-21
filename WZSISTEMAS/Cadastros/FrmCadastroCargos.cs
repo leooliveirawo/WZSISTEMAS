@@ -161,11 +161,9 @@ public partial class FrmCadastroCargos : Form
 
     private void TxtBuscarPorNome_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarPorNome.Text))
         {
-            e.Handled = true;
-
             try
             {
                 var entidades = servicoEntidades.ObterTudoPorNome(txtBuscarPorNome.Text);

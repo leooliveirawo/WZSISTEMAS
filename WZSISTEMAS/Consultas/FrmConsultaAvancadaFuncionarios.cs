@@ -27,7 +27,7 @@ public partial class FrmConsultaAvancadaFuncionarios : Form
 
     private void TxtFiltrarPorNomeCompleto_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtFiltrarPorNomeCompleto.Text))
             {
             try

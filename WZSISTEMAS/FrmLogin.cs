@@ -245,10 +245,8 @@ public partial class FrmLogin : Form
 
     private void TxtNomeUsuario_KeyPress(object? sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
+        if (e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             txtSenha.Selecionar();
             txtSenha.Clear();
         }
@@ -265,12 +263,8 @@ public partial class FrmLogin : Form
 
     private void TxtSenha_KeyPress(object? sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
-        {
-            e.Handled = true;
-
+        if (e.VerificarTeclaEnter())
             Entrar();
-        }
     }
 
     private void ChbxSalvarCredenciais_CheckedChanged(object? sender, EventArgs e)

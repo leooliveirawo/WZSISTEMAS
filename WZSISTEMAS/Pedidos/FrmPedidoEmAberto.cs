@@ -65,7 +65,7 @@ public partial class FrmPedidoEmAberto : Form
 
     private void DtpFiltrarPorData_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
+        if (e.VerificarTeclaEnter())
             RecarregarItens();
     }
 

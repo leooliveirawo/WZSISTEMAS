@@ -65,10 +65,8 @@ public partial class FrmFrenteCaixaSelecionarPrecos : Form
 
     private void FrmFrenteCadastroSelecionarPrecos_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
+        if (e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             PrecoSelecionado = rbtnPreco1.Checked ? preco1 : rbtnPreco2.Checked ? preco2 : preco3;
 
             DialogResult = DialogResult.OK;

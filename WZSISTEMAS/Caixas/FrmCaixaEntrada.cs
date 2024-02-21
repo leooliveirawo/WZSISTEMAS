@@ -39,10 +39,8 @@ public partial class FrmCaixaEntrada : Form
     private void TxtValorSuprimento_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (btnSuprir.Enabled == true
-            && Keys.Return.Comparar(e.KeyChar))
+            && e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             Suprir();
         }
     }
