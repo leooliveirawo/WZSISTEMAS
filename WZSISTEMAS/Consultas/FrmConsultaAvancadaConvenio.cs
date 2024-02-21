@@ -29,7 +29,7 @@ public partial class FrmConsultaAvancadaConvenio : Form
 
     private void TxtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Text))
             try
             {

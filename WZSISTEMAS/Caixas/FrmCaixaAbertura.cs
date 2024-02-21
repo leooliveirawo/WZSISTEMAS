@@ -46,10 +46,8 @@ public partial class FrmCaixaAbertura : Form
     private void TxtSaldoInicial_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (btnAbrir.Enabled == true
-            && Keys.Return.Comparar(e.KeyChar))
+            && e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             AbrirCaixa();
         }
     }

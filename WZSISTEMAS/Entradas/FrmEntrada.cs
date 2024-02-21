@@ -226,7 +226,7 @@ public partial class FrmEntrada : Form
     {
         try
         {
-            if (Keys.Return.Comparar(e.KeyChar)
+            if (e.VerificarTeclaEnter()
                 && !string.IsNullOrWhiteSpace(txtEmitenteCNPJ1.Text))
             {
                 var Destinatario = servicoFornecedores.ObterPorCNPJ(txtEmitenteCNPJ1.Text);
@@ -255,7 +255,7 @@ public partial class FrmEntrada : Form
     {
         try
         {
-            if (Keys.Return.Comparar(e.KeyChar)
+            if (e.VerificarTeclaEnter()
                 && !string.IsNullOrWhiteSpace(txtDestinatarioCNPJ1.Text))
             {
                 var remetente = servicoEmpresas.ObterPorCNPJOuCodigoReferencia(txtDestinatarioCNPJ1.Text);
@@ -284,7 +284,7 @@ public partial class FrmEntrada : Form
     {
         try
         {
-            if (Keys.Return.Comparar(e.KeyChar)
+            if (e.VerificarTeclaEnter()
                 && !string.IsNullOrWhiteSpace(txtTransportadoraCNPJ1.Text))
             {
                 var transportadora = servicoTransportadoras.ObterPorCNPJOuCodigoReferencia(txtDestinatarioCNPJ1.Text) ?? throw new InvalidOperationException("A transportadora não foi encontrada");

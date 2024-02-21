@@ -86,10 +86,8 @@ public partial class FrmCaixaSaida : Form
     private void TxtValorRetirada_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (btnRetirar.Enabled == true
-            && Keys.Return.Comparar(e.KeyChar))
+            && e.VerificarTeclaEnter())
         {
-            e.Handled = true;
-
             Retirar();
         }
     }

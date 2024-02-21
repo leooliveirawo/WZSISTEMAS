@@ -28,7 +28,7 @@ public partial class FrmConsultaAvancadaEmpresas : Form
 
     private void TxtFiltrarPorRazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtFiltrarPorRazaoSocial.Text))
         {
             try

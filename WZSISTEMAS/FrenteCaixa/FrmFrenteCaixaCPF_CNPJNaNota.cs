@@ -74,12 +74,8 @@ public partial class FrmFrenteCaixaCPF_CNPJNaNota : Form
 
     private void FrmFrenteCaixaCPF_CNPJNaNota_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
-        {
-            e.Handled = true;
-
+        if (e.VerificarTeclaEnter())
             InformarCPF_CNPJ();
-        }
     }
 
     private void FrmFrenteCaixaCPF_CNPJNaNota_KeyUp(object sender, KeyEventArgs e)

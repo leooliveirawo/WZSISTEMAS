@@ -36,7 +36,7 @@ public partial class FrmConsultaAvancadaItens : Form
 
     private void TxtFiltrarPorDescricao_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtFiltrarPorDescricao.Text))
         {
             try

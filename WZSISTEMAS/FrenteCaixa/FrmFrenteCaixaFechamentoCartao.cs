@@ -99,7 +99,7 @@ public partial class FrmFrenteCaixaFechamentoCartao : Form
 
     private void FrmFrenteCaixaFechamentoCartao_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar))
+        if (e.VerificarTeclaEnter())
         {
             if (Finalizado
                 || Cancelado)

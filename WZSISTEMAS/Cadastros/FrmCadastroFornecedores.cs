@@ -221,11 +221,9 @@ public partial class FrmCadastroFornecedores : Form
 
     private void TxtBuscarCNPJ_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (Keys.Return.Comparar(e.KeyChar)
+        if (e.VerificarTeclaEnter()
             && !string.IsNullOrWhiteSpace(txtBuscarCNPJ.Text))
         {
-            e.Handled = true;
-
             try
             {
                 var entidade = servicoEntidades.ObterPorCNPJ(txtBuscarCNPJ.Text);
