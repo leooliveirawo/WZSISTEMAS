@@ -108,7 +108,7 @@ public partial class FrmConfigurarTerminal : Form
     private void TxtIdentificacao_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (e.VerificarTeclaEnter()
-            && txtIdentificacao.Enabled)
+            && !txtIdentificacao.ReadOnly)
         {
             if (txtIdentificacao.Text.ConverterParaLong(out var id))
             {
