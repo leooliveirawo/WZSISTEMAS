@@ -3,4 +3,5 @@ public interface IDriverCartaoVirtual : IDriverCartao
 {
    void Aprovado();
    void NaoAprovado();
+   void Comunicar(string mensagem);
 }

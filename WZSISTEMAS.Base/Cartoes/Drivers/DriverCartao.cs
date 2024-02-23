@@ -3,6 +3,7 @@
 public abstract class DriverCartao : IDriverCartao
 {
     public event TransacaoCartaoEventHandler? Iniciou;
+    public event TransacaoCartaoEventHandler? Comunicou;
     public event TransacaoCartaoEventHandler? Cancelou;
     public event TransacaoCartaoEventHandler? Finalizou;
 
@@ -17,6 +18,9 @@ public abstract class DriverCartao : IDriverCartao
     public abstract void Iniciar(
         int metodoPagamento,
         decimal valorMonetario);
+
+    protected virtual void OnComunicou(TransacaoCartaoEventArgs e)
+        => Comunicou?.Invoke(this, e);
 
     protected virtual void OnIniciou(TransacaoCartaoEventArgs e)
     {

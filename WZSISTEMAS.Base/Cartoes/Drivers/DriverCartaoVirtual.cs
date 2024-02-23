@@ -75,4 +75,22 @@ public class DriverCartaoVirtual : DriverCartao, IDriverCartaoVirtual
                     ValorPago = ValorPago
                 }));
     }
+
+    public void Comunicar(string mensagem)
+    {
+        if (Estado != EstadoDriverCartao.OperacaoIniciada)
+            throw new InvalidOperationException("Nenhuma transação foi realizada");
+
+        OnComunicou(
+            new(
+                DateTime.Now,
+                new()
+                {
+                    Aprovado = false,
+                    Cancelado = false,
+                    MensagemRetorno = mensagem,
+                    MetodoPagamento = MetodoPagamento,
+                    ValorPago = ValorPago
+                }));
+    }
 }

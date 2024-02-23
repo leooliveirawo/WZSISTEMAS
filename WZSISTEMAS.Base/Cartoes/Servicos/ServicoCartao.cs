@@ -8,11 +8,16 @@ public abstract class ServicoCartao : IServicoCartao
     {
         DriverCartao = driverCartao ?? throw new ArgumentNullException(nameof(driverCartao));
 
-        DriverCartao.Cancelou += DriverCartaoCancelou;
-        DriverCartao.Finalizou += DriverCartaoFinalizou;
+        DriverCartao.Comunicou += DriverCartao_Comunicou;
+        DriverCartao.Cancelou += DriverCartao_Cancelou;
+        DriverCartao.Finalizou += DriverCartao_Finalizou;
     }
 
+    private void DriverCartao_Comunicou(object sender, TransacaoCartaoEventArgs e)
+        => OnComunicou(e);
+
     public event TransacaoCartaoEventHandler? Iniciou;
+    public event TransacaoCartaoEventHandler? Comunicou;
     public event TransacaoCartaoEventHandler? Cancelou;
     public event TransacaoCartaoEventHandler? Finalizou;
 
@@ -38,9 +43,11 @@ public abstract class ServicoCartao : IServicoCartao
             Finalizou?.Invoke(this, e);
     }
 
-    private void DriverCartaoCancelou(object sender, TransacaoCartaoEventArgs e)
+    protected virtual void OnComunicou(TransacaoCartaoEventArgs e)
+        => Comunicou?.Invoke(this, e);
+    private void DriverCartao_Cancelou(object sender, TransacaoCartaoEventArgs e)
         => OnCancelado(e);
 
-    private void DriverCartaoFinalizou(object sender, TransacaoCartaoEventArgs e)
+    private void DriverCartao_Finalizou(object sender, TransacaoCartaoEventArgs e)
         => OnConcluido(e);
 }

@@ -3,6 +3,7 @@
 public interface IServicoCartao
 {
     event TransacaoCartaoEventHandler? Iniciou;
+    event TransacaoCartaoEventHandler? Comunicou;
     event TransacaoCartaoEventHandler? Cancelou;
     event TransacaoCartaoEventHandler? Finalizou;
 
