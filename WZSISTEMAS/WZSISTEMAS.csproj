@@ -6,6 +6,7 @@
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<ForceDesignerDPIUnaware>false</ForceDesignerDPIUnaware>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -101,6 +102,9 @@
 		<Using Include="WZSISTEMAS.Dados.Valores" />
 		<Using Include="WZSISTEMAS.Helpers" />
 		<Using Include="WZSISTEMAS.Program">
+			<Static>True</Static>
+		</Using>
+		<Using Include="WZSISTEMAS.Base.ConfiguracoesBase">
 			<Static>True</Static>
 		</Using>
 		<Using Include="WZSISTEMAS.Base.Cartoes.Eventos" />

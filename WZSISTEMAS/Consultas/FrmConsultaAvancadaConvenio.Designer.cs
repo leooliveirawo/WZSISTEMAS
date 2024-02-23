@@ -48,32 +48,29 @@ partial class FrmConsultaAvancadaConvenio
         groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         groupBox1.Controls.Add(txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial);
         groupBox1.Controls.Add(label1);
-        groupBox1.Location = new Point(17, 20);
-        groupBox1.Margin = new Padding(4, 5, 4, 5);
+        groupBox1.Location = new Point(12, 12);
         groupBox1.Name = "groupBox1";
-        groupBox1.Padding = new Padding(4, 5, 4, 5);
-        groupBox1.Size = new Size(1086, 167);
+        groupBox1.Size = new Size(760, 67);
         groupBox1.TabIndex = 2;
         groupBox1.TabStop = false;
         groupBox1.Text = "Filtros para consulta";
         // 
         // txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial
         // 
+        txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.CharacterCasing = CharacterCasing.Upper;
-        txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Location = new Point(9, 62);
-        txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Margin = new Padding(4, 5, 4, 5);
+        txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Location = new Point(6, 37);
         txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Name = "txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial";
-        txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Size = new Size(803, 31);
+        txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.Size = new Size(749, 23);
         txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.TabIndex = 1;
         txtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial.KeyPress += TxtFiltrarPorCPF_CNPJ_NomeCompleto_RazaoSocial_KeyPress;
         // 
         // label1
         // 
         label1.AutoSize = true;
-        label1.Location = new Point(10, 34);
-        label1.Margin = new Padding(4, 0, 4, 0);
+        label1.Location = new Point(7, 20);
         label1.Name = "label1";
-        label1.Size = new Size(329, 25);
+        label1.Size = new Size(221, 15);
         label1.TabIndex = 0;
         label1.Text = "CPF/CNPJ/Nome completo/Razão social";
         // 
@@ -81,11 +78,9 @@ partial class FrmConsultaAvancadaConvenio
         // 
         groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         groupBox2.Controls.Add(dgvCadastros);
-        groupBox2.Location = new Point(17, 197);
-        groupBox2.Margin = new Padding(4, 5, 4, 5);
+        groupBox2.Location = new Point(12, 85);
         groupBox2.Name = "groupBox2";
-        groupBox2.Padding = new Padding(4, 5, 4, 5);
-        groupBox2.Size = new Size(1086, 261);
+        groupBox2.Size = new Size(760, 465);
         groupBox2.TabIndex = 3;
         groupBox2.TabStop = false;
         groupBox2.Text = "Cadastros";
@@ -99,8 +94,7 @@ partial class FrmConsultaAvancadaConvenio
         dgvCadastros.ColumnHeadersHeight = 65;
         dgvCadastros.Columns.AddRange(new DataGridViewColumn[] { clnId, clnTipo, clnNomeCompleto_RazaoSocial, clnCPF_CNPJ, clnConvenioLimite });
         dgvCadastros.Dock = DockStyle.Fill;
-        dgvCadastros.Location = new Point(4, 29);
-        dgvCadastros.Margin = new Padding(4, 5, 4, 5);
+        dgvCadastros.Location = new Point(3, 19);
         dgvCadastros.MultiSelect = false;
         dgvCadastros.Name = "dgvCadastros";
         dgvCadastros.ReadOnly = true;
@@ -108,7 +102,7 @@ partial class FrmConsultaAvancadaConvenio
         dgvCadastros.RowHeadersWidth = 62;
         dgvCadastros.RowTemplate.Height = 32;
         dgvCadastros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dgvCadastros.Size = new Size(1078, 227);
+        dgvCadastros.Size = new Size(754, 443);
         dgvCadastros.TabIndex = 0;
         dgvCadastros.CellDoubleClick += DgvCadastros_CellDoubleClick;
         // 
@@ -147,16 +141,17 @@ partial class FrmConsultaAvancadaConvenio
         clnConvenioLimite.Name = "clnConvenioLimite";
         clnConvenioLimite.ReadOnly = true;
         // 
-        // FrmConsultaConvenio
+        // FrmConsultaAvancadaConvenio
         // 
-        AutoScaleDimensions = new SizeF(10F, 25F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1120, 478);
+        ClientSize = new Size(784, 561);
         Controls.Add(groupBox1);
         Controls.Add(groupBox2);
         DoubleBuffered = true;
         KeyPreview = true;
-        Name = "FrmConsultaConvenio";
+        Margin = new Padding(2, 2, 2, 2);
+        Name = "FrmConsultaAvancadaConvenio";
         StartPosition = FormStartPosition.CenterParent;
         Text = "Convênio";
         groupBox1.ResumeLayout(false);

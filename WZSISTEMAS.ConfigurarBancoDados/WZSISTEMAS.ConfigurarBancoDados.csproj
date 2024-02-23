@@ -1,26 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WZSISTEMAS.Base\WZSISTEMAS.Base.csproj" />
-    <ProjectReference Include="..\WZSISTEMAS.Dados\WZSISTEMAS.Dados.csproj" />
-    <ProjectReference Include="..\WZSISTEMAS.WinForms\WZSISTEMAS.WinForms.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\WZSISTEMAS.Base\WZSISTEMAS.Base.csproj" />
+		<ProjectReference Include="..\WZSISTEMAS.Dados\WZSISTEMAS.Dados.csproj" />
+		<ProjectReference Include="..\WZSISTEMAS.WinForms\WZSISTEMAS.WinForms.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Using Include="WZSISTEMAS.Base.EF.Servicos.Interfaces" />
-    <Using Include="WZSISTEMAS.Base.EF.Valores" />
-    <Using Include="WZSISTEMAS.Base.Helpers" />
-    <Using Include="WZSISTEMAS.ConfigurarBancoDados.Helpers" />
-    <Using Include="WZSISTEMAS.Dados.Helpers" />
-    <Using Include="WZSISTEMAS.WinForms.Helpers" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<Using Include="WZSISTEMAS.ConfigurarBancoDados.Helpers" />
+		<Using Include="WZSISTEMAS.Base.EF.Servicos.Interfaces" />
+		<Using Include="WZSISTEMAS.Base.EF.Valores" />
+		<Using Include="WZSISTEMAS.Base.Helpers" />
+		<Using Include="WZSISTEMAS.Dados.Helpers" />
+		<Using Include="WZSISTEMAS.WinForms.Helpers" />
+		<Using Include="WZSISTEMAS.Base.ConfiguracoesBase">
+			<Static>True</Static>
+		</Using>
+	</ItemGroup>
 </Project>

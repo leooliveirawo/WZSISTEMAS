@@ -169,7 +169,6 @@ public partial class FrmLogin : Form
             VerificarUsuarios();
             ConfigurarAutenticacaoManual();
 
-            msDesenvolvedor.Visible = EmDesenvolvimento;
             chbxAutenticacaoAutomatica.Visible = EmDesenvolvimento;
         }
         catch (Exception erro)
@@ -276,31 +275,6 @@ public partial class FrmLogin : Form
         catch (Exception erro)
         {
             this.ExibirMensagemErro(erro);
-        }
-    }
-
-    private void TsmiManutencaoPreencherBancoDados_Click(object sender, EventArgs e)
-    {
-        if (this.ExibirMensagemSimNao("Essa ação irá preencher o banco de dados com dados de teste.\n\nTem certeza que deseja fazer isso?"))
-        {
-            try
-            {
-                var usuarios = servicoLogin.PreencherBancoDados();
-
-                if (chbxSalvarCredenciais.Checked)
-                    chbxSalvarCredenciais.Desmarcar();
-
-                txtNomeUsuario.Text = usuarios.First().NomeUsuario;
-                txtSenha.Text = "123456";
-
-                chbxSalvarCredenciais.Marcar();
-
-                this.ExibirMensagemOperacaoConcluida("O banco de dados foi preenchidos com dados de teste com sucesso");
-            }
-            catch (Exception erro)
-            {
-                this.ExibirMensagemErro(erro);
-            }
         }
     }
 

@@ -1,6 +1,6 @@
-﻿namespace WZSISTEMAS.Dados.Valores;
+﻿namespace WZSISTEMAS.Base.Valores;
 
-public enum FormasPagamentos
+public enum FormaPagamento
 {
     Dinheiro = 1000,
     Cheque = 6000,

@@ -38,6 +38,7 @@ partial class FrmClienteConvenio
         label3 = new Label();
         txtCPF_CNPJ = new TextBox();
         groupBox2 = new GroupBox();
+        lbValorTotal = new Label();
         lbFechamentoData = new Label();
         lbVencimentoData = new Label();
         panel1 = new Panel();
@@ -48,7 +49,6 @@ partial class FrmClienteConvenio
         label4 = new Label();
         cbbxMes = new ComboBox();
         label1 = new Label();
-        lbValorTotal = new Label();
         groupBox1.SuspendLayout();
         groupBox2.SuspendLayout();
         panel1.SuspendLayout();
@@ -58,15 +58,18 @@ partial class FrmClienteConvenio
         // 
         // groupBox1
         // 
+        groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         groupBox1.Controls.Add(btnConsultar);
         groupBox1.Controls.Add(label2);
         groupBox1.Controls.Add(txtNomeCompleto_RazaoSocial);
         groupBox1.Controls.Add(label3);
         groupBox1.Controls.Add(txtCPF_CNPJ);
         groupBox1.ForeColor = Color.White;
-        groupBox1.Location = new Point(12, 12);
+        groupBox1.Location = new Point(8, 7);
+        groupBox1.Margin = new Padding(2, 2, 2, 2);
         groupBox1.Name = "groupBox1";
-        groupBox1.Size = new Size(1096, 99);
+        groupBox1.Padding = new Padding(2, 2, 2, 2);
+        groupBox1.Size = new Size(767, 59);
         groupBox1.TabIndex = 0;
         groupBox1.TabStop = false;
         groupBox1.Text = "Dados do cliente";
@@ -74,9 +77,10 @@ partial class FrmClienteConvenio
         // btnConsultar
         // 
         btnConsultar.ForeColor = Color.Black;
-        btnConsultar.Location = new Point(885, 55);
+        btnConsultar.Location = new Point(620, 33);
+        btnConsultar.Margin = new Padding(2, 2, 2, 2);
         btnConsultar.Name = "btnConsultar";
-        btnConsultar.Size = new Size(112, 34);
+        btnConsultar.Size = new Size(78, 20);
         btnConsultar.TabIndex = 10;
         btnConsultar.Text = "Consultar";
         btnConsultar.UseVisualStyleBackColor = true;
@@ -85,10 +89,9 @@ partial class FrmClienteConvenio
         // label2
         // 
         label2.AutoSize = true;
-        label2.Location = new Point(7, 27);
-        label2.Margin = new Padding(4, 0, 4, 0);
+        label2.Location = new Point(5, 16);
         label2.Name = "label2";
-        label2.Size = new Size(259, 25);
+        label2.Size = new Size(171, 15);
         label2.TabIndex = 6;
         label2.Text = "Nome completo/Razão social *";
         // 
@@ -97,19 +100,17 @@ partial class FrmClienteConvenio
         txtNomeCompleto_RazaoSocial.CharacterCasing = CharacterCasing.Upper;
         txtNomeCompleto_RazaoSocial.Enabled = false;
         txtNomeCompleto_RazaoSocial.ForeColor = Color.Black;
-        txtNomeCompleto_RazaoSocial.Location = new Point(7, 57);
-        txtNomeCompleto_RazaoSocial.Margin = new Padding(4, 5, 4, 5);
+        txtNomeCompleto_RazaoSocial.Location = new Point(5, 34);
         txtNomeCompleto_RazaoSocial.Name = "txtNomeCompleto_RazaoSocial";
-        txtNomeCompleto_RazaoSocial.Size = new Size(581, 31);
+        txtNomeCompleto_RazaoSocial.Size = new Size(408, 23);
         txtNomeCompleto_RazaoSocial.TabIndex = 7;
         // 
         // label3
         // 
         label3.AutoSize = true;
-        label3.Location = new Point(598, 27);
-        label3.Margin = new Padding(4, 0, 4, 0);
+        label3.Location = new Point(419, 16);
         label3.Name = "label3";
-        label3.Size = new Size(101, 25);
+        label3.Size = new Size(68, 15);
         label3.TabIndex = 8;
         label3.Text = "CPF/CNPJ *";
         // 
@@ -118,14 +119,14 @@ partial class FrmClienteConvenio
         txtCPF_CNPJ.CharacterCasing = CharacterCasing.Upper;
         txtCPF_CNPJ.Enabled = false;
         txtCPF_CNPJ.ForeColor = Color.Black;
-        txtCPF_CNPJ.Location = new Point(598, 57);
-        txtCPF_CNPJ.Margin = new Padding(4, 5, 4, 5);
+        txtCPF_CNPJ.Location = new Point(419, 34);
         txtCPF_CNPJ.Name = "txtCPF_CNPJ";
-        txtCPF_CNPJ.Size = new Size(280, 31);
+        txtCPF_CNPJ.Size = new Size(197, 23);
         txtCPF_CNPJ.TabIndex = 9;
         // 
         // groupBox2
         // 
+        groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         groupBox2.Controls.Add(lbValorTotal);
         groupBox2.Controls.Add(lbFechamentoData);
         groupBox2.Controls.Add(lbVencimentoData);
@@ -135,21 +136,33 @@ partial class FrmClienteConvenio
         groupBox2.Controls.Add(cbbxMes);
         groupBox2.Controls.Add(label1);
         groupBox2.ForeColor = Color.WhiteSmoke;
-        groupBox2.Location = new Point(12, 117);
+        groupBox2.Location = new Point(8, 70);
+        groupBox2.Margin = new Padding(2, 2, 2, 2);
         groupBox2.Name = "groupBox2";
-        groupBox2.Size = new Size(1096, 806);
+        groupBox2.Padding = new Padding(2, 2, 2, 2);
+        groupBox2.Size = new Size(767, 484);
         groupBox2.TabIndex = 6;
         groupBox2.TabStop = false;
         groupBox2.Text = "Vendas";
+        // 
+        // lbValorTotal
+        // 
+        lbValorTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        lbValorTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+        lbValorTotal.Location = new Point(4, 441);
+        lbValorTotal.Name = "lbValorTotal";
+        lbValorTotal.Size = new Size(757, 18);
+        lbValorTotal.TabIndex = 18;
+        lbValorTotal.Text = "Valor total (R$): {valor}";
+        lbValorTotal.TextAlign = ContentAlignment.MiddleRight;
         // 
         // lbFechamentoData
         // 
         lbFechamentoData.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         lbFechamentoData.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-        lbFechamentoData.Location = new Point(7, 91);
-        lbFechamentoData.Margin = new Padding(4, 0, 4, 0);
+        lbFechamentoData.Location = new Point(5, 55);
         lbFechamentoData.Name = "lbFechamentoData";
-        lbFechamentoData.Size = new Size(1082, 30);
+        lbFechamentoData.Size = new Size(757, 18);
         lbFechamentoData.TabIndex = 17;
         lbFechamentoData.Text = "Fechamento em: {data}";
         lbFechamentoData.TextAlign = ContentAlignment.MiddleRight;
@@ -158,10 +171,9 @@ partial class FrmClienteConvenio
         // 
         lbVencimentoData.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         lbVencimentoData.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-        lbVencimentoData.Location = new Point(6, 121);
-        lbVencimentoData.Margin = new Padding(4, 0, 4, 0);
+        lbVencimentoData.Location = new Point(4, 73);
         lbVencimentoData.Name = "lbVencimentoData";
-        lbVencimentoData.Size = new Size(1083, 30);
+        lbVencimentoData.Size = new Size(758, 18);
         lbVencimentoData.TabIndex = 16;
         lbVencimentoData.Text = "Vencimento em: {data}";
         lbVencimentoData.TextAlign = ContentAlignment.MiddleRight;
@@ -171,15 +183,17 @@ partial class FrmClienteConvenio
         panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         panel1.Controls.Add(dgvTitulos);
         panel1.ForeColor = Color.Black;
-        panel1.Location = new Point(6, 154);
+        panel1.Location = new Point(4, 92);
+        panel1.Margin = new Padding(2, 2, 2, 2);
         panel1.Name = "panel1";
-        panel1.Size = new Size(1084, 578);
+        panel1.Size = new Size(758, 347);
         panel1.TabIndex = 15;
         // 
         // dgvTitulos
         // 
         dgvTitulos.AllowUserToAddRows = false;
         dgvTitulos.AllowUserToDeleteRows = false;
+        dgvTitulos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         dgvTitulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         dgvTitulos.BackgroundColor = Color.Silver;
         dgvTitulos.BorderStyle = BorderStyle.None;
@@ -202,10 +216,10 @@ partial class FrmClienteConvenio
         dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
         dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
         dgvTitulos.DefaultCellStyle = dataGridViewCellStyle2;
-        dgvTitulos.Dock = DockStyle.Fill;
         dgvTitulos.EnableHeadersVisualStyles = false;
         dgvTitulos.GridColor = Color.Silver;
         dgvTitulos.Location = new Point(0, 0);
+        dgvTitulos.Margin = new Padding(2, 2, 2, 2);
         dgvTitulos.MultiSelect = false;
         dgvTitulos.Name = "dgvTitulos";
         dgvTitulos.ReadOnly = true;
@@ -222,7 +236,7 @@ partial class FrmClienteConvenio
         dgvTitulos.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
         dgvTitulos.RowTemplate.Height = 45;
         dgvTitulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dgvTitulos.Size = new Size(1084, 578);
+        dgvTitulos.Size = new Size(758, 347);
         dgvTitulos.TabIndex = 1;
         // 
         // clnDataLancamento
@@ -241,18 +255,20 @@ partial class FrmClienteConvenio
         // 
         // nmupAno
         // 
-        nmupAno.Location = new Point(367, 57);
+        nmupAno.Location = new Point(257, 34);
+        nmupAno.Margin = new Padding(2, 2, 2, 2);
         nmupAno.Name = "nmupAno";
-        nmupAno.Size = new Size(194, 31);
+        nmupAno.Size = new Size(136, 23);
         nmupAno.TabIndex = 14;
         nmupAno.ValueChanged += NmupAno_ValueChanged;
         // 
         // label4
         // 
         label4.AutoSize = true;
-        label4.Location = new Point(366, 27);
+        label4.Location = new Point(256, 16);
+        label4.Margin = new Padding(2, 0, 2, 0);
         label4.Name = "label4";
-        label4.Size = new Size(45, 25);
+        label4.Size = new Size(29, 15);
         label4.TabIndex = 13;
         label4.Text = "Ano";
         // 
@@ -260,9 +276,10 @@ partial class FrmClienteConvenio
         // 
         cbbxMes.DropDownStyle = ComboBoxStyle.DropDownList;
         cbbxMes.FormattingEnabled = true;
-        cbbxMes.Location = new Point(7, 55);
+        cbbxMes.Location = new Point(5, 33);
+        cbbxMes.Margin = new Padding(2, 2, 2, 2);
         cbbxMes.Name = "cbbxMes";
-        cbbxMes.Size = new Size(354, 33);
+        cbbxMes.Size = new Size(249, 23);
         cbbxMes.TabIndex = 12;
         cbbxMes.SelectedIndexChanged += CbbxMes_SelectedIndexChanged;
         cbbxMes.KeyDown += CbbxMes_KeyDown;
@@ -270,33 +287,23 @@ partial class FrmClienteConvenio
         // label1
         // 
         label1.AutoSize = true;
-        label1.Location = new Point(6, 27);
+        label1.Location = new Point(4, 16);
+        label1.Margin = new Padding(2, 0, 2, 0);
         label1.Name = "label1";
-        label1.Size = new Size(45, 25);
+        label1.Size = new Size(29, 15);
         label1.TabIndex = 11;
         label1.Text = "Mês";
         // 
-        // lbValorTotal
-        // 
-        lbValorTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-        lbValorTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-        lbValorTotal.Location = new Point(6, 735);
-        lbValorTotal.Margin = new Padding(4, 0, 4, 0);
-        lbValorTotal.Name = "lbValorTotal";
-        lbValorTotal.Size = new Size(1082, 30);
-        lbValorTotal.TabIndex = 18;
-        lbValorTotal.Text = "Valor total (R$): {valor}";
-        lbValorTotal.TextAlign = ContentAlignment.MiddleRight;
-        // 
         // FrmClienteConvenio
         // 
-        AutoScaleDimensions = new SizeF(10F, 25F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.SeaGreen;
-        ClientSize = new Size(1120, 935);
+        ClientSize = new Size(784, 561);
         Controls.Add(groupBox2);
         Controls.Add(groupBox1);
         ForeColor = Color.WhiteSmoke;
+        Margin = new Padding(2, 2, 2, 2);
         Name = "FrmClienteConvenio";
         StartPosition = FormStartPosition.CenterParent;
         Text = "Convenio";

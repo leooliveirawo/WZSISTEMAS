@@ -46,11 +46,9 @@
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(txtFiltrarPorNomeCompleto);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(17, 20);
-            groupBox1.Margin = new Padding(4, 5, 4, 5);
+            groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 5, 4, 5);
-            groupBox1.Size = new Size(1086, 167);
+            groupBox1.Size = new Size(760, 100);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtros para consulta";
@@ -58,20 +56,18 @@
             // txtFiltrarPorNomeCompleto
             // 
             txtFiltrarPorNomeCompleto.CharacterCasing = CharacterCasing.Upper;
-            txtFiltrarPorNomeCompleto.Location = new Point(9, 62);
-            txtFiltrarPorNomeCompleto.Margin = new Padding(4, 5, 4, 5);
+            txtFiltrarPorNomeCompleto.Location = new Point(6, 37);
             txtFiltrarPorNomeCompleto.Name = "txtFiltrarPorNomeCompleto";
-            txtFiltrarPorNomeCompleto.Size = new Size(803, 31);
+            txtFiltrarPorNomeCompleto.Size = new Size(563, 23);
             txtFiltrarPorNomeCompleto.TabIndex = 1;
             txtFiltrarPorNomeCompleto.KeyPress += TxtFiltrarPorNomeCompleto_KeyPress;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(9, 32);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(6, 19);
             label1.Name = "label1";
-            label1.Size = new Size(142, 25);
+            label1.Size = new Size(94, 15);
             label1.TabIndex = 0;
             label1.Text = "Nome completo";
             // 
@@ -79,11 +75,9 @@
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Controls.Add(dgvCadastros);
-            groupBox2.Location = new Point(17, 197);
-            groupBox2.Margin = new Padding(4, 5, 4, 5);
+            groupBox2.Location = new Point(12, 118);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 5, 4, 5);
-            groupBox2.Size = new Size(1086, 718);
+            groupBox2.Size = new Size(760, 571);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Cadastros";
@@ -97,8 +91,7 @@
             dgvCadastros.ColumnHeadersHeight = 45;
             dgvCadastros.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNomeCompleto, clnCPF });
             dgvCadastros.Dock = DockStyle.Fill;
-            dgvCadastros.Location = new Point(4, 29);
-            dgvCadastros.Margin = new Padding(4, 5, 4, 5);
+            dgvCadastros.Location = new Point(3, 19);
             dgvCadastros.MultiSelect = false;
             dgvCadastros.Name = "dgvCadastros";
             dgvCadastros.ReadOnly = true;
@@ -106,7 +99,7 @@
             dgvCadastros.RowHeadersWidth = 62;
             dgvCadastros.RowTemplate.Height = 32;
             dgvCadastros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCadastros.Size = new Size(1078, 684);
+            dgvCadastros.Size = new Size(754, 549);
             dgvCadastros.TabIndex = 0;
             dgvCadastros.CellDoubleClick += DgvCadastros_CellDoubleClick;
             // 
@@ -133,13 +126,12 @@
             // 
             // FrmConsultaAvancadaFuncionarios
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1120, 935);
+            ClientSize = new Size(784, 561);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             DoubleBuffered = true;
-            Margin = new Padding(4, 5, 4, 5);
             Name = "FrmConsultaAvancadaFuncionarios";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Consulta avançada de funcionário";

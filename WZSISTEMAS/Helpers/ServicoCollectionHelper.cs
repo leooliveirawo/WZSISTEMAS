@@ -12,6 +12,9 @@ namespace WZSISTEMAS.Helpers;
 
 public static class ServicoCollectionHelper
 {
+    public static IServiceProvider Criar()
+        => new ServiceCollection().Configurar();
+
     public static IServiceProvider Configurar(this IServiceCollection servicos)
     {
         servicos.AddTransient<FrmEntrada>();

@@ -1,15 +1,22 @@
+using WZSISTEMAS.Dados.Servicos.Interfaces;
+
 namespace WZSISTEMAS.ConfigurarBancoDados;
 
 public partial class FrmConfigurarBancoDados : Form
 {
     private readonly IServicoConexao servicoConexao;
+    private readonly IServicoDesenvolvedor servicoDesenvolvedor;
 
-    public FrmConfigurarBancoDados(IServicoConexao servicoConexao)
+    public FrmConfigurarBancoDados(
+        IServicoConexao servicoConexao,
+        IServicoDesenvolvedor servicoDesenvolvedor)
     {
         InitializeComponent();
 
-        this.servicoConexao = servicoConexao 
+        this.servicoConexao = servicoConexao
                               ?? throw new ArgumentNullException(nameof(servicoConexao));
+        this.servicoDesenvolvedor = servicoDesenvolvedor
+                                    ?? throw new ArgumentNullException(nameof(servicoDesenvolvedor));
     }
 
     private ConfiguracoesConexao CriarConfiguracoesConexao()
@@ -73,6 +80,9 @@ public partial class FrmConfigurarBancoDados : Form
 
             if (configuracoesConexao is not null)
                 PreencherTela(configuracoesConexao);
+
+            if (!EmDesenvolvimento)
+                btnPrepararBancoDados.Hide();
 
             Show();
         }
@@ -138,6 +148,31 @@ public partial class FrmConfigurarBancoDados : Form
                     $"Não foi possível estabelecer a conexão com o banco de dados.{Environment.NewLine}{Environment.NewLine}Por favor verifique os dados de conexão.", "Conexão não estabelecida");
 
             btnTestarConexao.Selecionar();
+        }
+        catch (Exception erro)
+        {
+            this.ExibirMensagemErro(erro);
+        }
+    }
+
+    private void btnPrepararBancoDados_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+            if (this.ExibirMensagemSimNao($"Deseja preencher o banco de dados com dados de teste?{Environment.NewLine}{Environment.NewLine}Essa ação não poderá ser desfeita."))
+            {
+                try
+                {
+                    servicoDesenvolvedor.PreencherBancoDados();
+
+                    this.ExibirMensagemOperacaoConcluida("O preenchimento de dados de teste no banco de dados foi concluído com sucesso.");
+                }
+                catch (Exception erro)
+                {
+                    this.ExibirMensagemErro(erro);
+                }
+            }
         }
         catch (Exception erro)
         {

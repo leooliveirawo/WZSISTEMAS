@@ -37,7 +37,7 @@ public partial class FrmFrenteCaixaFechamentoCartao : Form
         => this.tipo = tipo;
 
 
-    public IServicoCartao ObterServicoCartoes()
+    public IServicoCartao ObterServicoCartao()
         => tipo == TipoEntradaCaixa.CartaoDebito
         ? servicoCartaoDebito
         : tipo == TipoEntradaCaixa.CartaoCredito
@@ -55,13 +55,16 @@ public partial class FrmFrenteCaixaFechamentoCartao : Form
             if (EmDesenvolvimento)
                 this.AbrirSimuladorCartao(sender, e);
 
-            servicoCartao = ObterServicoCartoes();
+            lbMensagem.Text = "COMUNICANDO COM A MÁQUINA";
 
-            lbMensagem.Text = "AGUARDANDO A APROVAÇÃO";
             lbMensagem.ForeColor = Color.DarkBlue;
+            servicoCartao = ObterServicoCartao();
 
-            servicoCartao.Finalizou += ServicoCartoes_Finalizou;
-            servicoCartao.Cancelou += ServicoCartoes_Cancelou;
+            servicoCartao.Comunicou += ServicoCartao_Comunicou;
+            servicoCartao.Iniciou += ServicoCartao_OnIniciou;
+            servicoCartao.Finalizou += ServicoCartao_Finalizou;
+            servicoCartao.Cancelou += ServicoCartao_Cancelou;
+
             servicoCartao.IniciarTransacao(valorPago);
         }
         catch (Exception erro)
@@ -70,6 +73,18 @@ public partial class FrmFrenteCaixaFechamentoCartao : Form
 
             Close();
         }
+    }
+
+    private void ServicoCartao_Comunicou(object sender, TransacaoCartaoEventArgs e)
+    {
+        lbMensagem.Text = e.Transacao.MensagemRetorno;
+        lbMensagem.ForeColor = Color.DarkBlue;
+    }
+
+    private void ServicoCartao_OnIniciou(object sender, TransacaoCartaoEventArgs e)
+    {
+        lbMensagem.Text = "AGUARDANDO A APROVAÇÃO";
+        lbMensagem.ForeColor = Color.DarkBlue;
     }
 
     private void FrmFrenteCaixaFechamentoCartao_KeyDown(object sender, KeyEventArgs e)
@@ -107,7 +122,7 @@ public partial class FrmFrenteCaixaFechamentoCartao : Form
         }
     }
 
-    private void ServicoCartoes_Finalizou(object sender, TransacaoCartaoEventArgs e)
+    private void ServicoCartao_Finalizou(object sender, TransacaoCartaoEventArgs e)
     {
         Finalizado = true;
 
@@ -125,7 +140,7 @@ public partial class FrmFrenteCaixaFechamentoCartao : Form
         }
     }
 
-    private void ServicoCartoes_Cancelou(object sender, TransacaoCartaoEventArgs e)
+    private void ServicoCartao_Cancelou(object sender, TransacaoCartaoEventArgs e)
     {
         if (e.Transacao.Cancelado)
         {

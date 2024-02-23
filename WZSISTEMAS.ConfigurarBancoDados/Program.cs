@@ -4,10 +4,6 @@ namespace WZSISTEMAS.ConfigurarBancoDados;
 
 internal static class Program
 {
-    public static bool EmDesenvolvimento { get; private set; }
-
-    public static IServiceProvider ProvedorServicos { get; private set; } = default!;
-
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
@@ -18,14 +14,10 @@ internal static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
 
+        if (EmDesenvolvimento)
+            MessageBox.Show("Em desenvolvimento...");
 
-#if DEBUG
-        EmDesenvolvimento = true;
-        MessageBox.Show("Em desenvolvimento...");
-#endif
-        var servicos = new ServiceCollection();
-
-        ProvedorServicos = servicos.Configurar();
+        ProvedorServicos = Helpers.ServiceCollectionHelper.Criar();
 
         Application.Run(ProvedorServicos.GetRequiredService<FrmConfigurarBancoDados>());
     }

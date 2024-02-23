@@ -48,6 +48,7 @@ partial class FrmConfigurarBancoDados
         btnSalvar = new Button();
         btnImportar = new Button();
         btnTestarConexao = new Button();
+        btnPrepararBancoDados = new Button();
         groupBox1.SuspendLayout();
         groupBox2.SuspendLayout();
         groupBox3.SuspendLayout();
@@ -252,11 +253,22 @@ partial class FrmConfigurarBancoDados
         btnTestarConexao.UseVisualStyleBackColor = true;
         btnTestarConexao.Click += btnTestarConexao_Click;
         // 
+        // btnPrepararBancoDados
+        // 
+        btnPrepararBancoDados.Location = new Point(164, 408);
+        btnPrepararBancoDados.Name = "btnPrepararBancoDados";
+        btnPrepararBancoDados.Size = new Size(236, 34);
+        btnPrepararBancoDados.TabIndex = 10;
+        btnPrepararBancoDados.Text = "Preparar o banco de dados";
+        btnPrepararBancoDados.UseVisualStyleBackColor = true;
+        btnPrepararBancoDados.Click += btnPrepararBancoDados_Click;
+        // 
         // FrmConfigurarBancoDados
         // 
         AutoScaleDimensions = new SizeF(10F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 454);
+        Controls.Add(btnPrepararBancoDados);
         Controls.Add(btnTestarConexao);
         Controls.Add(btnImportar);
         Controls.Add(btnSalvar);
@@ -310,4 +322,5 @@ partial class FrmConfigurarBancoDados
     private Button btnSalvar;
     private Button btnImportar;
     private Button btnTestarConexao;
+    private Button btnPrepararBancoDados;
 }

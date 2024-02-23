@@ -246,7 +246,6 @@ public partial class FrmInicio : FrmBase
 
     private void FrmInicio_Load(object sender, EventArgs e)
     {
-        tsmiDesenvolvedor.Visible = EmDesenvolvimento;
     }
 
     private void ConvêniosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,23 +267,6 @@ public partial class FrmInicio : FrmBase
     {
         if (this.ExibirMensagemSimNao("Tem certeza que deseja fechar?\nSerá necessário autenticar novamente.", "Confirmar fechamento"))
             Close();
-    }
-
-    private void TsmiDesenvolvedorInvalidarToken_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            if (Program.Token is not null)
-            {
-                var token = servicoDesenvolvedor.Desautenticar(Program.Token);
-
-                Program.Token = token.Token;
-            }
-        }
-        catch (Exception erro)
-        {
-            this.ExibirMensagemErro(erro);
-        }
     }
 
     private void TsmiUtilitariosControleItens_Click(object sender, EventArgs e)

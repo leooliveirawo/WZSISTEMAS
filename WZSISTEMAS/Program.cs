@@ -1,13 +1,7 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace WZSISTEMAS;
 
 internal static class Program
 {
-    public static bool EmDesenvolvimento { get; private set; }
-
-    public static IServiceProvider ProvedorServicos { get; set; } = default!;
-
     public static string? Token { get; set; }
 
     public static long UsuarioId { get; set; }
@@ -25,11 +19,11 @@ internal static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
 
-#if DEBUG
-        EmDesenvolvimento = true;
-        MessageBox.Show("Em desenvolvimento...");
-#endif
-        ProvedorServicos = new ServiceCollection().Configurar();
+        if (EmDesenvolvimento)
+            MessageBox.Show("Em desenvolvimento...");
+
+        ProvedorServicos = ServicoCollectionHelper.Criar();
+
         Application.Run(ProvedorServicos.FrmLogin());
     }
 }
