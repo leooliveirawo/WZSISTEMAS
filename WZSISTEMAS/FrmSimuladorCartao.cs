@@ -77,4 +77,14 @@ public partial class FrmSimuladorCartao : Form
 
         Close();
     }
+
+    private void btnSoliciteASenha_Click(object sender, EventArgs e)
+    {
+        servicoDriverCartaoVirtual.Comunicar("SOLICITE A SENHA...");
+    }
+
+    private void btnAguarde_Click(object sender, EventArgs e)
+    {
+        servicoDriverCartaoVirtual.Comunicar("AGUARDE...");
+    }
 }
